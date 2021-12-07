@@ -1,4 +1,4 @@
-# `Unit Testing for Arrays`
+# Unit Testing for Arrays
 Unit testing functions to test for the equality or inequality of arrays, to within some specified precision.
 
 <br/><br/> 
