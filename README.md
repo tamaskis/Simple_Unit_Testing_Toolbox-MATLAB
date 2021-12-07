@@ -39,6 +39,6 @@ Unit testing functions to test for the equality or inequality of arrays, to with
 <br/><br/> 
 <br/><br/> 
 
-## Examples
+# Examples
 
    -  See "EXAMPLES.mlx" or the "Examples" tab on the File Exchange page for examples.
