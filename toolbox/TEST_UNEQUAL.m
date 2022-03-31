@@ -1,10 +1,10 @@
 %==========================================================================
 %
-% TEST_EQUAL  Determines if the actual result matches the expected result,
-% to within some maximum error.
+% TEST_UNEQUAL  Determines if the actual result is different than the 
+% expected result, above some minimum error.
 %
-%   TEST_EQUAL(actual,expected)
-%   TEST_EQUAL(actual,expected,max_err)
+%   TEST_UNEQUAL(actual,expected)
+%   TEST_UNEQUAL(actual,expected,min_err)
 %
 % Author: Tamas Kis
 % Last Update: 2022-03-30
@@ -16,8 +16,9 @@
 % ------
 %   actual      - (double array) actual result (what your function found)
 %   expected    - (double array) expected result (testing against this)
-%   max_err     - (OPTIONAL) (1×1 double) maximum error (defaults to
-%                 10^-15, uses relative error unless expected result is 0)
+%   max_err     - (1×1 double) (OPTIONAL) maximum error (defaults to 1e-10)
+%                   --> uses relative error if expected result is nonzero
+%                   --> uses absolute error if expected result is zero
 %
 % -----
 % NOTE:
@@ -29,11 +30,11 @@
 %           absolute error = |(actual) - (expected)|
 %
 %==========================================================================
-function TEST_EQUAL(actual,expected,max_err)
+function TEST_UNEQUAL(actual,expected,min_err)
     
-    % sets maximum error (defaults to 10^-15)
+    % sets minimum error (defaults to 10^-10)
     if nargin < 3
-        max_err = 1e-15;
+        min_err = 1e-10;
     end
 
     % reshapes both arrays to column vectors
@@ -48,7 +49,7 @@ function TEST_EQUAL(actual,expected,max_err)
 
         % calculates error as relative error if expected result is nonzero
         if expected(i) ~= 0
-            err(i) = abs((actual(i)-expected(i))/expected(i));
+            err(i) = abs((actual(i)-expected(i))./expected(i));
 
         % calculates error as absolute error if expected result is zero
         else
@@ -56,10 +57,11 @@ function TEST_EQUAL(actual,expected,max_err)
         end
 
     end
-
-    % tests equality (error should be less than or equal to maximum error)
+    
+    % tests if elements are unequal (error should be greater than minimum 
+    % error)
     for i = 1:length(err)
-        assert(err(i) <= max_err);
+        assert(err(i) > min_err);
     end
 
 end

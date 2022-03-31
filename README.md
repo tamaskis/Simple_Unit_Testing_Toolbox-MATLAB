@@ -2,43 +2,27 @@
 Simple unit testing functions for MATLAB.
 
 <br/><br/> 
-<br/><br/> 
 
-# `TEST_EQUAL`
-
-## Syntax
+# `Functions`
 
 `TEST_EQUAL(actual,expected)`\
 `TEST_EQUAL(actual,expected,max_err)`
 
-
-## Description
-
-`TEST_EQUAL(actual,expected)` determines if the actual result, `actual`, is equal to the expected result, `expected`. The two arrays are considered equal if their individual elements are equal to within <img src="https://latex.codecogs.com/svg.latex?\inline&space;10^{-10}" title=""/>. An error is thrown if the two arrays are not equal.
-
-`TEST_EQUAL(actual,expected,max_err)` determines if the actual result, `actual`, is equal to the expected result, `expected`. The two arrays are considered equal if their individual elements are equal to within a user-specified maximum error, `max_err`. An error is thrown if the two arrays are not equal.
-
-<br/><br/> 
-<br/><br/> 
-
-
-# `TEST_UNEQUAL`
-
-## Syntax
+<br/>
 
 `TEST_UNEQUAL(actual,expected)`\
 `TEST_UNEQUAL(actual,expected,min_err)`
 
+<br/>
 
-## Description
+`TEST_ERROR(f)`\
+`TEST_ERROR(@function)`\
+`TEST_ERROR(f,__)`\
+`TEST_ERROR(@(__)function(__),__)`
 
-`TEST_UNEQUAL(actual,expected)` determines if the actual result, `actual`, is not equal to the expected result, `expected`. The two arrays are considered to not be equal if any of their individual elements differ by at least <img src="https://latex.codecogs.com/svg.latex?\inline&space;10^{-10}" title=""/>. An error is thrown if the two arrays are equal.
+<br/>
 
-`TEST_UNEQUAL(actual,expected,min_err)` determines if the actual result, `actual`, is not equal to the expected result, `expected`. The two arrays are considered to not be equal if their individual elements differ by at least a user-specified minimum error, `min_err`. An error is thrown if the two arrays are equal.
-
-<br/><br/> 
-<br/><br/> 
-
-# Examples
-
-   -  See "EXAMPLES.mlx" or the "Examples" tab on the File Exchange page for examples.
+`TEST_NO_ERROR(f)`\
+`TEST_NO_ERROR(@function)`\
+`TEST_NO_ERROR(f,__)`\
+`TEST_NO_ERROR(@(__)function(__),__)`
