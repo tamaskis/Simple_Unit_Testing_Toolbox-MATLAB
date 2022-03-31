@@ -7,7 +7,7 @@
 %   TEST_UNEQUAL(actual,expected,min_err)
 %
 % Author: Tamas Kis
-% Last Update: 2021-12-06
+% Last Update: 2022-03-30
 %
 %--------------------------------------------------------------------------
 %
@@ -16,8 +16,8 @@
 % ------
 %   actual      - (double array) actual result (what your function found)
 %   expected    - (double array) expected result (testing against this)
-%   min_err     - (OPTIONAL) (1×1 double) minimum error (defaults to
-%                 10^-15)
+%   max_err     - (OPTIONAL) (1×1 double) maximum error (defaults to
+%                 10^-15, uses relative error unless expected result is 0)
 %
 % -----
 % NOTE:
