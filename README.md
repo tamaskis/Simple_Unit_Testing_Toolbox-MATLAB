@@ -5,19 +5,19 @@ Simple unit testing functions for MATLAB.
 
 # Functions
 
-**Testing for array equality:**
+**Testing for array equality:**\
 `TEST_EQUAL(actual,expected)`\
 `TEST_EQUAL(actual,expected,max_err)`
 
 <br/>
 
-**Testing for array inequality:**
+**Testing for array inequality:**\
 `TEST_UNEQUAL(actual,expected)`\
 `TEST_UNEQUAL(actual,expected,min_err)`
 
 <br/>
 
-**Testing for correct error handling:**
+**Testing for correct error handling:**\
 `TEST_ERROR(f)`\
 `TEST_ERROR(@function)`\
 `TEST_ERROR(f,__)`\
@@ -25,7 +25,7 @@ Simple unit testing functions for MATLAB.
 
 <br/>
 
-**Testing for successful function execution:**
+**Testing for successful function execution:**\
 `TEST_NO_ERROR(f)`\
 `TEST_NO_ERROR(@function)`\
 `TEST_NO_ERROR(f,__)`\
