@@ -1,5 +1,4 @@
-# Unit Testing for Arrays [![View Unit Testing for Arrays on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/103095-unit-testing-for-arrays)
-Simple unit testing functions for MATLAB.
+# Simple Unit Testing Toolbox
 
 
 # Functions

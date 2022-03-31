@@ -6,6 +6,8 @@
 %   TEST_UNEQUAL(actual,expected)
 %   TEST_UNEQUAL(actual,expected,min_err)
 %
+% See also TEST_EQUAL.
+%
 % Author: Tamas Kis
 % Last Update: 2022-03-30
 %

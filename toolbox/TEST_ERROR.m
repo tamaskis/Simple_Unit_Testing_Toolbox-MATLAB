@@ -7,6 +7,8 @@
 %   TEST_ERROR(f,__)
 %   TEST_ERROR(@(__)function(__),__)
 %
+% See also TEST_NO_ERROR.
+%
 % Author: Tamas Kis
 % Last Update: 2022-03-30
 %
