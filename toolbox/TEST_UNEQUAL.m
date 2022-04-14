@@ -8,8 +8,10 @@
 %
 % See also TEST_EQUAL.
 %
-% Author: Tamas Kis
-% Last Update: 2022-03-30
+% Copyright © 2022 Tamas Kis
+% Last Update: 2022-04-14
+% Website: https://tamaskis.github.io
+% Contact: tamas.a.kis@outlook.com
 %
 %--------------------------------------------------------------------------
 %
@@ -18,7 +20,7 @@
 % ------
 %   actual      - (double array) actual result (what your function found)
 %   expected    - (double array) expected result (testing against this)
-%   max_err     - (1×1 double) (OPTIONAL) maximum error (defaults to 1e-10)
+%   min_err     - (1×1 double) (OPTIONAL) minimum error (defaults to 10⁻¹⁰)
 %                   --> uses relative error if expected result is nonzero
 %                   --> uses absolute error if expected result is zero
 %

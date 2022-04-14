@@ -9,8 +9,10 @@
 %
 % See also TEST_ERROR.
 %
-% Author: Tamas Kis
-% Last Update: 2022-03-30
+% Copyright © 2022 Tamas Kis
+% Last Update: 2022-04-14
+% Website: https://tamaskis.github.io
+% Contact: tamas.a.kis@outlook.com
 %
 %--------------------------------------------------------------------------
 %
