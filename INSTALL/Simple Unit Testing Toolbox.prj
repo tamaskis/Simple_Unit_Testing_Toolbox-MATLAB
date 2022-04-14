@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.toolbox" plugin-version="1.0">
-  <configuration file="/Users/tamaskis/Documents/Code/MATLAB/toolboxes/Simple_Unit_Testing_Toolbox-MATLAB/INSTALL/Simple Unit Testing Toolbox.prj" location="/Users/tamaskis/Documents/Code/MATLAB/toolboxes/Simple_Unit_Testing_Toolbox-MATLAB/INSTALL" name="Simple Unit Testing Toolbox" target="target.toolbox" target-name="Package Toolbox">
+  <configuration build-checksum="3511647673" file="/Users/tamaskis/Documents/Code/MATLAB/toolboxes/Simple_Unit_Testing_Toolbox-MATLAB/INSTALL/Simple Unit Testing Toolbox.prj" location="/Users/tamaskis/Documents/Code/MATLAB/toolboxes/Simple_Unit_Testing_Toolbox-MATLAB/INSTALL" name="Simple Unit Testing Toolbox" target="target.toolbox" target-name="Package Toolbox">
     <param.appname>Simple Unit Testing Toolbox</param.appname>
     <param.authnamewatermark>Tamas Kis</param.authnamewatermark>
     <param.email>tamas.a.kis@outlook.com</param.email>
@@ -7,14 +7,14 @@
     <param.summary>Simple unit testing functions.</param.summary>
     <param.description />
     <param.screenshot />
-    <param.version>2.0.1</param.version>
+    <param.version>2.1.0</param.version>
     <param.output>${PROJECT_ROOT}/Simple Unit Testing Toolbox.mltbx</param.output>
     <param.products.name />
     <param.products.id />
     <param.products.version />
     <param.platforms />
     <param.guid>f561cde3-6034-4fa2-a859-a8beeb40d38b</param.guid>
-    <param.exclude.filters />
+    <param.exclude.filters>.DS_Store</param.exclude.filters>
     <param.exclude.pcodedmfiles>true</param.exclude.pcodedmfiles>
     <param.examples />
     <param.demosxml />
@@ -52,7 +52,6 @@
       <param.products.id />
       <param.products.version />
       <param.platforms />
-      <param.exclude.filters />
       <param.exclude.pcodedmfiles />
       <param.examples />
       <param.demosxml />
