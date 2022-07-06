@@ -10,7 +10,7 @@
 % See also TEST_ERROR.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2022-04-14
+% Last Update: 2022-07-06
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -45,5 +45,5 @@ function TEST_NO_ERROR(f,varargin)
     if ~no_error_thrown
         error('Function threw an error.');
     end
-
+    
 end
