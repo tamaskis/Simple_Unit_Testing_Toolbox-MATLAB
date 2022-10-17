@@ -4,14 +4,14 @@
 # Functions
 
 **Testing for array equality:**\
-`TEST_EQUAL(actual,expected)`\
-`TEST_EQUAL(actual,expected,max_err)`
+`TEST_EQUAL(X1,X2)`\
+`TEST_EQUAL(X1,X2,n)`
 
 <br/>
 
 **Testing for array inequality:**\
-`TEST_UNEQUAL(actual,expected)`\
-`TEST_UNEQUAL(actual,expected,min_err)`
+`TEST_NOT_EQUAL(X1,X2)`\
+`TEST_NOT_EQUAL(X1,X2,n)`
 
 <br/>
 

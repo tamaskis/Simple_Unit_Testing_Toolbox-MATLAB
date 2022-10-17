@@ -1,12 +1,12 @@
 %==========================================================================
 %
-% TEST_EQUAL  Raises an error if two double arrays are not equal up to a 
+% TEST_NOT_EQUAL  Raises an error if two double arrays are equal up to a 
 % desired number of decimal places.
 %
-%   TEST_EQUAL(X1,X2)
-%   TEST_EQUAL(X1,X2,n)
+%   TEST_NOT_EQUAL(X1,X2)
+%   TEST_NOT_EQUAL(X1,X2,n)
 %
-% See also TEST_NOT_EQUAL.
+% See also TEST_EQUAL.
 %
 % Copyright © 2022 Tamas Kis
 % Last Update: 2022-10-16
@@ -23,7 +23,7 @@
 %   n       - (OPTIONAL) (1×1 double) decimal places of precision
 %
 %==========================================================================
-function TEST_EQUAL(X1,X2,n)
+function TEST_NOT_EQUAL(X1,X2,n)
     
     % sets decimal places of precision (defaults to 16, corresponding to 
     % 10⁻¹⁶)
@@ -35,13 +35,21 @@ function TEST_EQUAL(X1,X2,n)
     X1 = X1(:);
     X2 = X2(:);
     
-    % tests equality for each element
+    % tracks number of inequalities
+    m = 0;
+    
+    % tests equality for each element, counting number of ienqualities
     for i = 1:length(X1)
         try
             assert(round(X1(i),n) == round(X2(i),n));
         catch
-            error("Arrays are not equal.")
+            m = m+1;
         end
+    end
+    
+    % raises error if the two arrays are equal
+    if m == 0
+        error("Arrays are equal.")
     end
     
 end
