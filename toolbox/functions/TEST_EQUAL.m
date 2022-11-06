@@ -5,13 +5,13 @@
 %
 %   TEST_EQUAL(X1,X2)
 %   TEST_EQUAL(X1,X2,n)
-%   TEST_EQUAL(__,name)
-%   passed = TEST_EQUAL(__)
+%   TEST_EQUAL(__,name,print)
+%   [passed,result,message] = TEST_EQUAL(__)
 %
 % See also TEST_NOT_EQUAL.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2022-10-29
+% Last Update: 2022-11-01
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -24,34 +24,42 @@
 %   X2      - (double array) double array #2
 %   n       - (OPTIONAL) (1×1 double) decimal places of precision
 %   name    - (OPTIONAL) (char) test name
+%   print   - (OPTIONAL) (1×1 logical) true if test result should be
+%             printed to Command Window, false otherwise
 %
 % -------
 % OUTPUT:
 % -------
 %   passed  - (1×1 logical) true if test passed, false otherwise
+%   result  - (char) string storing result of test
+%   message - (char) string storing additional diagnostic message if test
+%             failed
 %
 %==========================================================================
-function passed = TEST_EQUAL(X1,X2,n,name)
+function [passed,result,message] = TEST_EQUAL(X1,X2,n,name,print)
     
     % sets decimal places of precision (defaults to 16, corresponding to 
     % 10⁻¹⁶)
-    if (nargin < 3) || isempty (n)
+    if (nargin < 3) || isempty(n)
         n = 16;
     end
     
-    % appends colon to test name if input, otherwise defaults test name to 
-    % empty string
+    % defaults test name to empty string
     if (nargin < 4) || isempty(name)
         name = '';
-    else
-        name = strcat(name,': ');
+    end
+    
+    % defaults "print" to true if not input
+    if (nargin < 5) || isempty(print)
+        print = true;
     end
     
     % if the two arrays do not have the same size, they cannot be equal
     if size(X1) ~= size(X2)
-        print(strcat(name,...
-            'ERROR - The two arrays are not the same size.'));
         passed = false;
+        result = 'FAILED.';
+        message = 'The two arrays are not the same size';
+        if print, fprintf([name,result,'\n    >>>> ',message,'\n']); end
         return;
     end
     
@@ -68,13 +76,9 @@ function passed = TEST_EQUAL(X1,X2,n,name)
     % loops through each array element, testing for equality at desired
     % precision or checking up to which precision equality exists
     for i = 1:N
-        while (n_array(i) > 0) 
-            try
-                assert(round(X1(i),n) == round(X2(i),n));
-                break;
-            catch
-                n_array(i) = n_array(i)-1;
-            end
+        while (n_array(i) > 0) &&...
+                (round(X1(i),n_array(i)) ~= round(X2(i),n_array(i)))
+            n_array(i) = n_array(i)-1;
         end
     end
     
@@ -91,20 +95,38 @@ function passed = TEST_EQUAL(X1,X2,n,name)
         data_type = 'Arrays';
     end
     
-    % results string
+    % result string
     if passed
-        result = strcat('Passed.');
+        result = 'Passed.';
     else
-        if n_min == 0
-            result = strcat('ERROR -- Not equal to ',n,' decimal places.');
-        else
-            result = strcat('ERROR -- Not equal to ',n,[' decimal ',...
-                'places. '],data_type,' ARE equal to ',n_min,...
-                ' decimal places.');
-        end
+        result = 'FAILED.';
+    end
+    
+    % diagnostic message
+    if passed
+        message = '';
+    elseif ~passed && (n_min > 0)
+        message = [data_type,' are not equal to ',num2str(n),...
+            ' decimal places.\n    >>>> ',data_type,' ARE equal to ',...
+            num2str(n_min),' decimal places.'];
+    else
+        message = 'Not equal to any decimal places.';
+    end
+    
+    % name string
+    if isempty(name)
+        name_str = '';
+    else
+        name_str = [name,': '];
     end
     
     % prints result
-    print(strcat(name,result));
+    if print
+        if isempty(message)
+            fprintf([name_str,result,'\n']);
+        else
+            fprintf([name_str,result,'\n    >>>> ',message,'\n']);
+        end
+    end
     
 end
