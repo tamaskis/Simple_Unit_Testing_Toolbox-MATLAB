@@ -3,7 +3,7 @@
 % TestSuite  Class defining a test suite.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2022-11-01
+% Last Update: 2022-12-25
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -103,10 +103,10 @@ classdef TestSuite < handle
             
             % prints blank line
             fprintf('\n');
-
+            
             % initializes counter to count the number of passed tests
             n_passed = 0;
-
+            
             % number of characters in longest name
             longest_name = 0;
             

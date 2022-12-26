@@ -29,7 +29,7 @@ classdef UnitTest < handle
     methods (Access = public)
         
         function obj = UnitTest(test_args,name,type)
-            % obj = UnitTest(X1,X2,name,type,n)
+            % obj = UnitTest(test_args,name,type)
             %
             % Constructor.
             %--------------------------------------------------------------
@@ -40,7 +40,7 @@ classdef UnitTest < handle
             %   test_args   - (cell array) inputs to testing function
             %   name        - (char) test name
             %   type        - (char) test type ('equal', 'not equal', 
-            %                 'error', or 'no error')
+            %                 'error', 'no error', or 'speed')
             %
             % -------
             % OUTPUT:
@@ -85,18 +85,19 @@ classdef UnitTest < handle
             % runs test
             if strcmpi(obj.type,'equal')
                 [obj.passed,result,message] = TEST_EQUAL(...
-                    obj.test_args{1},obj.test_args{2},obj.test_args{3},...
-                    obj.name,false);
+                    obj.test_args{:},obj.name,false);
             elseif strcmpi(obj.type,'not equal')
                 [obj.passed,result,message] = TEST_NOT_EQUAL(...
-                    obj.test_args{1},obj.test_args{2},obj.test_args{3},...
-                    obj.name,false);
+                    obj.test_args{:},obj.name,false);
             elseif strcmpi(obj.type,'error')
                 [obj.passed,result,message] = TEST_ERROR(...
-                    obj.test_args{1},obj.test_args{2},obj.name,false);
+                    obj.test_args{:},obj.name,false);
             elseif strcmpi(obj.type,'no error')
                 [obj.passed,result,message] = TEST_NO_ERROR(...
-                    obj.test_args{1},obj.test_args{2},obj.name,false);
+                    obj.test_args{:},obj.name,false);
+            elseif strcmpi(obj.type,'speed')
+                [obj.passed,result,message] = TEST_SPEED(...
+                    obj.test_args{:},obj.name,false);
             end
             
             % increments number of passed tests results if test passed
@@ -105,7 +106,7 @@ classdef UnitTest < handle
             % determines if (# passed) / (# run) ratio should be printed
             ratio = (nargin == 3) && ~isempty(n_passed) &&...
                 ~isempty(n_run);
-            
+                
             % name string
             if isempty(obj.name)
                 name_str = '';
