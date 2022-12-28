@@ -63,33 +63,14 @@ function [passed,result,message] = TEST_EQUAL(X1,X2,n,name,print)
         return;
     end
     
-    % reshapes both arrays to column vectors
-    X1 = X1(:);
-    X2 = X2(:);
-    
-    % number of array elements
-    N = length(X1);
-    
-    % array that stores decimals of precision for each element
-    n_array = n*ones(N,1);
-    
-    % loops through each array element, testing for equality at desired
-    % precision or checking up to which precision equality exists
-    for i = 1:N
-        while (n_array(i) > 0) &&...
-                (round(X1(i),n_array(i)) ~= round(X2(i),n_array(i)))
-            n_array(i) = n_array(i)-1;
-        end
-    end
-    
     % determines minimum number of decimal places of equality
-    n_min = min(n_array);
+    n_equal = decimal_places_of_equality(X1,X2);
     
     % determines if test passsed (arrays are equal to n decimal places)
-    passed = (n_min == n);
+    passed = (n_equal >= n);
     
     % determines data type of input
-    if N == 1
+    if length(X1(:)) == 1
         data_type = 'Values';
     else
         data_type = 'Arrays';
@@ -105,10 +86,10 @@ function [passed,result,message] = TEST_EQUAL(X1,X2,n,name,print)
     % diagnostic message
     if passed
         message = '';
-    elseif ~passed && (n_min > 0)
+    elseif ~passed && (n_equal > 0)
         message = [data_type,' are not equal to ',num2str(n),...
             ' decimal places.\n    >>>> ',data_type,' ARE equal to ',...
-            num2str(n_min),' decimal places.'];
+            num2str(n_equal),' decimal places.'];
     else
         message = 'Not equal to any decimal places.';
     end

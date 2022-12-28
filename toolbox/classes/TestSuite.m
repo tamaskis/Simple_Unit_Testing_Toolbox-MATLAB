@@ -38,10 +38,11 @@ classdef TestSuite < handle
             % INPUT:
             % ------
             %   name        - (OPTIONAL) (char) test suite name
-            %   terminate   - (1×1 logical) true if test suite should be
-            %                 terminated after first failed unit test, 
-            %                 false if all tests should be run regardless
-            %                 of any failed tests (defaults to false)
+            %   terminate   - (OPTIONAL) (1×1 logical) true if test suite 
+            %                 should be terminated after first failed unit 
+            %                 test, false if all tests should be run 
+            %                 regardless of any failed tests (defaults to 
+            %                 false)
             %
             % -------
             % OUTPUT:

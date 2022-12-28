@@ -22,8 +22,9 @@
 % ------
 %   X1      - (double array) double array #1
 %   X2      - (double array) double array #2
-%   n       - (OPTIONAL) (1×1 double) decimal places of precision
-%   name    - (OPTIONAL) (char) test name
+%   n       - (OPTIONAL) (1×1 double) decimal places of precision (defaults
+%             to 16, corresponding to 10⁻¹⁶)
+%   name    - (OPTIONAL) (char) test name (defaults to empty string)
 %   print   - (OPTIONAL) (1×1 logical) true if test result should be
 %             printed to Command Window, false otherwise
 %
@@ -63,34 +64,15 @@ function [passed,result,message] = TEST_NOT_EQUAL(X1,X2,n,name,print)
         return;
     end
     
-    % reshapes both arrays to column vectors
-    X1 = X1(:);
-    X2 = X2(:);
-    
-    % number of array elements
-    N = length(X1);
-    
-    % array that stores decimals of precision for each element
-    n_array = n*ones(N,1);
-    
-    % loops through each array element, testing for equality at desired
-    % precision or checking up to which precision equality exists
-    for i = 1:N
-        while (n_array(i) > 0) &&...
-                (round(X1(i),n_array(i)) ~= round(X2(i),n_array(i)))
-            n_array(i) = n_array(i)-1;
-        end
-    end
-    
     % determines minimum number of decimal places of equality
-    n_min = min(n_array);
+    n_equal = decimal_places_of_equality(X1,X2);
     
     % determines if test passed (at least one elementwise inequality
     % exists with respect to the specified precision)
-    passed = (n_min < n);
+    passed = (n_equal < n);
     
     % determines data type of input
-    if N == 1
+    if length(X1(:)) == 1
         data_type_1 = 'Values';
         data_type_2 = 'values';
     else
@@ -106,20 +88,18 @@ function [passed,result,message] = TEST_NOT_EQUAL(X1,X2,n,name,print)
     end
     
     % diagnostic message
-    if passed && (n_min == 0)
+    if passed && (n_equal == 0)
         message = '';
-    elseif passed && (n_min > 0)
+    elseif passed && (n_equal > 0)
         message = ['WARNING: This test tested for inequality, but the ',...
-            data_type_2,' ARE equal to ',num2str(n_min),...
-            ' decimal places.\n    >>>> To get rid of this ',...
-            'warning, set the decimal places of precision for this ',...
-            'test to n = ',num2str(n_min),'.'];
-    elseif ~passed && (n_min > 0) && (n_min < n)
-        message = [data_type_1,' are equal to ',num2str(n),...
+            data_type_2,' ARE equal to ',num2str(n_equal),...
+            ' decimal places.'];
+    elseif ~passed && (n_equal > 0) && (n_equal < n)
+        message = [data_type_1,' are equal to ',num2str(n_equal),...
             ' decimal places.\n    >>>> ',data_type_1,...
-            ' are NOT equal to ',num2str(n_min),' decimal places.'];
+            ' are NOT equal to ',num2str(n),' decimal places.'];
     else
-        message = 'Equal to 16 decimal places.';
+        message = ['Equal to ',num2str(n_equal),' decimal places.'];
     end
     
     % name string
