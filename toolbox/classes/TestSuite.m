@@ -3,7 +3,7 @@
 % TestSuite  Class defining a test suite.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2022-12-25
+% Last Update: 2022-12-29
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -16,7 +16,7 @@ classdef TestSuite < handle
     % -----------
     
     properties
-        tests       % (N×1 cell array) cell array storing TestEqual and TestNotEqual objects comprising the test suite
+        tests       % (1×N heterogeneous UnitTest) collection of unit tests
         name        % (char) test suite name
         N           % (1×1 double) number of tests comprising test suite
         terminate   % (1×1 logical) if true, test suite terminates after first failed test
@@ -37,7 +37,8 @@ classdef TestSuite < handle
             % ------
             % INPUT:
             % ------
-            %   name        - (OPTIONAL) (char) test suite name
+            %   name        - (OPTIONAL) (char) test suite name (defaults
+            %                 to empty string)
             %   terminate   - (OPTIONAL) (1×1 logical) true if test suite 
             %                 should be terminated after first failed unit 
             %                 test, false if all tests should be run 
@@ -52,7 +53,7 @@ classdef TestSuite < handle
             %--------------------------------------------------------------
             
             % initializes tests
-            obj.tests = {};
+            obj.tests = UnitTest.empty;
             
             % sets test suite name (defaults to empty string)
             if (nargin < 1) || isempty(name)
@@ -74,7 +75,7 @@ classdef TestSuite < handle
         end
         
         function obj = add_test(obj,test)
-            % add_test.run
+            % TestSuite.add_test(test)
             %
             % Adds a test to the test suite.
             %--------------------------------------------------------------
@@ -82,8 +83,7 @@ classdef TestSuite < handle
             % ------
             % INPUT:
             % ------
-            %   test    - (1×1 TestEqual or TestNotEqual) test to add to
-            %             test suite
+            %   test    - (1×1 UnitTest) test to add to test suite
             %   type    - (char) 'equal' or 'not equal'
             %
             %--------------------------------------------------------------
@@ -92,7 +92,7 @@ classdef TestSuite < handle
             obj.N = obj.N+1;
             
             % adds test to test suite
-            obj.tests{obj.N} = test;
+            obj.tests(obj.N) = test;
             
         end
         
@@ -115,10 +115,10 @@ classdef TestSuite < handle
             for i = 1:obj.N
                 
                 % runs ith test
-                n_passed = obj.tests{i}.run(n_passed,i);
+                n_passed = obj.tests(i).run(n_passed,i);
                 
                 % terminates test suite
-                if obj.terminate && ~obj.tests{i}.passed
+                if obj.terminate && ~obj.tests(i).passed
                     fprintf(['\nTEST SUITE TERMINATED EARLY DUE TO ',...
                         'FAILED UNIT TEST.\n\n'])
                     return;
@@ -126,7 +126,7 @@ classdef TestSuite < handle
                 
                 % updates longest name
                 longest_name = max([longest_name,...
-                    length(obj.tests{i}.name)]);
+                    length(obj.tests(i).name)]);
                 
             end
             
@@ -151,8 +151,8 @@ classdef TestSuite < handle
                 fprintf('\n');
                 fprintf('  Failed Tests:\n');
                 for i = 1:obj.N
-                    if ~obj.tests{i}.passed
-                        fprintf(['   • ',obj.tests{i}.name,'\n']);
+                    if ~obj.tests(i).passed
+                        fprintf(['   • ',obj.tests(i).name,'\n']);
                     end
                 end
             end

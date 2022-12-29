@@ -1,7 +1,7 @@
 %==========================================================================
 %
-% TestEqual  Unit test for array equality to a certain number of decimal 
-% places.
+% TestSpeed  Unit test for confirming that one function is faster than
+% another.
 %
 % Copyright © 2022 Tamas Kis
 % Last Update: 2022-11-05
@@ -10,7 +10,7 @@
 %
 %==========================================================================
 
-classdef TestSpeed < UnitTest
+classdef (HandleCompatible = true) TestSpeed < UnitTest
     
     % ---------------
     % Public methods.
