@@ -9,6 +9,7 @@
 %
 % REFERENCES:
 %   [1] https://stackoverflow.com/questions/19900418/how-do-i-create-an-array-of-abstract-class-objects-in-matlab
+%   [2] https://www.mathworks.com/help/matlab/matlab_oop/heterogeneous-arrays.html
 %
 %==========================================================================
 
