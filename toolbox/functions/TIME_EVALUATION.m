@@ -22,6 +22,7 @@
 %             when determining average evaluation time (defaults to 1000)
 %   print   - (OPTIONAL) (1×1 logical) true if function evaluation time
 %             should be printed to Command Window, false otherwise
+%             (defaults to true)
 %
 % -------
 % OUTPUT:

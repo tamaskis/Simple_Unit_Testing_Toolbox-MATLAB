@@ -5,7 +5,7 @@
 %   TEST_NO_ERROR(f)
 %   TEST_NO_ERROR(f,args)
 %   TEST_NO_ERROR(__,name,print)
-%   [passed,result,message] = TEST_NO_ERROR(__)
+%   outputs = TEST_NO_ERROR(__)
 %
 % See also TEST_ERROR.
 %
@@ -21,21 +21,23 @@
 % ------
 %   f       - (function_handle) function handle assigned to function you 
 %             want to test
-%   args    - (OPTIONAL) (cell array) input arguments to f
-%   name    - (OPTIONAL) (char) test name
+%   args    - (OPTIONAL) (cell array) input arguments to f (no default
+%             value needed)
+%   name    - (OPTIONAL) (char) test name (defaults to empty string)
 %   print   - (OPTIONAL) (1×1 logical) true if test result should be 
-%             printed to Command Window, false otherwise
+%             printed to Command Window, false otherwise (defaults to true)
 %
 % -------
 % OUTPUT:
 % -------
-%   passed  - (1×1 logical) true if test passed, false otherwise
-%   result  - (char) string storing result of test
-%   message - (char) string storing additional diagnostic message if test
-%             failed
+%   outputs - (1×1 struct) test outputs
+%       • passed  - (1×1 logical) true if test passed, false otherwise
+%       • result  - (char) string storing result of test
+%       • message - (char) string storing additional diagnostic message if
+%                   test failed
 %
 %==========================================================================
-function [passed,result,message] = TEST_NO_ERROR(f,args,name,print)
+function outputs = TEST_NO_ERROR(f,args,name,print)
     
     % defaults test name to empty string
     if (nargin < 3) || isempty(name)
@@ -96,5 +98,10 @@ function [passed,result,message] = TEST_NO_ERROR(f,args,name,print)
             fprintf([name_str,result,'\n    >>>> ',message,'\n']);
         end
     end
+    
+    % packages test outputs into struct
+    outputs.passed = passed;
+    outputs.result = results;
+    outputs.message = message;
     
 end

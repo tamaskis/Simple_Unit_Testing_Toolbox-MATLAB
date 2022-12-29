@@ -4,12 +4,12 @@
 %
 %   TEST_SPEED(f_slow,f_fast,args)
 %   TEST_SPEED(__,n_eval,name,print)
-%   [passed,result,message] = TEST_SPEED(__)
+%   outputs = TEST_SPEED(__)
 %
 % See also TEST_TIME.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2022-12-25
+% Last Update: 2022-12-28
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -23,21 +23,21 @@
 %   args    - (cell array) input arguments to functions
 %   n_eval  - (OPTIONAL) (1×1 double) number of times to evaluate functions
 %             when determining average evaluation time (defaults to 1000)
-%   name    - (OPTIONAL) (char) test name
+%   name    - (OPTIONAL) (char) test name (defaults to empty string)
 %   print   - (OPTIONAL) (1×1 logical) true if test result should be 
-%             printed to Command Window, false otherwise
+%             printed to Command Window, false otherwise (defaults to true)
 %
 % -------
 % OUTPUT:
 % -------
-%   passed  - (1×1 logical) true if test passed, false otherwise
-%   result  - (char) string storing result of test
-%   message - (char) string storing additional diagnostic message if test
-%             failed
+%   outputs - (1×1 struct) test outputs
+%       • passed  - (1×1 logical) true if test passed, false otherwise
+%       • result  - (char) string storing result of test
+%       • message - (char) string storing additional diagnostic message if
+%                   test failed
 %
 %==========================================================================
-function [passed,result,message] = TEST_SPEED(f_fast,f_slow,args,n_eval,...
-    name,print)
+function outputs = TEST_SPEED(f_fast,f_slow,args,n_eval,name,print)
     
     % defaults number of function evaluations to 1000
     if (nargin < 4) || isempty(n_eval)
@@ -91,5 +91,10 @@ function [passed,result,message] = TEST_SPEED(f_fast,f_slow,args,n_eval,...
             fprintf([name_str,result,'\n    >>>> ',message,'\n']);
         end
     end
+    
+    % packages test outputs into struct
+    outputs.passed = passed;
+    outputs.result = results;
+    outputs.message = message;
     
 end
