@@ -36,6 +36,11 @@
 %       • message - (char) string storing additional diagnostic message if
 %                   test failed
 %
+% -----
+% NOTE:
+% -----
+%   --> f_fast and f_fast slow must have the same input/output behavior.
+%
 %==========================================================================
 function outputs = TEST_SPEED(f_fast,f_slow,args,n_eval,name,print)
     
@@ -94,7 +99,7 @@ function outputs = TEST_SPEED(f_fast,f_slow,args,n_eval,name,print)
     
     % packages test outputs into struct
     outputs.passed = passed;
-    outputs.result = results;
+    outputs.result = result;
     outputs.message = message;
     
 end

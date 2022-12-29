@@ -43,8 +43,11 @@ classdef TestError < UnitTest
                 args = [];
             end
             
+            % function handle for TEST_ERROR function
+            UNIT_TEST = @(f,args,name) TEST_ERROR(f,args,name,false);
+            
             % initializes TestError object (subclass of UnitTest)
-            obj@UnitTest({f,args},name,'error');
+            obj@UnitTest(UNIT_TEST,{f,args},name);
             
         end
         

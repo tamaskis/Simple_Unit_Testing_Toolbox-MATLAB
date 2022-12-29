@@ -42,6 +42,12 @@ classdef TestSpeed < UnitTest
             % -------
             %   obj     - (1×1 TestEqual) TestEqual object
             %
+            % -----
+            % NOTE:
+            % -----
+            %   --> f_fast and f_fast slow must have the same input/output
+            %       behavior.
+            %
             %--------------------------------------------------------------
             
             % defaults number of function evaluations to 1000
@@ -49,8 +55,12 @@ classdef TestSpeed < UnitTest
                 n = 1000;
             end
             
+            % function handle for TEST_SPEED function
+            UNIT_TEST = @(f_fast,f_slow,args,n,name) TEST_SPEED(f_fast,...
+                f_slow,args,n,name,false);
+            
             % initializes TestSpeed object (subclass of UnitTest)
-            obj@UnitTest({f_fast,f_slow,args,n},name,'speed');
+            obj@UnitTest(UNIT_TEST,{f_fast,f_slow,args,n},name,'speed');
             
         end
         

@@ -3,7 +3,7 @@
 % UnitTest  Class defining a unit test.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2022-11-05
+% Last Update: 2022-12-29
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -16,9 +16,9 @@ classdef UnitTest < handle
     % -----------
     
     properties
-        test_args   % (cell array) inputs to testing function
+        UNIT_TEST   % (1×1 function_handle) unit test function
+        test_args   % (cell array) unit test function inputs
         name        % (char) test name
-        type        % (char) test type
         passed      % (1×1 logical) true if test passed, false otherwise
     end
     
@@ -28,8 +28,8 @@ classdef UnitTest < handle
     
     methods (Access = public)
         
-        function obj = UnitTest(test_args,name,type)
-            % obj = UnitTest(test_args,name,type)
+        function obj = UnitTest(UNIT_TEST,test_args,name)
+            % obj = UnitTest(UNIT_TEST,test_args,name)
             %
             % Constructor.
             %--------------------------------------------------------------
@@ -37,10 +37,9 @@ classdef UnitTest < handle
             % ------
             % INPUT:
             % ------
-            %   test_args   - (cell array) inputs to testing function
+            %   UNIT_TEST   - (1×1 function_handle) unit test function
+            %   test_args   - (cell array) unit test function inputs
             %   name        - (char) test name
-            %   type        - (char) test type ('equal', 'not equal', 
-            %                 'error', 'no error', or 'speed')
             %
             % -------
             % OUTPUT:
@@ -50,9 +49,9 @@ classdef UnitTest < handle
             %--------------------------------------------------------------
             
             % stores inputs
+            obj.UNIT_TEST = UNIT_TEST;
             obj.test_args = test_args;
             obj.name = name;
-            obj.type = type;
             
             % "passed" initialized to false (test cannot have passed before
             % it was run)
@@ -83,22 +82,30 @@ classdef UnitTest < handle
             %--------------------------------------------------------------
             
             % runs test
-            if strcmpi(obj.type,'equal')
-                [obj.passed,result,message] = TEST_EQUAL(...
-                    obj.test_args{:},obj.name,false);
-            elseif strcmpi(obj.type,'not equal')
-                [obj.passed,result,message] = TEST_NOT_EQUAL(...
-                    obj.test_args{:},obj.name,false);
-            elseif strcmpi(obj.type,'error')
-                [obj.passed,result,message] = TEST_ERROR(...
-                    obj.test_args{:},obj.name,false);
-            elseif strcmpi(obj.type,'no error')
-                [obj.passed,result,message] = TEST_NO_ERROR(...
-                    obj.test_args{:},obj.name,false);
-            elseif strcmpi(obj.type,'speed')
-                [obj.passed,result,message] = TEST_SPEED(...
-                    obj.test_args{:},obj.name,false);
-            end
+            outputs = obj.UNIT_TEST(obj.test_args{:},obj.name);
+
+            % extracts outputs
+            obj.passed = outputs.passed;
+            result = outputs.result;
+            message = outputs.message;
+            
+%             % runs test
+%             if strcmpi(obj.type,'equal')
+%                 [obj.passed,result,message] = TEST_EQUAL(...
+%                     obj.test_args{:},obj.name,false);
+%             elseif strcmpi(obj.type,'not equal')
+%                 [obj.passed,result,message] = TEST_NOT_EQUAL(...
+%                     obj.test_args{:},obj.name,false);
+%             elseif strcmpi(obj.type,'error')
+%                 [obj.passed,result,message] = TEST_ERROR(...
+%                     obj.test_args{:},obj.name,false);
+%             elseif strcmpi(obj.type,'no error')
+%                 [obj.passed,result,message] = TEST_NO_ERROR(...
+%                     obj.test_args{:},obj.name,false);
+%             elseif strcmpi(obj.type,'speed')
+%                 [obj.passed,result,message] = TEST_SPEED(...
+%                     obj.test_args{:},obj.name,false);
+%             end
             
             % increments number of passed tests results if test passed
             if obj.passed, n_passed = n_passed + 1; end

@@ -4,7 +4,7 @@
 % places.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2022-11-05
+% Last Update: 2022-12-29
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -31,7 +31,7 @@ classdef TestEqual < UnitTest
             %   X2      - (double array) double array #2
             %   name    - (char) test name
             %   n       - (OPTIONAL) (1×1 double) decimal places of 
-            %             precision
+            %             precision (defaults to 16)
             %
             % -------
             % OUTPUT:
@@ -46,8 +46,11 @@ classdef TestEqual < UnitTest
                 n = 16;
             end
             
+            % function handle for TEST_EQUAL function
+            UNIT_TEST = @(X1,X2,n,name) TEST_EQUAL(X1,X2,n,name,false);
+            
             % initializes TestEqual object (subclass of UnitTest)
-            obj@UnitTest({X1,X2,n},name,'equal');
+            obj@UnitTest(UNIT_TEST,{X1,X2,n},name);
             
         end
         

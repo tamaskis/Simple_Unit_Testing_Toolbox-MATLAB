@@ -3,7 +3,7 @@
 % TestNoError  Test for confirming that a function does not throw an error.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2022-10-30
+% Last Update: 2022-12-29
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -38,8 +38,11 @@ classdef TestNoError < UnitTest
             %
             %--------------------------------------------------------------
             
+            % function handle for TEST_NO_ERROR function
+            UNIT_TEST = @(f,args,name) TEST_NO_ERROR(f,args,name,false);
+            
             % initializes TestNoError object (subclass of UnitTest)
-            obj@UnitTest({f,args},name,'no error');
+            obj@UnitTest(UNIT_TEST,{f,args},name);
             
         end
         

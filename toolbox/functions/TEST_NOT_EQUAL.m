@@ -11,7 +11,7 @@
 % See also TEST_EQUAL.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2022-11-01
+% Last Update: 2022-12-29
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -121,7 +121,7 @@ function outputs = TEST_NOT_EQUAL(X1,X2,n,name,print)
     
     % packages test outputs into struct
     outputs.passed = passed;
-    outputs.result = results;
+    outputs.result = result;
     outputs.message = message;
     
 end

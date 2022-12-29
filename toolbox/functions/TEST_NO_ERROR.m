@@ -101,7 +101,7 @@ function outputs = TEST_NO_ERROR(f,args,name,print)
     
     % packages test outputs into struct
     outputs.passed = passed;
-    outputs.result = results;
+    outputs.result = result;
     outputs.message = message;
     
 end

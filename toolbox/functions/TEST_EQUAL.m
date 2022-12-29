@@ -117,7 +117,7 @@ function outputs = TEST_EQUAL(X1,X2,n,name,print)
     
     % packages test outputs into struct
     outputs.passed = passed;
-    outputs.result = results;
+    outputs.result = result;
     outputs.message = message;
     
 end
