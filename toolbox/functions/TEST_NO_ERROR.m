@@ -64,21 +64,18 @@ function outputs = TEST_NO_ERROR(f,args,name,print)
         print = true;
     end
     
-    % assumes error is thrown
-    no_error_thrown = false;
-    
-    % if error is in fact NOT thrown, "no_error_thrown" is updated 
-    % accordingly
+    % determines if error is thrown
     try
         f(args{:});
-        no_error_thrown = true;
+        error_thrown = false;
         error_str = '';
     catch error
+        error_thrown = true;
         error_str = error.message;
     end
     
     % test passed if error was not thrown
-    passed = no_error_thrown;
+    passed = ~error_thrown;
     
     % result string
     if passed

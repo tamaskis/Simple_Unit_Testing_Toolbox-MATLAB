@@ -64,12 +64,10 @@ function outputs = TEST_ERROR(f,args,name,print)
         print = true;
     end
     
-    % assumes error is not thrown
-    error_thrown = false;
-    
-    % if error is in fact thrown, "error_thrown" is updated accordingly
+    % determines if error is thrown
     try
         f(args{:});
+        error_thrown = false;
     catch
         error_thrown = true;
     end
