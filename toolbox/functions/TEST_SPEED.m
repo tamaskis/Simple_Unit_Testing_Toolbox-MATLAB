@@ -46,7 +46,7 @@
 function outputs = TEST_SPEED(f_fast,f_slow,args,n_eval,name,print)
     
     % defaults input arguments to empty cell array
-    if (nargin < 3)
+    if (nargin < 3) || isempty(args)
         args = {};
     end
     
@@ -83,8 +83,10 @@ function outputs = TEST_SPEED(f_fast,f_slow,args,n_eval,name,print)
     if passed
         message = '';
     else
-        message = 'Function that was supposed to be faster was '+...
-            'actually slower.';
+        message = ['Average evaluation time for function specified as ',...
+            'faster function: ',num2str(time_fast),' s\n    >>>> ',...
+            'Average evaluation time for function specified as slower ',...
+            'function: ',num2str(time_slow),' s'];
     end
     
     % name string

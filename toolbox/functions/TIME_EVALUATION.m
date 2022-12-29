@@ -19,6 +19,7 @@
 % ------
 %   f       - (1×1 function_handle) function handle
 %   args    - (OPTIONAL) (cell array) input arguments to functions
+%             (defaults to empty cell array)
 %   n_eval  - (OPTIONAL) (1×1 double) number of times to evaluate functions
 %             when determining average evaluation time (defaults to 1000)
 %   print   - (OPTIONAL) (1×1 logical) true if function evaluation time
@@ -33,6 +34,11 @@
 %==========================================================================
 function time = TIME_EVALUATION(f,args,n_eval,print)
     
+    % defaults args to empty cell array if not input
+    if (nargin < 2) || isempty(args)
+        args = {};
+    end
+    
     % defaults number of function evaluations to 1000
     if (nargin < 3) || isempty(n_eval)
         n_eval = 1000;
@@ -43,23 +49,12 @@ function time = TIME_EVALUATION(f,args,n_eval,print)
         print = true;
     end
     
-    % determines if f has any input arguments
-    f_has_inputs = (nargin >= 2) && ~isempty(args);
-    
     % times function
-    if f_has_inputs
-        tic;
-        for i = 1:n_eval
-            f(args{:});
-        end
-        time = toc/n_eval;
-    else
-        tic;
-        for i = 1:n_eval
-            f;
-        end
-        time = toc/n_eval;
+    tic;
+    for i = 1:n_eval
+        f(args{:});
     end
+    time = toc/n_eval;
     
     % prints result
     if print
