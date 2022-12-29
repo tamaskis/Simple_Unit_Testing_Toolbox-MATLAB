@@ -2,6 +2,7 @@
 %
 % TIME_EVALUATION  Time the evaluation of a function.
 %
+%   TIME_EVALUATION(f)
 %   TIME_EVALUATION(f,args)
 %   TIME_EVALUATION(__,n_eval,print)
 %   time = TIME_EVALUATION(__)
@@ -17,7 +18,7 @@
 % INPUT:
 % ------
 %   f       - (1×1 function_handle) function handle
-%   args    - (cell array) input arguments to functions
+%   args    - (OPTIONAL) (cell array) input arguments to functions
 %   n_eval  - (OPTIONAL) (1×1 double) number of times to evaluate functions
 %             when determining average evaluation time (defaults to 1000)
 %   print   - (OPTIONAL) (1×1 logical) true if function evaluation time
@@ -42,12 +43,23 @@ function time = TIME_EVALUATION(f,args,n_eval,print)
         print = true;
     end
     
+    % determines if f has any input arguments
+    f_has_inputs = (nargin >= 2) && ~isempty(args);
+    
     % times function
-    tic;
-    for i = 1:n_eval
-        f(args{:});
+    if f_has_inputs
+        tic;
+        for i = 1:n_eval
+            f(args{:});
+        end
+        time = toc/n_eval;
+    else
+        tic;
+        for i = 1:n_eval
+            f;
+        end
+        time = toc/n_eval;
     end
-    time = toc/n_eval;
     
     % prints result
     if print

@@ -19,8 +19,8 @@
 % ------
 % INPUT:
 % ------
-%   f       - (function_handle) function handle assigned to function you 
-%             want to test
+%   f       - (1×1 function_handle) function handle assigned to function
+%             you want to test
 %   args    - (OPTIONAL) (cell array) input arguments to f (no default
 %             value needed)
 %   name    - (OPTIONAL) (char) test name (defaults to empty string)
@@ -35,6 +35,16 @@
 %       • result  - (char) string storing result of test
 %       • message - (char) string storing additional diagnostic message if
 %                   test failed
+%
+% -----
+% NOTE:
+% -----
+%   --> A function handle can only have one return value. However, we can
+%       still assign function handles to functions that have multiple
+%       return values (in that case, the function handle will just return
+%       the first return value). Since this test is geared towards ensuring
+%       that a function does not an error when subject to specific inputs, 
+%       we do not care about any return values.
 %
 %==========================================================================
 function outputs = TEST_NO_ERROR(f,args,name,print)

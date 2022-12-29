@@ -3,6 +3,8 @@
 % TestNoError  Unit test for confirming that a function does not throw an 
 % error.
 %
+% See also UnitTest, TestEqual, TestNotEqual, TestError, TestSpeed.
+%
 % Copyright © 2022 Tamas Kis
 % Last Update: 2022-12-29
 % Website: https://tamaskis.github.io
@@ -27,7 +29,7 @@ classdef TestNoError < UnitTest
             % ------
             % INPUT:
             % ------
-            %   f       - (function_handle) function handle assigned to 
+            %   f       - (1×1 function_handle) function handle assigned to 
             %             function you want to test
             %   args    - (cell array) input arguments to f
             %   name    - (char) test name

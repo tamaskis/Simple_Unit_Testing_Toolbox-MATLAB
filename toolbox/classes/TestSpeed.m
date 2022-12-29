@@ -3,8 +3,10 @@
 % TestSpeed  Unit test for confirming that one function is faster than
 % another.
 %
+% See also UnitTest, TestEqual, TestNotEqual, TestError, TestNoError.
+%
 % Copyright © 2022 Tamas Kis
-% Last Update: 2022-11-05
+% Last Update: 2022-12-29
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -60,7 +62,7 @@ classdef (HandleCompatible = true) TestSpeed < UnitTest
                 f_slow,args,n,name,false);
             
             % initializes TestSpeed object (subclass of UnitTest)
-            obj@UnitTest(UNIT_TEST,{f_fast,f_slow,args,n},name,'speed');
+            obj@UnitTest(UNIT_TEST,{f_fast,f_slow,args,n},name);
             
         end
         

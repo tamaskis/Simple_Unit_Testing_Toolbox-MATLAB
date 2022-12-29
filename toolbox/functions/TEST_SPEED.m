@@ -20,7 +20,8 @@
 % ------
 %   f_fast  - (1×1 function_handle) function handle for faster function
 %   f_slow  - (1×1 function_handle) function handle for slower function
-%   args    - (cell array) input arguments to functions
+%   args    - (OPTIONAL) (cell array) input arguments to functions
+%             (defaults to empty cell array)
 %   n_eval  - (OPTIONAL) (1×1 double) number of times to evaluate functions
 %             when determining average evaluation time (defaults to 1000)
 %   name    - (OPTIONAL) (char) test name (defaults to empty string)
@@ -43,6 +44,11 @@
 %
 %==========================================================================
 function outputs = TEST_SPEED(f_fast,f_slow,args,n_eval,name,print)
+    
+    % defaults input arguments to empty cell array
+    if (nargin < 3)
+        args = {};
+    end
     
     % defaults number of function evaluations to 1000
     if (nargin < 4) || isempty(n_eval)

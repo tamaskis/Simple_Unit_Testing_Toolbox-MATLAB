@@ -67,8 +67,8 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>TestEqual</tt></h1><!--introduction--><p>Unit test for array equality to a certain number of decimal places.</p><p><a href="index.html">Back to Simple Unit Testing Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Constructor</a></li><li><a href="#2">See also</a></li></ul></div><h2 id="1">Constructor</h2><pre class="language-matlab">unit_test_equal = TestEqual(X1,X2,name)
-unit_test_equal = TestEqual(X1,X2,name,n)
+  </style></head><body><div class="content"><h1><tt>TestEqual</tt></h1><!--introduction--><p>Unit test for array equality to a certain number of decimal places.</p><p><a href="index.html">Back to Simple Unit Testing Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Constructor</a></li><li><a href="#2">Superclass</a></li><li><a href="#3">See also</a></li></ul></div><h2 id="1">Constructor</h2><pre class="language-matlab">unit_test = TestEqual(X1,X2,name)
+unit_test = TestEqual(X1,X2,name,n)
 </pre><p>
   <table border=1>
       <tr>
@@ -88,7 +88,7 @@ unit_test_equal = TestEqual(X1,X2,name,n)
       </tr>
       <tr>
           <td style="text-align:center"><TT>name</TT></td>
-          <td>test name (defaults to empty string)</td>
+          <td>test name</td>
           <td style="text-align:center">char</td>
       </tr>
       <tr>
@@ -97,15 +97,15 @@ unit_test_equal = TestEqual(X1,X2,name,n)
           <td style="text-align:center">1×1<BR>double</td>
       </tr>
   </table>
-</p><h2 id="2">See also</h2><p><a href="TestEqual_doc.html"><tt>TestEqual</tt></a> | <a href="TestNotEqual_doc.html"><tt>TestNotEqual</tt></a> | <a href="TestError_doc.html"><tt>TestError</tt></a> | <a href="TestNoError_doc.html"><tt>TestNoError</tt></a> | <a href="TestSpeed_doc.html"><tt>TestSpeed</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+</p><h2 id="2">Superclass</h2><p><a href="UnitTest_doc.html"><b><tt>UnitTest</tt></b></a></p><div><ul><li><tt>TestEqual</tt> is a subclass of the <tt>UnitTest</tt> class (i.e. <tt>UnitTest</tt> is the superclass of <tt>TestEqual</tt>). See the <tt>UnitTest</tt> class's documentation for documentation of methods that the <tt>TestEqual</tt> class also possesses.</li></ul></div><h2 id="3">See also</h2><p><a href="UnitTest_doc.html"><tt>UnitTest</tt></a> | <a href="TestNotEqual_doc.html"><tt>TestNotEqual</tt></a> | <a href="TestError_doc.html"><tt>TestError</tt></a> | <a href="TestNoError_doc.html"><tt>TestNoError</tt></a> | <a href="TestSpeed_doc.html"><tt>TestSpeed</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |TestEqual|
 % Unit test for array equality to a certain number of decimal places.
 % 
 % <index.html Back to Simple Unit Testing Toolbox Contents>.
 %% Constructor
-%   unit_test_equal = TestEqual(X1,X2,name)
-%   unit_test_equal = TestEqual(X1,X2,name,n)
+%   unit_test = TestEqual(X1,X2,name)
+%   unit_test = TestEqual(X1,X2,name,n)
 %
 % <html>
 %   <table border=1>
@@ -126,7 +126,7 @@ unit_test_equal = TestEqual(X1,X2,name,n)
 %       </tr>
 %       <tr>
 %           <td style="text-align:center"><TT>name</TT></td>
-%           <td>test name (defaults to empty string)</td>
+%           <td>test name</td>
 %           <td style="text-align:center">char</td>
 %       </tr>
 %       <tr>
@@ -136,8 +136,14 @@ unit_test_equal = TestEqual(X1,X2,name,n)
 %       </tr>
 %   </table>
 % </html>
+%% Superclass
+% <UnitTest_doc.html *|UnitTest|*>
+%
+% * |TestEqual| is a subclass of the |UnitTest| class (i.e. |UnitTest| is
+% the superclass of |TestEqual|). See the |UnitTest| class's documentation
+% for documentation of methods that the |TestEqual| class also possesses.
 %% See also
-% <TestEqual_doc.html |TestEqual|> | 
+% <UnitTest_doc.html |UnitTest|> | 
 % <TestNotEqual_doc.html |TestNotEqual|> | 
 % <TestError_doc.html |TestError|> | 
 % <TestNoError_doc.html |TestNoError|> | 

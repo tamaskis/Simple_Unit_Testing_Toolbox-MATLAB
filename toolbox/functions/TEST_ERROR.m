@@ -19,8 +19,8 @@
 % ------
 % INPUT:
 % ------
-%   f       - (function_handle) function handle assigned to function you
-%             want to test
+%   f       - (1×1 function_handle) function handle assigned to function
+%             you want to test
 %   args    - (OPTIONAL) (cell array) input arguments to f (no default
 %             value needed)
 %   name    - (OPTIONAL) (char) test name (defaults to empty string)
@@ -36,6 +36,16 @@
 %       • message - (char) string storing additional diagnostic message if
 %                   test failed
 %
+% -----
+% NOTE:
+% -----
+%   --> A function handle can only have one return value. However, we can
+%       still assign function handles to functions that have multiple
+%       return values (in that case, the function handle will just return
+%       the first return value). Since this test is geared towards ensuring
+%       that a function correctly throws errors when subject to specific
+%       inputs, we do not care about any return values.
+%
 %==========================================================================
 function outputs = TEST_ERROR(f,args,name,print)
     
@@ -49,15 +59,18 @@ function outputs = TEST_ERROR(f,args,name,print)
         print = true;
     end
     
+    % determines if f has any input arguments
+    f_has_inputs = (nargin >= 2) && ~isempty(args);
+    
     % assumes error is not thrown
     error_thrown = false;
     
     % if error is in fact thrown, "error_thrown" is updated accordingly
     try
-        if nargin == 1
-            f;
-        else
+        if f_has_inputs
             f(args{:});
+        else
+            f;
         end
     catch
         error_thrown = true;

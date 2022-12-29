@@ -3,6 +3,8 @@
 % TestNotEqual  Unit test for array inequality to a certain number of 
 % decimal places.
 %
+% See also UnitTest, TestEqual, TestError, TestNoError, TestSpeed.
+%
 % Copyright © 2022 Tamas Kis
 % Last Update: 2022-12-29
 % Website: https://tamaskis.github.io

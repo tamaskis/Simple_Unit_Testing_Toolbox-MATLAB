@@ -168,6 +168,8 @@ SUMMARY:
 X2 = X1+0.00001;
 f = @(x) x^2;
 g = @(x,y) acos(x+y);
+h1 = @(x) x;
+h2 = @(x) sin(x);
 </pre><p>Initializing the test suite with a name this time,</p><pre class="codeinput">test_suite = TestSuite(<span class="string">'Test suite for example #2'</span>);
 </pre><p>Adding tests to the test suite that we know will fail,</p><pre class="codeinput">test_suite.add_test(TestEqual(X1,X2,<span class="string">'equal to 5 decimal places'</span>,5));
 test_suite.add_test(TestNotEqual(X1,X2,<span class="string">'not equal to 4 decimal places'</span>,4));
@@ -175,6 +177,7 @@ test_suite.add_test(TestError(f,{1},<span class="string">'error in evaluating f(
 </pre><p>Adding tests to the test suite that we know will pass,</p><pre class="codeinput">test_suite.add_test(TestError(f,{zeros(2,1)},<span class="string">'error in evaluating non-vectorized f(x) = x&sup2; when f is passed a vector'</span>));
 test_suite.add_test(TestNoError(@(x,y)mod(x,y),{10,1},<span class="string">'no error in evaluating mod(x,y) at (x,y) = (10,1)'</span>));
 test_suite.add_test(TestError(@(x,y)mod(x,y),{10,1,3},<span class="string">'error in passing three inputs to mod(x,y)'</span>));
+test_suite.add_test(TestSpeed(h1,h2,{1},<span class="string">'f(x) = x is faster to evaluate than f(x) = sin(x)'</span>));
 </pre><p>Running the test suite,</p><pre class="codeinput">test_suite.run;
 </pre><pre class="codeoutput">
 equal to 5 decimal places: FAILED. (0/1)
@@ -187,14 +190,15 @@ error in evaluating f(x) = x&sup2; at x = 1: FAILED. (0/3)
 error in evaluating non-vectorized f(x) = x&sup2; when f is passed a vector: Passed. (1/4)
 no error in evaluating mod(x,y) at (x,y) = (10,1): Passed. (2/5)
 error in passing three inputs to mod(x,y): Passed. (3/6)
+f(x) = x is faster to evaluate than f(x) = sin(x): Passed. (4/7)
 
 ========================================================================================================================
 SUMMARY: Test suite for example #2
 ------------------------------------------------------------------------------------------------------------------------
 
-  Pass Rate: 50%
-   &#8226; total tests: 6
-   &#8226; passed tests: 3
+  Pass Rate: 57%
+   &#8226; total tests: 7
+   &#8226; passed tests: 4
    &#8226; failed tests: 3
 
   Failed Tests:
@@ -355,6 +359,8 @@ X1 = [1  1;
 X2 = X1+0.00001;
 f = @(x) x^2;
 g = @(x,y) acos(x+y);
+h1 = @(x) x;
+h2 = @(x) sin(x);
 %% 
 % Initializing the test suite with a name this time,
 test_suite = TestSuite('Test suite for example #2');
@@ -368,6 +374,7 @@ test_suite.add_test(TestError(f,{1},'error in evaluating f(x) = x² at x = 1'));
 test_suite.add_test(TestError(f,{zeros(2,1)},'error in evaluating non-vectorized f(x) = x² when f is passed a vector'));
 test_suite.add_test(TestNoError(@(x,y)mod(x,y),{10,1},'no error in evaluating mod(x,y) at (x,y) = (10,1)'));
 test_suite.add_test(TestError(@(x,y)mod(x,y),{10,1,3},'error in passing three inputs to mod(x,y)'));
+test_suite.add_test(TestSpeed(h1,h2,{1},'f(x) = x is faster to evaluate than f(x) = sin(x)'));
 %%
 % Running the test suite,
 test_suite.run;

@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>TestEqual</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-12-29"><meta name="DC.source" content="TestEqual_doc.m"><style type="text/css">
+      --><title>TestSpeed</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-12-29"><meta name="DC.source" content="TestSpeed_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,8 +67,8 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>TestEqual</tt></h1><!--introduction--><p>Unit test for array equality to a certain number of decimal places.</p><p><a href="index.html">Back to Simple Unit Testing Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Constructor</a></li><li><a href="#2">Superclass</a></li><li><a href="#3">See also</a></li></ul></div><h2 id="1">Constructor</h2><pre class="language-matlab">unit_test = TestEqual(X1,X2,name)
-unit_test = TestEqual(X1,X2,name,n)
+  </style></head><body><div class="content"><h1><tt>TestSpeed</tt></h1><!--introduction--><p>Unit test for confirming that one function is faster than another.</p><p><a href="index.html">Back to Simple Unit Testing Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Constructor</a></li><li><a href="#2">Superclass</a></li><li><a href="#3">See also</a></li></ul></div><h2 id="1">Constructor</h2><pre class="language-matlab">unit_test = TestSpeed(f_fast,f_slow,args,name)
+unit_test = TestSpeed(f_fast,f_slow,{},name)
 </pre><p>
   <table border=1>
       <tr>
@@ -77,35 +77,37 @@ unit_test = TestEqual(X1,X2,name,n)
           <td style="text-align:center"><b>Format</b></td>
       </tr>
       <tr>
-          <td style="text-align:center"><TT>X1</TT></td>
-          <td>double array #1</td>
-          <td style="text-align:center">double array</td>
+          <td style="text-align:center"><TT>f_fast</TT></td>
+          <td>function handle for faster function</td>
+          <td style="text-align:center">1×1<BR>function_handle</td>
       </tr>
       <tr>
-          <td style="text-align:center"><TT>X2</TT></td>
-          <td>double array #2</td>
-          <td style="text-align:center">double array</td>
+          <td style="text-align:center"><TT>f_slow</TT></td>
+          <td>function handle for slower function</td>
+          <td style="text-align:center">1×1<BR>function_handle</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>args</TT></td>
+          <td>input arguments to functions (if the functions have no
+              input arguments, then input <TT>args</TT> as
+              <TT>{}</TT>)</td>
+          <td style="text-align:center">cell array</td>
       </tr>
       <tr>
           <td style="text-align:center"><TT>name</TT></td>
           <td>test name</td>
           <td style="text-align:center">char</td>
       </tr>
-      <tr>
-          <td style="text-align:center"><TT>n</TT></td>
-          <td>(OPTIONAL) decimal places of precision (defaults to 16)</td>
-          <td style="text-align:center">1×1<BR>double</td>
-      </tr>
   </table>
-</p><h2 id="2">Superclass</h2><p><a href="UnitTest_doc.html"><b><tt>UnitTest</tt></b></a></p><div><ul><li><tt>TestEqual</tt> is a subclass of the <tt>UnitTest</tt> class (i.e. <tt>UnitTest</tt> is the superclass of <tt>TestEqual</tt>). See the <tt>UnitTest</tt> class's documentation for documentation of methods that the <tt>TestEqual</tt> class also possesses.</li></ul></div><h2 id="3">See also</h2><p><a href="UnitTest_doc.html"><tt>UnitTest</tt></a> | <a href="TestNotEqual_doc.html"><tt>TestNotEqual</tt></a> | <a href="TestError_doc.html"><tt>TestError</tt></a> | <a href="TestNoError_doc.html"><tt>TestNoError</tt></a> | <a href="TestSpeed_doc.html"><tt>TestSpeed</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+</p><h2 id="2">Superclass</h2><p><a href="UnitTest_doc.html"><b><tt>UnitTest</tt></b></a></p><div><ul><li><tt>TestSpeed</tt> is a subclass of the <tt>UnitTest</tt> class (i.e. <tt>UnitTest</tt> is the superclass of <tt>TestSpeed</tt>). See the <tt>UnitTest</tt> class's documentation for documentation of methods that the <tt>TestSpeed</tt> class also possesses.</li></ul></div><h2 id="3">See also</h2><p><a href="UnitTest_doc.html"><tt>UnitTest</tt></a> | <a href="TestEqual_doc.html"><tt>TestEqual</tt></a> | <a href="TestNotEqual_doc.html"><tt>TestNotEqual</tt></a> | <a href="TestError_doc.html"><tt>TestError</tt></a> | <a href="TestNoError_doc.html"><tt>TestNoError</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
-%% |TestEqual|
-% Unit test for array equality to a certain number of decimal places.
+%% |TestSpeed|
+% Unit test for confirming that one function is faster than another.
 % 
 % <index.html Back to Simple Unit Testing Toolbox Contents>.
 %% Constructor
-%   unit_test = TestEqual(X1,X2,name)
-%   unit_test = TestEqual(X1,X2,name,n)
+%   unit_test = TestSpeed(f_fast,f_slow,args,name)
+%   unit_test = TestSpeed(f_fast,f_slow,{},name)
 %
 % <html>
 %   <table border=1>
@@ -115,38 +117,40 @@ unit_test = TestEqual(X1,X2,name,n)
 %           <td style="text-align:center"><b>Format</b></td>
 %       </tr>
 %       <tr>
-%           <td style="text-align:center"><TT>X1</TT></td>
-%           <td>double array #1</td>
-%           <td style="text-align:center">double array</td>
+%           <td style="text-align:center"><TT>f_fast</TT></td>
+%           <td>function handle for faster function</td>
+%           <td style="text-align:center">1×1<BR>function_handle</td>
 %       </tr>
 %       <tr>
-%           <td style="text-align:center"><TT>X2</TT></td>
-%           <td>double array #2</td>
-%           <td style="text-align:center">double array</td>
+%           <td style="text-align:center"><TT>f_slow</TT></td>
+%           <td>function handle for slower function</td>
+%           <td style="text-align:center">1×1<BR>function_handle</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>args</TT></td>
+%           <td>input arguments to functions (if the functions have no 
+%               input arguments, then input <TT>args</TT> as 
+%               <TT>{}</TT>)</td>
+%           <td style="text-align:center">cell array</td>
 %       </tr>
 %       <tr>
 %           <td style="text-align:center"><TT>name</TT></td>
 %           <td>test name</td>
 %           <td style="text-align:center">char</td>
 %       </tr>
-%       <tr>
-%           <td style="text-align:center"><TT>n</TT></td>
-%           <td>(OPTIONAL) decimal places of precision (defaults to 16)</td>
-%           <td style="text-align:center">1×1<BR>double</td>
-%       </tr>
 %   </table>
 % </html>
 %% Superclass
 % <UnitTest_doc.html *|UnitTest|*>
 %
-% * |TestEqual| is a subclass of the |UnitTest| class (i.e. |UnitTest| is
-% the superclass of |TestEqual|). See the |UnitTest| class's documentation
-% for documentation of methods that the |TestEqual| class also possesses.
+% * |TestSpeed| is a subclass of the |UnitTest| class (i.e. |UnitTest| is
+% the superclass of |TestSpeed|). See the |UnitTest| class's documentation
+% for documentation of methods that the |TestSpeed| class also possesses.
 %% See also
 % <UnitTest_doc.html |UnitTest|> | 
+% <TestEqual_doc.html |TestEqual|> | 
 % <TestNotEqual_doc.html |TestNotEqual|> | 
 % <TestError_doc.html |TestError|> | 
-% <TestNoError_doc.html |TestNoError|> | 
-% <TestSpeed_doc.html |TestSpeed|>
+% <TestNoError_doc.html |TestNoError|>
 ##### SOURCE END #####
 --></body></html>

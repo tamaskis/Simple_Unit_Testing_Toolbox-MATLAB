@@ -2,8 +2,10 @@
 %
 % TestError  Unit test for confirming that a function throws an error.
 %
+% See also UnitTest, TestEqual, TestNotEqual, TestNoError, TestSpeed.
+%
 % Copyright © 2022 Tamas Kis
-% Last Update: 2022-10-30
+% Last Update: 2022-12-29
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -26,9 +28,10 @@ classdef TestError < UnitTest
             % ------
             % INPUT:
             % ------
-            %   f       - (function_handle) function handle assigned to 
+            %   f       - (1×1 function_handle) function handle assigned to 
             %             function you want to test
-            %   args    - (OPTIONAL) (cell array) input arguments to f
+            %   args    - (cell array) input arguments to f (if f has no
+            %             input arguments, then input args as {})
             %   name    - (char) test name
             %
             % -------
@@ -37,11 +40,6 @@ classdef TestError < UnitTest
             %   obj     - (1×1 TestError) TestError object
             %
             %--------------------------------------------------------------
-            
-            % defaults input arguments to empty vector
-            if (nargin < 2)
-                args = [];
-            end
             
             % function handle for TEST_ERROR function
             UNIT_TEST = @(f,args,name) TEST_ERROR(f,args,name,false);

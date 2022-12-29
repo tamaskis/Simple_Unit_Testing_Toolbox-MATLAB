@@ -3,6 +3,8 @@
 % TestEqual  Unit test for array equality to a certain number of decimal 
 % places.
 %
+% See also UnitTest, TestNotEqual, TestError, TestNoError, TestSpeed.
+%
 % Copyright © 2022 Tamas Kis
 % Last Update: 2022-12-29
 % Website: https://tamaskis.github.io
