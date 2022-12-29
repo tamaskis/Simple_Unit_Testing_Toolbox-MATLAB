@@ -34,7 +34,7 @@
 %==========================================================================
 function time = TIME_EVALUATION(f,args,n_eval,print)
     
-    % defaults args to empty cell array if not input
+    % defaults input arguments to empty cell array
     if (nargin < 2) || isempty(args)
         args = {};
     end

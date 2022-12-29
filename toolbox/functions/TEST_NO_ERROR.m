@@ -21,8 +21,8 @@
 % ------
 %   f       - (1×1 function_handle) function handle assigned to function
 %             you want to test
-%   args    - (OPTIONAL) (cell array) input arguments to f (no default
-%             value needed)
+%   args    - (OPTIONAL) (cell array) input arguments to f (defaults to
+%             empty cell array)
 %   name    - (OPTIONAL) (char) test name (defaults to empty string)
 %   print   - (OPTIONAL) (1×1 logical) true if test result should be 
 %             printed to Command Window, false otherwise (defaults to true)
@@ -49,6 +49,11 @@
 %==========================================================================
 function outputs = TEST_NO_ERROR(f,args,name,print)
     
+    % defaults input arguments to empty cell array
+    if (nargin < 2) || isempty(args)
+        args = {};
+    end
+    
     % defaults test name to empty string
     if (nargin < 3) || isempty(name)
         name = '';
@@ -65,11 +70,7 @@ function outputs = TEST_NO_ERROR(f,args,name,print)
     % if error is in fact NOT thrown, "no_error_thrown" is updated 
     % accordingly
     try
-        if nargin == 1
-            f;
-        else
-            f(args{:});
-        end
+        f(args{:});
         no_error_thrown = true;
         error_str = '';
     catch error
