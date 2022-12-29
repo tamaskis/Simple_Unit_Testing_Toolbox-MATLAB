@@ -1,30 +1,41 @@
 # Simple Unit Testing Toolbox
 
+## Test Suites
 
-# Functions
+### Creating a test suite.
 
-**Testing for array equality:**\
-`TEST_EQUAL(X1,X2)`\
-`TEST_EQUAL(X1,X2,n)`
+`test_suite = TestSuite(name,terminate)`
 
-<br/>
 
-**Testing for array inequality:**\
-`TEST_NOT_EQUAL(X1,X2)`\
+### Adding tests to a test suite.
+
+`test_suite.add_test(TestEqual(X1,X2,name,n))`\
+`test_suite.add_test(TestNotEqual(X1,X2,name,n))`\
+`test_suite.add_test(TestError(f,args,name))`\
+`test_suite.add_test(TestNoError(f,args,name))`\
+`test_suite.add_test(TestSpeed(f1,f2,args,name))`
+
+### Running a test suite.
+
+`test_suite.run`
+
+
+## Individual Unit Testing Functions
+
+
+### Testing for array equality/inequality.
+
+`TEST_EQUAL(X1,X2,n)`\
 `TEST_NOT_EQUAL(X1,X2,n)`
 
 <br/>
 
-**Testing for correct error handling:**\
-`TEST_ERROR(f)`\
-`TEST_ERROR(@function)`\
-`TEST_ERROR(f,__)`\
-`TEST_ERROR(@(__)function(__),__)`
+### Testing for correct error handling.
+`TEST_ERROR(f,args)`\
+`TEST_NO_ERROR(f,args)`
 
 <br/>
 
-**Testing for successful function execution:**\
-`TEST_NO_ERROR(f)`\
-`TEST_NO_ERROR(@function)`\
-`TEST_NO_ERROR(f,__)`\
-`TEST_NO_ERROR(@(__)function(__),__)`
+### Testing speed.
+`TEST_SPEED(f_fast,f_slow,args,n_eval)`\
+`TIME_OPERATION(f,args,n_eval)`

@@ -1,6 +1,6 @@
 %==========================================================================
 %
-% TEST_SPEED  Tests if one function is faster to evaluate than another.
+% TEST_SPEED  Test if one function is faster to evaluate than another.
 %
 %   TEST_SPEED(f_slow,f_fast,args)
 %   TEST_SPEED(__,n_eval,name,print)

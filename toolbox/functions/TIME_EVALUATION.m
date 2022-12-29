@@ -1,6 +1,6 @@
 %==========================================================================
 %
-% TIME_EVALUATION  Times the evaluation of a function.
+% TIME_EVALUATION  Time the evaluation of a function.
 %
 %   TIME_EVALUATION(f,args)
 %   TIME_EVALUATION(__,n_eval,print)

@@ -67,41 +67,9 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1>Simple Unit Testing Toolbox Documentation</h1><!--introduction--><p><img vspace="5" hspace="5" src="thumbnail_resized.png" alt=""> </p><p>Copyright &copy; 2022 Tamas Kis</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Installation</a></li><li><a href="#2">Opening this documentation using the MATLAB Command Window.</a></li><li><a href="#4">Creating a Test Suite</a></li><li><a href="#6">Adding Tests to a Test Suite</a></li><li><a href="#8">Running a Test Suite</a></li><li><a href="#9">Individual Unit Testing Functions</a></li></ul></div><h2 id="1">Installation</h2><div><ol><li>Download the toolbox from <a href="TODO:url">File Exchange</a> or <a href="https://github.com/tamaskis/Simple_Unit_Testing_Toolbox-MATLAB">https://github.com/tamaskis/Simple_Unit_Testing_Toolbox-MATLAB</a>.</li><li>Open the <tt>INSTALL</tt> folder.</li><li>Double-click on <tt>Simple Unit Testing Toolbox.mltbx</tt>.</li></ol></div><p>MATLAB will automatically perform the installation and add all the contents of the <tt>toolbox</tt> folder to the MATLAB search path.</p><h2 id="2">Opening this documentation using the MATLAB Command Window.</h2><p>To open the home page (this page) of the toolbox documentation in MATLAB, type the following in the Command Window:</p><pre class="language-matlab">doc_SUTT
+  </style></head><body><div class="content"><h1>Simple Unit Testing Toolbox Documentation</h1><!--introduction--><p><img vspace="5" hspace="5" src="thumbnail_resized.png" alt=""> </p><p>Copyright &copy; 2022 Tamas Kis</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Installation</a></li><li><a href="#2">Opening this documentation using the MATLAB Command Window.</a></li><li><a href="#4">Test Suites</a></li><li><a href="#5">Unit Test Objects</a></li><li><a href="#6">Individual Unit Testing Functions</a></li></ul></div><h2 id="1">Installation</h2><div><ol><li>Download the toolbox from <a href="TODO:url">File Exchange</a> or <a href="https://github.com/tamaskis/Simple_Unit_Testing_Toolbox-MATLAB">https://github.com/tamaskis/Simple_Unit_Testing_Toolbox-MATLAB</a>.</li><li>Open the <tt>INSTALL</tt> folder.</li><li>Double-click on <tt>Simple Unit Testing Toolbox.mltbx</tt>.</li></ol></div><p>MATLAB will automatically perform the installation and add all the contents of the <tt>toolbox</tt> folder to the MATLAB search path.</p><h2 id="2">Opening this documentation using the MATLAB Command Window.</h2><p>To open the home page (this page) of the toolbox documentation in MATLAB, type the following in the Command Window:</p><pre class="language-matlab">doc_SUTT
 </pre><p>To open the documentation of a specific function with name <tt>function_name</tt>, type the following in the Command Window:</p><pre class="language-matlab">doc_SUTT <span class="string">function_name</span>
-</pre><h2 id="4">Creating a Test Suite</h2><p>To create a test suite, we simply need to initialize a <tt>TestSuite</tt> object.</p><pre class="codeinput">test_suite = TestSuite
-</pre><pre class="codeoutput">
-test_suite = 
-
-  TestSuite with properties:
-
-        tests: [0&times;0 UnitTest]
-         name: ''
-            N: 0
-    terminate: 0
-
-</pre><p>We can also give the test suite a name during initialization, and also specify whether or not we want the test suite to terminate at the first failed test. For more details, see the full <tt>TestSuite</tt> documentation below.</p><div><ul><li><a href="TestSuite_doc.html"><b><tt>TestSuite</tt></b></a> Class defining a test suite.</li></ul></div><h2 id="6">Adding Tests to a Test Suite</h2><p>Consider two near identical arrays.</p><pre class="codeinput">X1 = [1  1;
-      1  1];
-X2 = X1+0.00001;
-</pre><p>These arrays are equal to 4 decimal places, but <i>not</i> equal to 5 decimal places. We can add tests to test for this expected behavior.</p><pre class="codeinput">test_suite.add_test(TestEqual(X1,X2,<span class="string">'equal to 4 decimal places'</span>,4));
-test_suite.add_test(TestNotEqual(X1,X2,<span class="string">'not equal to 5 decimal places'</span>,5));
-</pre><h2 id="8">Running a Test Suite</h2><p>To run the test suite, we can simply do</p><pre class="codeinput">test_suite.run();
-</pre><pre class="codeoutput">
-equal to 4 decimal places: Passed. (1/1)
-not equal to 5 decimal places: Passed. (2/2)
-    &gt;&gt;&gt;&gt; WARNING: This test tested for inequality, but the arrays ARE equal to 4 decimal places.
-
-========================================================================================================================
-SUMMARY: 
-------------------------------------------------------------------------------------------------------------------------
-
-  Pass Rate: 100%
-   &#8226; total tests: 2
-   &#8226; passed tests: 2
-   &#8226; failed tests: 0
-
-========================================================================================================================
-</pre><h2 id="9">Individual Unit Testing Functions</h2><p><b>Testing Numerical Equality</b></p><div><ul><li><a href="TEST_EQUAL_doc.html"><b><tt>TEST_EQUAL</tt></b></a> TODO.</li><li><a href="TEST_NOT_EQUAL_doc.html"><b><tt>TEST_NOT_EQUAL</tt></b></a> TODO.</li></ul></div><p><b>Testing Correct Functionality</b></p><div><ul><li><a href="TEST_ERROR_doc.html"><b><tt>TEST_ERROR</tt></b></a> TODO.</li><li><a href="TEST_NO_ERROR_doc.html"><b><tt>TEST_NO_ERROR</tt></b></a> TODO.</li></ul></div><p><b>Testing Speed</b></p><div><ul><li><a href="TEST_SPEED_doc.html"><b><tt>TEST_SPEED</tt></b></a> TODO.</li><li><a href="TIME_EVALUATION_doc.html"><b><tt>TEST_SPEED</tt></b></a> TODO.</li></ul></div><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+</pre><h2 id="4">Test Suites</h2><p>A test suite is a collection of unit test objects. When a test suite is run, it runs all of the individual unit tests, printing any diagnostic and/or error messages, along with some testing statistics.</p><div><ul><li><a href="TestSuite_doc.html"><b><tt>TestSuite</tt></b></a> Class defining a test suite.</li></ul></div><h2 id="5">Unit Test Objects</h2><p>These unit test objects are used to create individual unit tests. All of the object below are subclasses of a generic <tt>UnitTest</tt> class, and call upon the unit testing functions listed in the next section below.</p><div><ul><li><a href="TestEqual_doc.html"><b><tt>TestEqual</tt></b></a> Unit test for array equality to a certain number of decimal places.</li><li><a href="TestNotEqual_doc.html"><b><tt>TestNotEqual</tt></b></a> Unit test for array inequality to a certain number of decimal places.</li><li><a href="TestError_doc.html"><b><tt>TestError</tt></b></a> Unit test for confirming that a function throws an error.</li><li><a href="TestNoError_doc.html"><b><tt>TestNoError</tt></b></a> Unit test for confirming that a function does not throw an error.</li><li><a href="TestSpeed_doc.html"><b><tt>TestSpeed</tt></b></a> Unit test for confirming that one function is faster than another.</li></ul></div><h2 id="6">Individual Unit Testing Functions</h2><p>These functions implement the core unit testing functionality. They are called on by the unit testing classes, but they can also be used individually, outside the scope of a full test suite framework.</p><div><ul><li><a href="TEST_EQUAL_doc.html"><b><tt>TEST_EQUAL</tt></b></a> Test if two double arrays are equal up to a desired number of decimal places.</li><li><a href="TEST_NOT_EQUAL_doc.html"><b><tt>TEST_NOT_EQUAL</tt></b></a> Test if two double arrays are NOT equal up to a desired number of decimal places.</li><li><a href="TEST_ERROR_doc.html"><b><tt>TEST_ERROR</tt></b></a> Test if an error is successfully thrown.</li><li><a href="TEST_NO_ERROR_doc.html"><b><tt>TEST_NO_ERROR</tt></b></a> Test to ensure an error is NOT thrown.</li><li><a href="TEST_SPEED_doc.html"><b><tt>TEST_SPEED</tt></b></a> Test if one function is faster to evaluate than another.</li><li><a href="TIME_EVALUATION_doc.html"><b><tt>TIME_EVALUATION</tt></b></a> Time the evaluation of a function.</li></ul></div><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% Simple Unit Testing Toolbox Documentation
 %
@@ -128,44 +96,32 @@ SUMMARY:
 % |function_name|, type the following in the Command Window:
 %
 %   doc_SUTT function_name
-%% Creating a Test Suite
-% To create a test suite, we simply need to initialize a |TestSuite|
-% object.
-test_suite = TestSuite
-%%
-% We can also give the test suite a name during initialization, and also
-% specify whether or not we want the test suite to terminate at the first
-% failed test. For more details, see the full |TestSuite| documentation
-% below.
+%% Test Suites
+% A test suite is a collection of unit test objects. When a test suite is
+% run, it runs all of the individual unit tests, printing any diagnostic
+% and/or error messages, along with some testing statistics.
 %
 % * <TestSuite_doc.html *|TestSuite|*> Class defining a test suite.
-%% Adding Tests to a Test Suite
-% Consider two near identical arrays.
-X1 = [1  1;
-      1  1];
-X2 = X1+0.00001;
-%%
-% These arrays are equal to 4 decimal places, but _not_ equal to 5 decimal
-% places. We can add tests to test for this expected behavior.
-test_suite.add_test(TestEqual(X1,X2,'equal to 4 decimal places',4));
-test_suite.add_test(TestNotEqual(X1,X2,'not equal to 5 decimal places',5));
-%% Running a Test Suite
-% To run the test suite, we can simply do
-test_suite.run();
+%% Unit Test Objects
+% These unit test objects are used to create individual unit tests. All of
+% the object below are subclasses of a generic |UnitTest| class, and call
+% upon the unit testing functions listed in the next section below.
+%
+% * <TestEqual_doc.html *|TestEqual|*> Unit test for array equality to a certain number of decimal places.
+% * <TestNotEqual_doc.html *|TestNotEqual|*> Unit test for array inequality to a certain number of decimal places.
+% * <TestError_doc.html *|TestError|*> Unit test for confirming that a function throws an error.
+% * <TestNoError_doc.html *|TestNoError|*> Unit test for confirming that a function does not throw an error.
+% * <TestSpeed_doc.html *|TestSpeed|*> Unit test for confirming that one function is faster than another.
 %% Individual Unit Testing Functions
-% *Testing Numerical Equality*
+% These functions implement the core unit testing functionality. They are
+% called on by the unit testing classes, but they can also be used
+% individually, outside the scope of a full test suite framework.
 %
-% * <TEST_EQUAL_doc.html *|TEST_EQUAL|*> TODO.
-% * <TEST_NOT_EQUAL_doc.html *|TEST_NOT_EQUAL|*> TODO.
-%
-% *Testing Correct Functionality*
-%
-% * <TEST_ERROR_doc.html *|TEST_ERROR|*> TODO.
-% * <TEST_NO_ERROR_doc.html *|TEST_NO_ERROR|*> TODO.
-%
-% *Testing Speed*
-%
-% * <TEST_SPEED_doc.html *|TEST_SPEED|*> TODO.
-% * <TIME_EVALUATION_doc.html *|TEST_SPEED|*> TODO.
+% * <TEST_EQUAL_doc.html *|TEST_EQUAL|*> Test if two double arrays are equal up to a desired number of decimal places.
+% * <TEST_NOT_EQUAL_doc.html *|TEST_NOT_EQUAL|*> Test if two double arrays are NOT equal up to a desired number of decimal places.
+% * <TEST_ERROR_doc.html *|TEST_ERROR|*> Test if an error is successfully thrown.
+% * <TEST_NO_ERROR_doc.html *|TEST_NO_ERROR|*> Test to ensure an error is NOT thrown.
+% * <TEST_SPEED_doc.html *|TEST_SPEED|*> Test if one function is faster to evaluate than another.
+% * <TIME_EVALUATION_doc.html *|TIME_EVALUATION|*> Time the evaluation of a function.
 ##### SOURCE END #####
 --></body></html>

@@ -1,6 +1,7 @@
 %==========================================================================
 %
-% TestNoError  Test for confirming that a function does not throw an error.
+% TestNoError  Unit test for confirming that a function does not throw an 
+% error.
 %
 % Copyright © 2022 Tamas Kis
 % Last Update: 2022-12-29

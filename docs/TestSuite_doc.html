@@ -67,7 +67,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>TestSuite</tt></h1><!--introduction--><p>Class defining a test suite.</p><p><a href="index.html">Back to Numerical Differentiation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Properties</a></li><li><a href="#2">Constructor</a></li><li><a href="#3"><tt>add_test</tt></a></li><li><a href="#4"><tt>run</tt></a></li><li><a href="#5">Example #1</a></li><li><a href="#9">Example #2</a></li><li><a href="#14">See also</a></li></ul></div><h2 id="1">Properties</h2><p>
+  </style></head><body><div class="content"><h1><tt>TestSuite</tt></h1><!--introduction--><p>Class defining a test suite.</p><p><a href="index.html">Back to Simple Unit Testing Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Properties</a></li><li><a href="#2">Constructor</a></li><li><a href="#3"><tt>add_test</tt></a></li><li><a href="#4"><tt>run</tt></a></li><li><a href="#5">Example #1: Basic test suite with all tests passing.</a></li><li><a href="#9">Example #2: Test suite with a name and with both passed and failed tests.</a></li><li><a href="#14">Example #3: Test suite that terminates on first failed test.</a></li><li><a href="#19">Example #4: An actual test suite.</a></li><li><a href="#20">See also</a></li></ul></div><h2 id="1">Properties</h2><p>
   <table border=1>
       <tr>
           <td style="text-align:center"><b>Variable</b></td>
@@ -131,23 +131,23 @@ TestSuite.add_test(TestSpeed(f_fast,f_slow,args,name))
       <tr>
           <td style="text-align:center"><TT>unit_test</TT></td>
           <td>unit test - can be one of the following, which are all subclasses of the <TT>UnitTest</TT> class:
-              <BR>  - <TT>TestEqual</TT> → Unit test for array equality to a certain number of decimal places.
-              <BR>  - <TT>TestNotEqual</TT> → Unit test for array inequality to a certain number of decimal places.
-              <BR>  - <TT>TestError</TT> → Unit test for confirming that a function throws an error.
-              <BR>  - <TT>TestNoError</TT> → Test for confirming that a function does not throw an error.
-              <BR>  - <TT>TestSpeed</TT> → Unit test for confirming that one function is faster than another.
+              <BR>  - <TT>TestEqual</TT>
+              <BR>  - <TT>TestNotEqual</TT>
+              <BR>  - <TT>TestError</TT>
+              <BR>  - <TT>TestNoError</TT>
+              <BR>  - <TT>TestSpeed</TT>
               </td>
           <td style="text-align:center">1×1<BR>UnitTest</td>
       </tr>
   </table>
-</p><h2 id="4"><tt>run</tt></h2><pre class="language-matlab">TestSuite.run
-</pre><p><b>Description:</b> Runs all tests in the test suite.</p><h2 id="5">Example #1</h2><p>Consider two near identical arrays.</p><pre class="codeinput">X1 = [1  1;
+</p><p>See the following for documentation of the individual unit tests:</p><div><ul><li><a href="TestEqual_doc.html"><b><tt>TestEqual</tt></b></a></li><li><a href="TestNotEqual_doc.html"><b><tt>TestNotEqual</tt></b></a></li><li><a href="TestError_doc.html"><b><tt>TestError</tt></b></a></li><li><a href="TestNoError_doc.html"><b><tt>TestNoError</tt></b></a></li><li><a href="TestSpeed_doc.html"><b><tt>TestSpeed</tt></b></a></li></ul></div><h2 id="4"><tt>run</tt></h2><pre class="language-matlab">TestSuite.run
+</pre><p><b>Description:</b> Runs all tests in the test suite.</p><h2 id="5">Example #1: Basic test suite with all tests passing.</h2><p>Consider two nearly identical arrays.</p><pre class="codeinput">X1 = [1  1;
       1  1];
 X2 = X1+0.00001;
 </pre><p>These arrays are equal to 4 decimal places, but <i>not</i> equal to 5 decimal places. Let's create a test suite to test for this expected behavior. To create the test suite, we simply need to initialize a <tt>TestSuite</tt> object.</p><pre class="codeinput">test_suite = TestSuite;
 </pre><p>Adding tests for the expected behavior,</p><pre class="codeinput">test_suite.add_test(TestEqual(X1,X2,<span class="string">'equal to 4 decimal places'</span>,4));
 test_suite.add_test(TestNotEqual(X1,X2,<span class="string">'not equal to 5 decimal places'</span>,5));
-</pre><p>To run the test suite, we can simply do</p><pre class="codeinput">test_suite.run();
+</pre><p>To run the test suite, we can simply do</p><pre class="codeinput">test_suite.run;
 </pre><pre class="codeoutput">
 equal to 4 decimal places: Passed. (1/1)
 not equal to 5 decimal places: Passed. (2/2)
@@ -163,16 +163,16 @@ SUMMARY:
    &#8226; failed tests: 0
 
 ========================================================================================================================
-</pre><h2 id="9">Example #2</h2><p>For this example, let's consider a more complicated test suite that has both passed and failed tests. First, let's define some parameters we'll use for the tests.</p><pre class="codeinput">X1 = [1  1;
+</pre><h2 id="9">Example #2: Test suite with a name and with both passed and failed tests.</h2><p>For this example, let's consider a more complicated test suite that has both passed and failed tests. First, let's define some parameters we'll use for the tests.</p><pre class="codeinput">X1 = [1  1;
       1  1];
 X2 = X1+0.00001;
-f = @(x) x;
+f = @(x) x^2;
 g = @(x,y) acos(x+y);
-</pre><p>Initializing the test suite,</p><pre class="codeinput">test_suite = TestSuite(<span class="string">'Test suite for example #2'</span>);
+</pre><p>Initializing the test suite with a name this time,</p><pre class="codeinput">test_suite = TestSuite(<span class="string">'Test suite for example #2'</span>);
 </pre><p>Adding tests to the test suite that we know will fail,</p><pre class="codeinput">test_suite.add_test(TestEqual(X1,X2,<span class="string">'equal to 5 decimal places'</span>,5));
 test_suite.add_test(TestNotEqual(X1,X2,<span class="string">'not equal to 4 decimal places'</span>,4));
-test_suite.add_test(TestError(f,{1},<span class="string">'error in evaluating f(x) = x at x = 1'</span>));
-</pre><p>Adding tests to the test suite that we know will pass,</p><pre class="codeinput">test_suite.add_test(TestError(f,{2,3},<span class="string">'error in evaluating f(x) = x when f is passed a char array'</span>));
+test_suite.add_test(TestError(f,{1},<span class="string">'error in evaluating f(x) = x&sup2; at x = 1'</span>));
+</pre><p>Adding tests to the test suite that we know will pass,</p><pre class="codeinput">test_suite.add_test(TestError(f,{zeros(2,1)},<span class="string">'error in evaluating non-vectorized f(x) = x&sup2; when f is passed a vector'</span>));
 test_suite.add_test(TestNoError(@(x,y)mod(x,y),{10,1},<span class="string">'no error in evaluating mod(x,y) at (x,y) = (10,1)'</span>));
 test_suite.add_test(TestError(@(x,y)mod(x,y),{10,1,3},<span class="string">'error in passing three inputs to mod(x,y)'</span>));
 </pre><p>Running the test suite,</p><pre class="codeinput">test_suite.run;
@@ -182,9 +182,9 @@ equal to 5 decimal places: FAILED. (0/1)
     &gt;&gt;&gt;&gt; Arrays ARE equal to 4 decimal places.
 not equal to 4 decimal places: FAILED. (0/2)
     &gt;&gt;&gt;&gt; Equal to 4 decimal places.
-error in evaluating f(x) = x at x = 1: FAILED. (0/3)
+error in evaluating f(x) = x&sup2; at x = 1: FAILED. (0/3)
     &gt;&gt;&gt;&gt; Function did not throw an error.
-error in evaluating f(x) = x when f is passed a char array: Passed. (1/4)
+error in evaluating non-vectorized f(x) = x&sup2; when f is passed a vector: Passed. (1/4)
 no error in evaluating mod(x,y) at (x,y) = (10,1): Passed. (2/5)
 error in passing three inputs to mod(x,y): Passed. (3/6)
 
@@ -200,15 +200,40 @@ SUMMARY: Test suite for example #2
   Failed Tests:
    &#8226; equal to 5 decimal places
    &#8226; not equal to 4 decimal places
-   &#8226; error in evaluating f(x) = x at x = 1
+   &#8226; error in evaluating f(x) = x&sup2; at x = 1
 
 ========================================================================================================================
-</pre><h2 id="14">See also</h2><p><a href="TestEqual_doc.html"><tt>TestEqual</tt></a> | <a href="TestNotEqual_doc.html"><tt>TestNotEqual</tt></a> | <a href="TestError_doc.html"><tt>TestError</tt></a> | <a href="TestNoError_doc.html"><tt>TestNoError</tt></a> | <a href="TestSpeed_doc.html"><tt>TestSpeed</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+</pre><h2 id="14">Example #3: Test suite that terminates on first failed test.</h2><p>Let's create a test suite that passes the first two tests but fails on the third test. First, let's define some arrays that we will use for the example test cases.</p><pre class="codeinput">X1 = [1  1;
+      1  1];
+X2 = X1+0.00001;
+</pre><p>Next, let's initialize the unit tests.</p><pre class="codeinput">unit_test_1 = TestEqual(X1,X2,<span class="string">'equal to 3 decimal places'</span>,3);
+unit_test_2 = TestEqual(X1,X2,<span class="string">'equal to 4 decimal places'</span>,4);
+unit_test_3 = TestEqual(X1,X2,<span class="string">'equal to 5 decimal places'</span>,5);
+unit_test_4 = TestEqual(X1,X2,<span class="string">'equal to 6 decimal places'</span>,6);
+unit_test_5 = TestEqual(X1,X2,<span class="string">'equal to 7 decimal places'</span>,7);
+</pre><p>Let's make a test suite that terminates upon the first failed test.</p><pre class="codeinput">terminate = true;
+test_suite = TestSuite([],terminate);
+</pre><p>Adding the unit tests to the test suite,</p><pre class="codeinput">test_suite.add_test(unit_test_1);
+test_suite.add_test(unit_test_2);
+test_suite.add_test(unit_test_3);
+test_suite.add_test(unit_test_4);
+test_suite.add_test(unit_test_5);
+</pre><p>Running the test suite,</p><pre class="codeinput">test_suite.run;
+</pre><pre class="codeoutput">
+equal to 3 decimal places: Passed. (1/1)
+equal to 4 decimal places: Passed. (2/2)
+equal to 5 decimal places: FAILED. (2/3)
+    &gt;&gt;&gt;&gt; Arrays are not equal to 5 decimal places.
+    &gt;&gt;&gt;&gt; Arrays ARE equal to 4 decimal places.
+
+TEST SUITE TERMINATED EARLY DUE TO FAILED UNIT TEST.
+
+</pre><h2 id="19">Example #4: An actual test suite.</h2><p>The <a href="https://tamaskis.github.io/Numerical_Differentiation_Toolbox-MATLAB/">Numerical Differentiation Toolbox</a> uses this unit testing framework to run all of its unit tests. <a href="https://github.com/tamaskis/Numerical_Differentiation_Toolbox-MATLAB/tree/main/tests/">Click here</a> to access the unit testing code for that toolbox.</p><h2 id="20">See also</h2><p><a href="TestEqual_doc.html"><tt>TestEqual</tt></a> | <a href="TestNotEqual_doc.html"><tt>TestNotEqual</tt></a> | <a href="TestError_doc.html"><tt>TestError</tt></a> | <a href="TestNoError_doc.html"><tt>TestNoError</tt></a> | <a href="TestSpeed_doc.html"><tt>TestSpeed</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |TestSuite|
 % Class defining a test suite.
 % 
-% <index.html Back to Numerical Differentiation Toolbox Contents>.
+% <index.html Back to Simple Unit Testing Toolbox Contents>.
 %% Properties
 % <html>
 %   <table border=1>
@@ -282,22 +307,30 @@ SUMMARY: Test suite for example #2
 %       <tr>
 %           <td style="text-align:center"><TT>unit_test</TT></td>
 %           <td>unit test - can be one of the following, which are all subclasses of the <TT>UnitTest</TT> class:
-%               <BR>  - <TT>TestEqual</TT> → Unit test for array equality to a certain number of decimal places.
-%               <BR>  - <TT>TestNotEqual</TT> → Unit test for array inequality to a certain number of decimal places.
-%               <BR>  - <TT>TestError</TT> → Unit test for confirming that a function throws an error.
-%               <BR>  - <TT>TestNoError</TT> → Test for confirming that a function does not throw an error.
-%               <BR>  - <TT>TestSpeed</TT> → Unit test for confirming that one function is faster than another.
+%               <BR>  - <TT>TestEqual</TT>
+%               <BR>  - <TT>TestNotEqual</TT>
+%               <BR>  - <TT>TestError</TT>
+%               <BR>  - <TT>TestNoError</TT>
+%               <BR>  - <TT>TestSpeed</TT>
 %               </td>
 %           <td style="text-align:center">1×1<BR>UnitTest</td>
 %       </tr>
 %   </table>
 % </html>
+%
+% See the following for documentation of the individual unit tests:
+%
+% * <TestEqual_doc.html *|TestEqual|*>
+% * <TestNotEqual_doc.html *|TestNotEqual|*>
+% * <TestError_doc.html *|TestError|*>
+% * <TestNoError_doc.html *|TestNoError|*>
+% * <TestSpeed_doc.html *|TestSpeed|*>
 %% |run|
 %   TestSuite.run
 %
 % *Description:* Runs all tests in the test suite.
-%% Example #1
-% Consider two near identical arrays.
+%% Example #1: Basic test suite with all tests passing.
+% Consider two nearly identical arrays.
 X1 = [1  1;
       1  1];
 X2 = X1+0.00001;
@@ -312,32 +345,66 @@ test_suite.add_test(TestEqual(X1,X2,'equal to 4 decimal places',4));
 test_suite.add_test(TestNotEqual(X1,X2,'not equal to 5 decimal places',5));
 %%
 % To run the test suite, we can simply do
-test_suite.run();
-%% Example #2
+test_suite.run;
+%% Example #2: Test suite with a name and with both passed and failed tests.
 % For this example, let's consider a more complicated test suite that has
 % both passed and failed tests. First, let's define some parameters we'll
 % use for the tests.
 X1 = [1  1;
       1  1];
 X2 = X1+0.00001;
-f = @(x) x;
+f = @(x) x^2;
 g = @(x,y) acos(x+y);
 %% 
-% Initializing the test suite,
+% Initializing the test suite with a name this time,
 test_suite = TestSuite('Test suite for example #2');
 %%
 % Adding tests to the test suite that we know will fail,
 test_suite.add_test(TestEqual(X1,X2,'equal to 5 decimal places',5));
 test_suite.add_test(TestNotEqual(X1,X2,'not equal to 4 decimal places',4));
-test_suite.add_test(TestError(f,{1},'error in evaluating f(x) = x at x = 1'));
+test_suite.add_test(TestError(f,{1},'error in evaluating f(x) = x² at x = 1'));
 %%
 % Adding tests to the test suite that we know will pass,
-test_suite.add_test(TestError(f,{2,3},'error in evaluating f(x) = x when f is passed a char array'));
+test_suite.add_test(TestError(f,{zeros(2,1)},'error in evaluating non-vectorized f(x) = x² when f is passed a vector'));
 test_suite.add_test(TestNoError(@(x,y)mod(x,y),{10,1},'no error in evaluating mod(x,y) at (x,y) = (10,1)'));
 test_suite.add_test(TestError(@(x,y)mod(x,y),{10,1,3},'error in passing three inputs to mod(x,y)'));
 %%
 % Running the test suite,
 test_suite.run;
+%% Example #3: Test suite that terminates on first failed test.
+% Let's create a test suite that passes the first two tests but fails on
+% the third test. First, let's define some arrays that we will use for the
+% example test cases.
+X1 = [1  1;
+      1  1];
+X2 = X1+0.00001;
+%%
+% Next, let's initialize the unit tests.
+unit_test_1 = TestEqual(X1,X2,'equal to 3 decimal places',3);
+unit_test_2 = TestEqual(X1,X2,'equal to 4 decimal places',4);
+unit_test_3 = TestEqual(X1,X2,'equal to 5 decimal places',5);
+unit_test_4 = TestEqual(X1,X2,'equal to 6 decimal places',6);
+unit_test_5 = TestEqual(X1,X2,'equal to 7 decimal places',7);
+%%
+% Let's make a test suite that terminates upon the first failed test.
+terminate = true;
+test_suite = TestSuite([],terminate);
+%%
+% Adding the unit tests to the test suite,
+test_suite.add_test(unit_test_1);
+test_suite.add_test(unit_test_2);
+test_suite.add_test(unit_test_3);
+test_suite.add_test(unit_test_4);
+test_suite.add_test(unit_test_5);
+%%
+% Running the test suite,
+test_suite.run;
+%% Example #4: An actual test suite.
+% The <https://tamaskis.github.io/Numerical_Differentiation_Toolbox-MATLAB/
+% Numerical Differentiation Toolbox> uses this unit testing framework to
+% run all of its unit tests.
+% <https://github.com/tamaskis/Numerical_Differentiation_Toolbox-MATLAB/tree/main/tests/
+% Click here> to access the unit testing code for that toolbox.
 %% See also
 % <TestEqual_doc.html |TestEqual|> | 
 % <TestNotEqual_doc.html |TestNotEqual|> | 

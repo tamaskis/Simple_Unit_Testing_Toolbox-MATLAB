@@ -7,6 +7,9 @@
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
+% REFERENCES:
+%   [1] https://stackoverflow.com/questions/19900418/how-do-i-create-an-array-of-abstract-class-objects-in-matlab
+%
 %==========================================================================
 
 classdef UnitTest < handle & matlab.mixin.Heterogeneous

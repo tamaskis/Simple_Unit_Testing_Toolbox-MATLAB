@@ -1,7 +1,7 @@
 %==========================================================================
 %
-% TEST_NOT_EQUAL  Raises an error if two double arrays are equal up to a 
-% desired number of decimal places.
+% TEST_NOT_EQUAL  Test if two double arrays are NOT equal up to a desired 
+% number of decimal places.
 %
 %   TEST_NOT_EQUAL(X1,X2)
 %   TEST_NOT_EQUAL(X1,X2,n)
