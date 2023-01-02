@@ -4,7 +4,7 @@ This toolbox defines a simple unit testing framework for MATLAB.
 
 ## Installation
 
-1. Download the toolbox from [MATLAB](https://www.mathworks.com/matlabcentral/fileexchange/122777-simple-unit-testing-toolbox) or [GitHub](https://github.com/tamaskis/Simple_Unit_Testing_Toolbox-MATLAB).
+1. Download the toolbox from [File Exchange](https://www.mathworks.com/matlabcentral/fileexchange/122777-simple-unit-testing-toolbox) or [GitHub](https://github.com/tamaskis/Simple_Unit_Testing_Toolbox-MATLAB).
 2. Open the `INSTALL` folder.
 3. Double-click on `Simple Unit Testing Toolbox.mltbx`.
 
