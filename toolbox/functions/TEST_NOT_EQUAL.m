@@ -11,7 +11,7 @@
 % See also TEST_EQUAL.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2022-12-29
+% Last Update: 2023-01-01
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -34,8 +34,7 @@
 %   outputs - (1×1 struct) test outputs
 %       • passed  - (1×1 logical) true if test passed, false otherwise
 %       • result  - (char) string storing result of test
-%       • message - (char) string storing additional diagnostic message if
-%                   test failed
+%       • message - (char) string storing additional diagnostic message
 %
 %==========================================================================
 function outputs = TEST_NOT_EQUAL(X1,X2,n,name,print)
@@ -57,7 +56,7 @@ function outputs = TEST_NOT_EQUAL(X1,X2,n,name,print)
     end
     
     % if the two arrays do not have the same size, they cannot be equal
-    if size(X1) ~= size(X2)
+    if ~compare_sizes(X1,X2)
         outputs.passed = true;
         outputs.result = 'Passed.';
         outputs.message = '';
@@ -100,7 +99,13 @@ function outputs = TEST_NOT_EQUAL(X1,X2,n,name,print)
             ' decimal places.\n    >>>> ',data_type_1,...
             ' are NOT equal to ',num2str(n),' decimal places.'];
     else
-        message = ['Equal to ',num2str(n_equal),' decimal places.'];
+        if n_equal == 100
+            message = [data_type_1,' are equal to at least ',...
+                num2str(n_equal),' decimal places.'];
+        else
+            message = [data_type_1,' are equal to ',num2str(n_equal),...
+                ' decimal places.'];
+        end
     end
     
     % name string

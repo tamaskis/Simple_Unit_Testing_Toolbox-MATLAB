@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>TestSuite</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-12-29"><meta name="DC.source" content="TestSuite_doc.m"><style type="text/css">
+      --><title>TestSuite</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-01-01"><meta name="DC.source" content="TestSuite_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -169,11 +169,12 @@ X2 = X1+0.00001;
 f = @(x) x^2;
 g = @(x,y) acos(x+y);
 h1 = @(x) x;
-h2 = @(x) sin(x);
+h2 = @(x) sin(x)*asin(x)*cos(x)*acos(x)*tan(x)*atan(x);
 </pre><p>Initializing the test suite with a name this time,</p><pre class="codeinput">test_suite = TestSuite(<span class="string">'Test suite for example #2'</span>);
 </pre><p>Adding tests to the test suite that we know will fail,</p><pre class="codeinput">test_suite.add_test(TestEqual(X1,X2,<span class="string">'equal to 5 decimal places'</span>,5));
 test_suite.add_test(TestNotEqual(X1,X2,<span class="string">'not equal to 4 decimal places'</span>,4));
 test_suite.add_test(TestError(f,{1},<span class="string">'error in evaluating f(x) = x&sup2; at x = 1'</span>));
+test_suite.add_test(TestNoError(f,{zeros(2,1)},<span class="string">'no error in evaluating non-vectorized f(x) = x&sup2; when f is passed a vector'</span>));
 </pre><p>Adding tests to the test suite that we know will pass,</p><pre class="codeinput">test_suite.add_test(TestError(f,{zeros(2,1)},<span class="string">'error in evaluating non-vectorized f(x) = x&sup2; when f is passed a vector'</span>));
 test_suite.add_test(TestNoError(@(x,y)mod(x,y),{10,1},<span class="string">'no error in evaluating mod(x,y) at (x,y) = (10,1)'</span>));
 test_suite.add_test(TestError(@(x,y)mod(x,y),{10,1,3},<span class="string">'error in passing three inputs to mod(x,y)'</span>));
@@ -184,27 +185,30 @@ equal to 5 decimal places: FAILED. (0/1)
     &gt;&gt;&gt;&gt; Arrays are not equal to 5 decimal places.
     &gt;&gt;&gt;&gt; Arrays ARE equal to 4 decimal places.
 not equal to 4 decimal places: FAILED. (0/2)
-    &gt;&gt;&gt;&gt; Equal to 4 decimal places.
+    &gt;&gt;&gt;&gt; Arrays are equal to 4 decimal places.
 error in evaluating f(x) = x&sup2; at x = 1: FAILED. (0/3)
     &gt;&gt;&gt;&gt; Function did not throw an error.
-error in evaluating non-vectorized f(x) = x&sup2; when f is passed a vector: Passed. (1/4)
-no error in evaluating mod(x,y) at (x,y) = (10,1): Passed. (2/5)
-error in passing three inputs to mod(x,y): Passed. (3/6)
-f(x) = x is faster to evaluate than f(x) = sin(x): Passed. (4/7)
+no error in evaluating non-vectorized f(x) = x&sup2; when f is passed a vector: FAILED. (0/4)
+    &gt;&gt;&gt;&gt; Function threw the following error: Incorrect dimensions for raising a matrix to a power. Check that the matrix is square and the power is a scalar. To operate on each element of the matrix individually, use POWER (.^) for elementwise power.
+error in evaluating non-vectorized f(x) = x&sup2; when f is passed a vector: Passed. (1/5)
+no error in evaluating mod(x,y) at (x,y) = (10,1): Passed. (2/6)
+error in passing three inputs to mod(x,y): Passed. (3/7)
+f(x) = x is faster to evaluate than f(x) = sin(x): Passed. (4/8)
 
 ========================================================================================================================
 SUMMARY: Test suite for example #2
 ------------------------------------------------------------------------------------------------------------------------
 
-  Pass Rate: 57%
-   &#8226; total tests: 7
+  Pass Rate: 50%
+   &#8226; total tests: 8
    &#8226; passed tests: 4
-   &#8226; failed tests: 3
+   &#8226; failed tests: 4
 
   Failed Tests:
    &#8226; equal to 5 decimal places
    &#8226; not equal to 4 decimal places
    &#8226; error in evaluating f(x) = x&sup2; at x = 1
+   &#8226; no error in evaluating non-vectorized f(x) = x&sup2; when f is passed a vector
 
 ========================================================================================================================
 </pre><h2 id="14">Example #3: Test suite that terminates on first failed test.</h2><p>Let's create a test suite that passes the first two tests but fails on the third test. First, let's define some arrays that we will use for the example test cases.</p><pre class="codeinput">X1 = [1  1;
@@ -360,7 +364,7 @@ X2 = X1+0.00001;
 f = @(x) x^2;
 g = @(x,y) acos(x+y);
 h1 = @(x) x;
-h2 = @(x) sin(x);
+h2 = @(x) sin(x)*asin(x)*cos(x)*acos(x)*tan(x)*atan(x);
 %% 
 % Initializing the test suite with a name this time,
 test_suite = TestSuite('Test suite for example #2');
@@ -369,6 +373,7 @@ test_suite = TestSuite('Test suite for example #2');
 test_suite.add_test(TestEqual(X1,X2,'equal to 5 decimal places',5));
 test_suite.add_test(TestNotEqual(X1,X2,'not equal to 4 decimal places',4));
 test_suite.add_test(TestError(f,{1},'error in evaluating f(x) = x² at x = 1'));
+test_suite.add_test(TestNoError(f,{zeros(2,1)},'no error in evaluating non-vectorized f(x) = x² when f is passed a vector'));
 %%
 % Adding tests to the test suite that we know will pass,
 test_suite.add_test(TestError(f,{zeros(2,1)},'error in evaluating non-vectorized f(x) = x² when f is passed a vector'));

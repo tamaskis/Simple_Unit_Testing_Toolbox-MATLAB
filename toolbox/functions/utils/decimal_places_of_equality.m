@@ -6,7 +6,7 @@
 %   n_equal = decimal_places_of_equality(X1,X2)
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2022-12-28
+% Last Update: 2023-01-01
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %

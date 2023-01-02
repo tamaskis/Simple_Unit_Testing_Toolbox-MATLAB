@@ -3,10 +3,10 @@
 % TestSpeed  Unit test for confirming that one function is faster than
 % another.
 %
-% See also UnitTest, TestEqual, TestNotEqual, TestError, TestNoError.
+% See also UnitTest.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2022-12-29
+% Last Update: 2023-01-01
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %

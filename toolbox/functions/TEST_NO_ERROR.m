@@ -10,7 +10,7 @@
 % See also TEST_ERROR.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2022-11-05
+% Last Update: 2023-01-01
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -33,8 +33,7 @@
 %   outputs - (1×1 struct) test outputs
 %       • passed  - (1×1 logical) true if test passed, false otherwise
 %       • result  - (char) string storing result of test
-%       • message - (char) string storing additional diagnostic message if
-%                   test failed
+%       • message - (char) string storing additional diagnostic message
 %
 % -----
 % NOTE:

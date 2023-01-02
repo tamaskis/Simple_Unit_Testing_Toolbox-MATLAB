@@ -4,11 +4,14 @@
 %
 %   TIME_EVALUATION(f)
 %   TIME_EVALUATION(f,args)
-%   TIME_EVALUATION(__,n_eval,print)
+%   TIME_EVALUATION(f,args,n_eval)
+%   TIME_EVALUATION(__,print)
 %   time = TIME_EVALUATION(__)
 %
+% See also TEST_SPEED.
+%
 % Copyright © 2022 Tamas Kis
-% Last Update: 2022-12-29
+% Last Update: 2023-01-01
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -17,7 +20,8 @@
 % ------
 % INPUT:
 % ------
-%   f       - (1×1 function_handle) function handle
+%   f       - (1×1 function_handle) function handle assigned to function
+%             you want to time
 %   args    - (OPTIONAL) (cell array) input arguments to functions
 %             (defaults to empty cell array)
 %   n_eval  - (OPTIONAL) (1×1 double) number of times to evaluate functions

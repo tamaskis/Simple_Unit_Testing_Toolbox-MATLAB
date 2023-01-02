@@ -1,0 +1,263 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>TEST_NOT_EQUAL</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-01-01"><meta name="DC.source" content="TEST_NOT_EQUAL_doc.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>TEST_NOT_EQUAL</tt></h1><!--introduction--><p>Test if two double arrays are NOT equal up to a desired number of decimal places.</p><p><a href="index.html">Back to Simple Unit Testing Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Example #1: Passed test.</a></li><li><a href="#6">Example #2: Failed test.</a></li><li><a href="#8">Example #3: Testing to a specified precision.</a></li><li><a href="#10">Example #4: Testing with arrays of different sizes.</a></li><li><a href="#12">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">TEST_NOT_EQUAL(X1,X2)
+TEST_NOT_EQUAL(X1,X2,n)
+TEST_NOT_EQUAL(__,name,print)
+outputs = TEST_NOT_EQUAL(__)
+</pre><h2 id="2">Description</h2><p><tt>TEST_NOT_EQUAL(X1,X2)</tt> tests if <tt>X1</tt> and <tt>X2</tt> are not equal to 16 decimal places. The results of the test are printed to the Command Window.</p><p><tt>TEST_NOT_EQUAL(X1,X2,n)</tt> tests if <tt>X1</tt> and <tt>X2</tt> are not equal to <tt>n</tt> decimal places. The results of the test are printed to the Command Window.</p><p><tt>TEST_NOT_EQUAL(...,name,print)</tt> does the same as the syntaxes above, but also allows the user to specify a test name, and whether or not to print the test results to the Command Window. This syntax is primarily used when defining unit test classes.</p><p><tt>outputs = TEST_NOT_EQUAL(...)</tt> also returns the test outputs.</p><h2 id="3">Input/Output Parameters</h2><p>
+  <table border=1>
+      <tr>
+          <td></td>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+      </tr>
+      <tr>
+          <td rowspan="5" style="text-align:center"><b>Input</b></td>
+          <td style="text-align:center"><TT>X1</TT></td>
+          <td>double array #1</td>
+          <td style="text-align:center">double array</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>X2</TT></td>
+          <td>double array #2</td>
+          <td style="text-align:center">double array</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>n</TT></td>
+          <td>(OPTIONAL) decimal places of precision (defaults to 16)</td>
+          <td style="text-align:center">1×1<BR>double</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>name</TT></td>
+          <td>(OPTIONAL) test name (defaults to empty string)</td>
+          <td style="text-align:center">char</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>print</TT></td>
+          <td>(OPTIONAL) <TT>true</TT> if test result should be printed to Command Window, <TT>false</TT> otherwise (defaults to <TT>true</TT>)</td>
+          <td style="text-align:center">1×1<BR>logical</td>
+      </tr>
+      <tr>
+          <td rowspan="1" style="text-align:center"><b>Output</b></td>
+          <td style="text-align:center"><TT>outputs</TT></td>
+          <td>test outputs
+              <BR>  - <TT>passed</TT> (1×1 logical) → <TT>true</TT> if test passed, <TT>false</TT> otherwise
+              <BR>  - <TT>result</TT> (char) → string storing result of test
+              <BR>  - <TT>message</TT> (char) → string storing additional diagnostic message
+              </td>
+          <td style="text-align:center">1×1<BR>struct</td>
+      </tr>
+  </table>
+</p><h2 id="4">Example #1: Passed test.</h2><p>Let's define two nearly (but NOT) identical arrays.</p><pre class="codeinput">X1 = [1  1;
+      1  1];
+X2 = [1  1;
+      1  1.00001];
+</pre><p>Testing for inequality,</p><pre class="codeinput">TEST_NOT_EQUAL(X1,X2);
+</pre><pre class="codeoutput">Passed.
+    &gt;&gt;&gt;&gt; WARNING: This test tested for inequality, but the arrays ARE equal to 4 decimal places.
+</pre><h2 id="6">Example #2: Failed test.</h2><p>Let's define two identical arrays.</p><pre class="codeinput">X1 = [1  1;
+      1  1];
+X2 = [1  1;
+      1  1];
+</pre><p>Testing for equality between these arrays should result in a failed test because they are equal to an infinite amount of decimal places.</p><pre class="codeinput">TEST_NOT_EQUAL(X1,X2);
+</pre><pre class="codeoutput">FAILED.
+    &gt;&gt;&gt;&gt; Arrays are equal to at least 100 decimal places.
+</pre><h2 id="8">Example #3: Testing to a specified precision.</h2><p>Let's define two nearly (but NOT) identical arrays.</p><pre class="codeinput">X1 = [1  1;
+      1  1];
+X2 = [1  1;
+      1  1.00001];
+</pre><p>While not identical, these arrays <i>are</i> equal to 4 decimal places. If we test for array inequality up to 3 decimal places of precision, we should get a failed test result because the arrays <i>are</i> equal to 4 decimal places.</p><pre class="codeinput">TEST_NOT_EQUAL(X1,X2,3);
+</pre><pre class="codeoutput">FAILED.
+    &gt;&gt;&gt;&gt; Arrays are equal to 4 decimal places.
+</pre><h2 id="10">Example #4: Testing with arrays of different sizes.</h2><p>Let's define two arrays with elements that all have the same value but have different sizes.</p><pre class="codeinput">X1 = [1  1];
+X2 = [1  1;
+      1  1];
+</pre><p>If we test for inequality, we should get a passed test because arrays that have different dimensions cannot be equal.</p><pre class="codeinput">TEST_NOT_EQUAL(X1,X2);
+</pre><pre class="codeoutput">Passed.
+</pre><h2 id="12">See also</h2><p><a href="TEST_EQUAL_doc.html"><tt>TEST_EQUAL</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |TEST_NOT_EQUAL|
+% Test if two double arrays are NOT equal up to a desired number of decimal
+% places.
+% 
+% <index.html Back to Simple Unit Testing Toolbox Contents>.
+%% Syntax
+%   TEST_NOT_EQUAL(X1,X2)
+%   TEST_NOT_EQUAL(X1,X2,n)
+%   TEST_NOT_EQUAL(__,name,print)
+%   outputs = TEST_NOT_EQUAL(__)
+%% Description
+% |TEST_NOT_EQUAL(X1,X2)| tests if |X1| and |X2| are not equal to 16 
+% decimal places. The results of the test are printed to the Command 
+% Window.
+%
+% |TEST_NOT_EQUAL(X1,X2,n)| tests if |X1| and |X2| are not equal to |n| 
+% decimal places. The results of the test are printed to the Command 
+% Window.
+%
+% |TEST_NOT_EQUAL(...,name,print)| does the same as the syntaxes above, but 
+% also allows the user to specify a test name, and whether or not to print 
+% the test results to the Command Window. This syntax is primarily used
+% when defining unit test classes.
+%
+% |outputs = TEST_NOT_EQUAL(...)| also returns the test outputs.
+%% Input/Output Parameters
+% <html>
+%   <table border=1>
+%       <tr>
+%           <td></td>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%       </tr>
+%       <tr>
+%           <td rowspan="5" style="text-align:center"><b>Input</b></td>
+%           <td style="text-align:center"><TT>X1</TT></td>
+%           <td>double array #1</td>
+%           <td style="text-align:center">double array</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>X2</TT></td>
+%           <td>double array #2</td>
+%           <td style="text-align:center">double array</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>n</TT></td>
+%           <td>(OPTIONAL) decimal places of precision (defaults to 16)</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>name</TT></td>
+%           <td>(OPTIONAL) test name (defaults to empty string)</td>
+%           <td style="text-align:center">char</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>print</TT></td>
+%           <td>(OPTIONAL) <TT>true</TT> if test result should be printed to Command Window, <TT>false</TT> otherwise (defaults to <TT>true</TT>)</td>
+%           <td style="text-align:center">1×1<BR>logical</td>
+%       </tr>
+%       <tr>
+%           <td rowspan="1" style="text-align:center"><b>Output</b></td>
+%           <td style="text-align:center"><TT>outputs</TT></td>
+%           <td>test outputs
+%               <BR>  - <TT>passed</TT> (1×1 logical) → <TT>true</TT> if test passed, <TT>false</TT> otherwise
+%               <BR>  - <TT>result</TT> (char) → string storing result of test
+%               <BR>  - <TT>message</TT> (char) → string storing additional diagnostic message
+%               </td>
+%           <td style="text-align:center">1×1<BR>struct</td>
+%       </tr>
+%   </table>
+% </html>
+%% Example #1: Passed test.
+% Let's define two nearly (but NOT) identical arrays.
+X1 = [1  1;
+      1  1];
+X2 = [1  1;
+      1  1.00001];
+%%
+% Testing for inequality,
+TEST_NOT_EQUAL(X1,X2);
+%% Example #2: Failed test.
+% Let's define two identical arrays.
+X1 = [1  1;
+      1  1];
+X2 = [1  1;
+      1  1];
+%%
+% Testing for equality between these arrays should result in a failed test
+% because they are equal to an infinite amount of decimal places.
+TEST_NOT_EQUAL(X1,X2);
+%% Example #3: Testing to a specified precision.
+% Let's define two nearly (but NOT) identical arrays.
+X1 = [1  1;
+      1  1];
+X2 = [1  1;
+      1  1.00001];
+%%
+% While not identical, these arrays _are_ equal to 4 decimal places. If we
+% test for array inequality up to 3 decimal places of precision, we should
+% get a failed test result because the arrays _are_ equal to 4 decimal 
+% places.
+TEST_NOT_EQUAL(X1,X2,3);
+%% Example #4: Testing with arrays of different sizes.
+% Let's define two arrays with elements that all have the same value but
+% have different sizes.
+X1 = [1  1];
+X2 = [1  1;
+      1  1];
+%%
+% If we test for inequality, we should get a passed test because arrays 
+% that have different dimensions cannot be equal.
+TEST_NOT_EQUAL(X1,X2);
+%% See also
+% <TEST_EQUAL_doc.html |TEST_EQUAL|>
+##### SOURCE END #####
+--></body></html>

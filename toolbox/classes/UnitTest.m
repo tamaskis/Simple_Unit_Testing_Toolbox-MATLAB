@@ -2,8 +2,10 @@
 %
 % UnitTest  Class defining a unit test.
 %
+% See also TestEqual, TestNotEqual, TestError, TestNoError, TestSpeed.
+%
 % Copyright © 2022 Tamas Kis
-% Last Update: 2022-12-29
+% Last Update: 2023-01-01
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -20,8 +22,8 @@ classdef UnitTest < handle & matlab.mixin.Heterogeneous
     % -----------
     
     properties
-        UNIT_TEST   % (1×1 function_handle) unit test function
-        test_args   % (cell array) unit test function inputs
+        UNIT_TEST   % (1×1 function_handle) function handle assigned to unit test function
+        test_args   % (cell array) input arguments to unit test function
         name        % (char) test name
         passed      % (1×1 logical) true if test passed, false otherwise
     end
@@ -66,22 +68,23 @@ classdef UnitTest < handle & matlab.mixin.Heterogeneous
         function n_passed = run(obj,n_passed,n_run)
             % UnitTest.run
             %
-            % Runs the test.
+            % Runs the unit test and prints the results to the Command
+            % Window.
             %--------------------------------------------------------------
             %
             % ------
             % INPUT:
             % ------
             %   n_passed    - (1×1 double) number of tests that have passed
-            %                 thus far
+            %                 so far
             %   n_run       - (1×1 double) number of tests that have been
-            %                 run thus far
+            %                 run so far
             %
             % -------
             % OUTPUT:
             % -------
             %   n_passed    - (1×1 double) updated number of tests that
-            %                 have passed thus far
+            %                 have passed so far
             %
             %--------------------------------------------------------------
             

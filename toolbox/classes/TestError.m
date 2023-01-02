@@ -2,10 +2,10 @@
 %
 % TestError  Unit test for confirming that a function throws an error.
 %
-% See also UnitTest, TestEqual, TestNotEqual, TestNoError, TestSpeed.
+% See also TestNoError, UnitTest.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2022-12-29
+% Last Update: 2023-01-01
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %

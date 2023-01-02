@@ -33,4 +33,4 @@
 
 ### Testing speed.
 `TEST_SPEED(f_fast,f_slow,args,n_eval)`\
-`TIME_OPERATION(f,args,n_eval)`
+`TIME_EVALUATION(f,args,n_eval)`

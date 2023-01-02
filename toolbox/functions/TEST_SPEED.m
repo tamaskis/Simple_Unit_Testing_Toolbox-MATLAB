@@ -2,14 +2,16 @@
 %
 % TEST_SPEED  Test if one function is faster to evaluate than another.
 %
-%   TEST_SPEED(f_slow,f_fast,args)
-%   TEST_SPEED(__,n_eval,name,print)
+%   TEST_SPEED(f_fast,f_slow)
+%   TEST_SPEED(f_fast,f_slow,args)
+%   TEST_SPEED(f_fast,f_slow,args,n_eval)
+%   TEST_SPEED(__,name,print)
 %   outputs = TEST_SPEED(__)
 %
-% See also TEST_TIME.
+% See also TIME_EVALUATION.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2022-12-28
+% Last Update: 2023-01-01
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -34,8 +36,7 @@
 %   outputs - (1×1 struct) test outputs
 %       • passed  - (1×1 logical) true if test passed, false otherwise
 %       • result  - (char) string storing result of test
-%       • message - (char) string storing additional diagnostic message if
-%                   test failed
+%       • message - (char) string storing additional diagnostic message
 %
 % -----
 % NOTE:
