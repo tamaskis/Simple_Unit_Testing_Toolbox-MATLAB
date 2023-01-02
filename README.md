@@ -12,7 +12,7 @@ MATLAB will automatically perform the installation and add all the contents of t
 
 ## Documentation
 
-[Toolbox Documentation](https://tamaskis.github.io/Simple_Unit_Testing_Toolbox-MATLAB)\
+[Toolbox Documentation](https://tamaskis.github.io/Simple_Unit_Testing_Toolbox-MATLAB)
 
 To open the home page of the toolbox documentation in MATLAB, type the following in the Command Window:
 
