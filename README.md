@@ -1,5 +1,30 @@
 # Simple Unit Testing Toolbox
 
+This toolbox defines a simple unit testing framework for MATLAB.
+
+## Installation
+
+1. Download the toolbox from [MATLAB](TODO) or [GitHub](https://github.com/tamaskis/Simple_Unit_Testing_Toolbox-MATLAB).
+2. Open the `INSTALL` folder.
+3. Double-click on `Simple Unit Testing Toolbox.mltbx`.
+
+MATLAB will automatically perform the installation and add all the contents of the `toolbox` folder to the MATLAB search path.
+
+## Documentation
+
+[Toolbox Documentation](https://tamaskis.github.io/Simple_Unit_Testing_Toolbox-MATLAB)\
+
+To open the home page of the toolbox documentation in MATLAB, type the following in the Command Window:
+
+```
+doc_SUTT
+```
+
+To open the documentation of a specific function or class with name `name`, type the following in the Command Window:
+
+```
+doc_SUTT name
+```
 
 ## Test Suites
 
