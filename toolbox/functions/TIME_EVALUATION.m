@@ -62,7 +62,8 @@ function time = TIME_EVALUATION(f,args,n_eval,print)
     
     % prints result
     if print
-        fprintf(['Average function evaluation time: ',num2str(time),' s']);
+        fprintf(['Average function evaluation time: ',num2str(time),...
+            ' s\n']);
     end
     
 end
