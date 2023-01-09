@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>TEST_NO_ERROR</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-01-03"><meta name="DC.source" content="TEST_NO_ERROR_doc.m"><style type="text/css">
+      --><title>TEST_NO_ERROR</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-01-08"><meta name="DC.source" content="TEST_NO_ERROR_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,20 +67,18 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>TEST_NO_ERROR</tt></h1><!--introduction--><p>Test to ensure an error is NOT thrown.</p><p><a href="index.html">Back to Simple Unit Testing Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Example #1: Passed test.</a></li><li><a href="#7">Example #2: Failed test.</a></li><li><a href="#8">Example #3: User-defined function raising custom error.</a></li><li><a href="#9">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">TEST_NO_ERROR(f)
+  </style></head><body><div class="content"><h1><tt>TEST_NO_ERROR</tt></h1><!--introduction--><p>Test to ensure an error is NOT thrown.</p><p><a href="index.html">Back to Simple Unit Testing Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Inputs</a></li><li><a href="#4">Outputs</a></li><li><a href="#5">Example #1: Passed test.</a></li><li><a href="#8">Example #2: Failed test.</a></li><li><a href="#9">Example #3: User-defined function raising custom error.</a></li><li><a href="#10">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">TEST_NO_ERROR(f)
 TEST_NO_ERROR(f,args)
 TEST_NO_ERROR(__,name,print)
 outputs = TEST_NO_ERROR(__)
-</pre><h2 id="2">Description</h2><p><tt>TEST_NO_ERROR(f)</tt> tests if the function <tt>f</tt> (that has no inputs) does not throw an error.</p><p><tt>TEST_NO_ERROR(f,args)</tt> tests if the function <tt>f</tt> does not throw an error when subject to the input arguments <tt>args</tt>.</p><p><tt>TEST_NO_ERROR(...,name,print)</tt> does the same as the syntaxes above, but also allows the user to specify a test name, and whether or not to print the test results to the Command Window. This syntax is primarily used when defining unit test classes.</p><p><tt>outputs = TEST_NO_ERROR(...)</tt> also returns the test outputs.</p><h2 id="3">Input/Output Parameters</h2><p>
-  <table border=1>
+</pre><h2 id="2">Description</h2><p><tt>TEST_NO_ERROR(f)</tt> tests if the function <tt>f</tt> (that has no inputs) does not throw an error.</p><p><tt>TEST_NO_ERROR(f,args)</tt> tests if the function <tt>f</tt> does not throw an error when subject to the input arguments <tt>args</tt>.</p><p><tt>TEST_NO_ERROR(...,name,print)</tt> does the same as the syntaxes above, but also allows the user to specify a test name, and whether or not to print the test results to the Command Window. This syntax is primarily used when defining unit test classes.</p><p><tt>outputs = TEST_NO_ERROR(...)</tt> also returns the test outputs.</p><h2 id="3">Inputs</h2><p>
+  <table>
       <tr>
-          <td></td>
           <td style="text-align:center"><b>Variable</b></td>
           <td style="text-align:center"><b>Description</b></td>
           <td style="text-align:center"><b>Format</b></td>
       </tr>
       <tr>
-          <td rowspan="4" style="text-align:center"><b>Input</b></td>
           <td style="text-align:center"><TT>f</TT></td>
           <td>function handle assigned to function
             you want to test</td>
@@ -101,26 +99,52 @@ outputs = TEST_NO_ERROR(__)
           <td>(OPTIONAL) <TT>true</TT> if test result should be printed to Command Window, <TT>false</TT> otherwise (defaults to <TT>true</TT>)</td>
           <td style="text-align:center">1×1<BR>logical</td>
       </tr>
+  </table>
+</p><h2 id="4">Outputs</h2><p>
+  <table>
       <tr>
-          <td rowspan="1" style="text-align:center"><b>Output</b></td>
-          <td style="text-align:center"><TT>outputs</TT></td>
-          <td>test outputs
-              <BR>  - <TT>passed</TT> (1×1 logical) → <TT>true</TT> if test passed, <TT>false</TT> otherwise
-              <BR>  - <TT>result</TT> (char) → string storing result of test
-              <BR>  - <TT>message</TT> (char) → string storing additional diagnostic message
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>output</TT></td>
+          <td>test outputs<BR><BR>
+              <table>
+                  <tr>
+                      <td style="text-align:center"><b>Field</b></td>
+                      <td style="text-align:center"><b>Description</b></td>
+                      <td style="text-align:center"><b>Format</b></td>
+                  </tr>
+                  <tr>
+                      <td style="text-align:center"><TT>passed</TT></td>
+                      <td><TT>true</TT> if test passed, <TT>false</TT> otherwise</td>
+                      <td style="text-align:center">1×1<BR>logical</td>
+                  </tr>
+                  <tr>
+                      <td style="text-align:center"><TT>result</TT></td>
+                      <td>string storing result of test</td>
+                      <td style="text-align:center">char array</td>
+                  </tr>
+                  <tr>
+                      <td style="text-align:center"><TT>message</TT></td>
+                      <td>string storing additional diagnostic message</td>
+                      <td style="text-align:center">char array</td>
+                  </tr>
+              </table>
               </td>
           <td style="text-align:center">1×1<BR>struct</td>
       </tr>
   </table>
-</p><h2 id="4">Example #1: Passed test.</h2><p>MATLAB's <tt>mod</tt> function requires to inputs Therefore, we expect <tt>mod</tt> to execute successfully and not throw an error when given 2 inputs. First, we assign a function handle to the <tt>mod</tt> function.</p><pre class="codeinput">f = @(x,y) mod(x,y);
+</p><h2 id="5">Example #1: Passed test.</h2><p>MATLAB's <tt>mod</tt> function requires to inputs Therefore, we expect <tt>mod</tt> to execute successfully and not throw an error when given 2 inputs. First, we assign a function handle to the <tt>mod</tt> function.</p><pre class="codeinput">f = @(x,y) mod(x,y);
 </pre><p>Next, let's test to make sure the <tt>mod</tt> function does not throw an error when we give it 2 real-valued inputs.</p><pre class="codeinput">TEST_NO_ERROR(f,{5,5});
 </pre><pre class="codeoutput">Passed.
 </pre><p>Note that we don't have to define the function handle separately; we can also define it within the call on <tt>TEST_NO_ERROR</tt>.</p><pre class="codeinput">TEST_NO_ERROR(@(x,y)mod(x,y),{5,5});
 </pre><pre class="codeoutput">Passed.
-</pre><h2 id="7">Example #2: Failed test.</h2><p>Let's once again use MATLAB's <tt>mod</tt> function (which requires 2 inputs) as an example. This time around, let's incorrectly pass it only 1 input. Now, the <tt>mod</tt> function will not execute correctly, and testing for no error should result in a failed test (since the function will throw an error).</p><pre class="codeinput">TEST_NO_ERROR(@(x,y)mod(x,y),{5});
+</pre><h2 id="8">Example #2: Failed test.</h2><p>Let's once again use MATLAB's <tt>mod</tt> function (which requires 2 inputs) as an example. This time around, let's incorrectly pass it only 1 input. Now, the <tt>mod</tt> function will not execute correctly, and testing for no error should result in a failed test (since the function will throw an error).</p><pre class="codeinput">TEST_NO_ERROR(@(x,y)mod(x,y),{5});
 </pre><pre class="codeoutput">FAILED.
     &gt;&gt;&gt;&gt; Function threw the following error: Not enough input arguments.
-</pre><h2 id="8">Example #3: User-defined function raising custom error.</h2><p>Let's consider a user-defined <tt>divide_safe</tt> function that safeguards against division by 0. If we try dividing 5 by 0 using the <tt>divide_safe</tt> function, we should get an error. If we test for no error, then we will get a failed test result.</p><pre class="codeinput">TEST_NO_ERROR(@(a,b)divide_safe(a,b),{5,0});
+</pre><h2 id="9">Example #3: User-defined function raising custom error.</h2><p>Let's consider a user-defined <tt>divide_safe</tt> function that safeguards against division by 0. If we try dividing 5 by 0 using the <tt>divide_safe</tt> function, we should get an error. If we test for no error, then we will get a failed test result.</p><pre class="codeinput">TEST_NO_ERROR(@(a,b)divide_safe(a,b),{5,0});
 
 <span class="keyword">function</span> c = divide_safe(a,b)
     <span class="keyword">if</span> b == 0
@@ -130,7 +154,7 @@ outputs = TEST_NO_ERROR(__)
 <span class="keyword">end</span>
 </pre><pre class="codeoutput">FAILED.
     &gt;&gt;&gt;&gt; Function threw the following error: Divide-by-zero error.
-</pre><h2 id="9">See also</h2><p><a href="TEST_ERROR_doc.html"><tt>TEST_ERROR</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+</pre><h2 id="10">See also</h2><p><a href="TEST_ERROR_doc.html"><tt>TEST_ERROR</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |TEST_NO_ERROR|
 % Test to ensure an error is NOT thrown.
@@ -154,17 +178,15 @@ outputs = TEST_NO_ERROR(__)
 % when defining unit test classes.
 %
 % |outputs = TEST_NO_ERROR(...)| also returns the test outputs.
-%% Input/Output Parameters
+%% Inputs
 % <html>
-%   <table border=1>
+%   <table>
 %       <tr>
-%           <td></td>
 %           <td style="text-align:center"><b>Variable</b></td>
 %           <td style="text-align:center"><b>Description</b></td>
 %           <td style="text-align:center"><b>Format</b></td>
 %       </tr>
 %       <tr>
-%           <td rowspan="4" style="text-align:center"><b>Input</b></td>
 %           <td style="text-align:center"><TT>f</TT></td>
 %           <td>function handle assigned to function
 %             you want to test</td>
@@ -185,13 +207,41 @@ outputs = TEST_NO_ERROR(__)
 %           <td>(OPTIONAL) <TT>true</TT> if test result should be printed to Command Window, <TT>false</TT> otherwise (defaults to <TT>true</TT>)</td>
 %           <td style="text-align:center">1×1<BR>logical</td>
 %       </tr>
+%   </table>
+% </html>
+%% Outputs
+% <html>
+%   <table>
 %       <tr>
-%           <td rowspan="1" style="text-align:center"><b>Output</b></td>
-%           <td style="text-align:center"><TT>outputs</TT></td>
-%           <td>test outputs
-%               <BR>  - <TT>passed</TT> (1×1 logical) → <TT>true</TT> if test passed, <TT>false</TT> otherwise
-%               <BR>  - <TT>result</TT> (char) → string storing result of test
-%               <BR>  - <TT>message</TT> (char) → string storing additional diagnostic message
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>output</TT></td>
+%           <td>test outputs<BR><BR>
+%               <table>
+%                   <tr>
+%                       <td style="text-align:center"><b>Field</b></td>
+%                       <td style="text-align:center"><b>Description</b></td>
+%                       <td style="text-align:center"><b>Format</b></td>
+%                   </tr>
+%                   <tr>
+%                       <td style="text-align:center"><TT>passed</TT></td>
+%                       <td><TT>true</TT> if test passed, <TT>false</TT> otherwise</td>
+%                       <td style="text-align:center">1×1<BR>logical</td>
+%                   </tr>
+%                   <tr>
+%                       <td style="text-align:center"><TT>result</TT></td>
+%                       <td>string storing result of test</td>
+%                       <td style="text-align:center">char array</td>
+%                   </tr>
+%                   <tr>
+%                       <td style="text-align:center"><TT>message</TT></td>
+%                       <td>string storing additional diagnostic message</td>
+%                       <td style="text-align:center">char array</td>
+%                   </tr>
+%               </table>
 %               </td>
 %           <td style="text-align:center">1×1<BR>struct</td>
 %       </tr>

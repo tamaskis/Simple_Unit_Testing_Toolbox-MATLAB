@@ -6,7 +6,7 @@
 % See also TestError, UnitTest.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-01-07
+% Last Update: 2023-01-08
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -32,7 +32,7 @@ classdef TestNoError < UnitTest
             %   f       - (1×1 function_handle) function handle assigned to 
             %             function you want to test
             %   args    - (cell array) input arguments to f
-            %   name    - (char) test name
+            %   name    - (char array) test name
             %
             % -------
             % OUTPUT:

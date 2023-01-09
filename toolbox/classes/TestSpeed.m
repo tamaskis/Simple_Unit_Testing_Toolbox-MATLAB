@@ -6,7 +6,7 @@
 % See also UnitTest.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-01-07
+% Last Update: 2023-01-08
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -34,7 +34,7 @@ classdef (HandleCompatible = true) TestSpeed < UnitTest
             %   f_slow  - (1×1 function_handle) function handle for slower
             %             function
             %   args    - (cell array) input arguments to functions
-            %   name    - (char) test name
+            %   name    - (char array) test name
             %   n       - (OPTIONAL) (1×1 double) number of times to 
             %             evaluate functions when determining average 
             %             evaluation time (defaults to 1000)

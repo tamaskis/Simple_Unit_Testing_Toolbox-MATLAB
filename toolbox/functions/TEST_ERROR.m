@@ -5,12 +5,12 @@
 %   TEST_ERROR(f)
 %   TEST_ERROR(f,args)
 %   TEST_ERROR(__,name,print)
-%   outputs = TEST_ERROR(__)
+%   output = TEST_ERROR(__)
 %
 % See also TEST_NO_ERROR.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-01-07
+% Last Update: 2023-01-08
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -23,17 +23,18 @@
 %             you want to test
 %   args    - (OPTIONAL) (cell array) input arguments to f (defaults to
 %             empty cell array)
-%   name    - (OPTIONAL) (char) test name (defaults to empty string)
+%   name    - (OPTIONAL) (char array) test name (defaults to empty string)
 %   print   - (OPTIONAL) (1×1 logical) true if test result should be 
 %             printed to Command Window, false otherwise (defaults to true)
 %
 % -------
 % OUTPUT:
 % -------
-%   outputs - (1×1 struct) test outputs
+%   output  - (1×1 struct) test outputs
 %       • passed  - (1×1 logical) true if test passed, false otherwise
-%       • result  - (char) string storing result of test
-%       • message - (char) string storing additional diagnostic message
+%       • result  - (char array) string storing result of test
+%       • message - (char array) string storing additional diagnostic 
+%                   message
 %
 % -----
 % NOTE:
@@ -46,7 +47,7 @@
 %       inputs, we do not care about any return values.
 %
 %==========================================================================
-function outputs = TEST_ERROR(f,args,name,print)
+function output = TEST_ERROR(f,args,name,print)
     
     % defaults input arguments to empty cell array
     if (nargin < 2) || isempty(args)
@@ -105,8 +106,8 @@ function outputs = TEST_ERROR(f,args,name,print)
     end
     
     % packages test outputs into struct
-    outputs.passed = passed;
-    outputs.result = result;
-    outputs.message = message;
+    output.passed = passed;
+    output.result = result;
+    output.message = message;
     
 end

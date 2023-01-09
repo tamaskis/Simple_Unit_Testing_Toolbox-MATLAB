@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>TEST_EQUAL</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-01-03"><meta name="DC.source" content="TEST_EQUAL_doc.m"><style type="text/css">
+      --><title>TEST_EQUAL</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-01-08"><meta name="DC.source" content="TEST_EQUAL_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,20 +67,18 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>TEST_EQUAL</tt></h1><!--introduction--><p>Test if two double arrays are equal up to a desired number of decimal places.</p><p><a href="index.html">Back to Simple Unit Testing Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Example #1: Passed test.</a></li><li><a href="#6">Example #2: Failed test.</a></li><li><a href="#8">Example #3: Testing to a specified precision.</a></li><li><a href="#11">Example #4: Testing with arrays of different sizes.</a></li><li><a href="#13">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">TEST_EQUAL(X1,X2)
+  </style></head><body><div class="content"><h1><tt>TEST_EQUAL</tt></h1><!--introduction--><p>Test if two double arrays are equal up to a desired number of decimal places.</p><p><a href="index.html">Back to Simple Unit Testing Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Inputs</a></li><li><a href="#4">Outputs</a></li><li><a href="#5">Example #1: Passed test.</a></li><li><a href="#7">Example #2: Failed test.</a></li><li><a href="#9">Example #3: Testing to a specified precision.</a></li><li><a href="#12">Example #4: Testing with arrays of different sizes.</a></li><li><a href="#14">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">TEST_EQUAL(X1,X2)
 TEST_EQUAL(X1,X2,n)
 TEST_EQUAL(__,name,print)
 outputs = TEST_EQUAL(__)
-</pre><h2 id="2">Description</h2><p><tt>TEST_EQUAL(X1,X2)</tt> tests if <tt>X1</tt> and <tt>X2</tt> are equal to 16 decimal places. The results of the test are printed to the Command Window.</p><p><tt>TEST_EQUAL(X1,X2,n)</tt> tests if <tt>X1</tt> and <tt>X2</tt> are equal to <tt>n</tt> decimal places. The results of the test are printed to the Command Window.</p><p><tt>TEST_EQUAL(...,name,print)</tt> does the same as the syntaxes above, but also allows the user to specify a test name, and whether or not to print the test results to the Command Window. This syntax is primarily used when defining unit test classes.</p><p><tt>outputs = TEST_EQUAL(...)</tt> also returns the test outputs.</p><h2 id="3">Input/Output Parameters</h2><p>
-  <table border=1>
+</pre><h2 id="2">Description</h2><p><tt>TEST_EQUAL(X1,X2)</tt> tests if <tt>X1</tt> and <tt>X2</tt> are equal to 16 decimal places. The results of the test are printed to the Command Window.</p><p><tt>TEST_EQUAL(X1,X2,n)</tt> tests if <tt>X1</tt> and <tt>X2</tt> are equal to <tt>n</tt> decimal places. The results of the test are printed to the Command Window.</p><p><tt>TEST_EQUAL(...,name,print)</tt> does the same as the syntaxes above, but also allows the user to specify a test name, and whether or not to print the test results to the Command Window. This syntax is primarily used when defining unit test classes.</p><p><tt>outputs = TEST_EQUAL(...)</tt> also returns the test outputs.</p><h2 id="3">Inputs</h2><p>
+  <table>
       <tr>
-          <td></td>
           <td style="text-align:center"><b>Variable</b></td>
           <td style="text-align:center"><b>Description</b></td>
           <td style="text-align:center"><b>Format</b></td>
       </tr>
       <tr>
-          <td rowspan="5" style="text-align:center"><b>Input</b></td>
           <td style="text-align:center"><TT>X1</TT></td>
           <td>double array #1</td>
           <td style="text-align:center">double array</td>
@@ -105,24 +103,50 @@ outputs = TEST_EQUAL(__)
           <td>(OPTIONAL) <TT>true</TT> if test result should be printed to Command Window, <TT>false</TT> otherwise (defaults to <TT>true</TT>)</td>
           <td style="text-align:center">1×1<BR>logical</td>
       </tr>
+  </table>
+</p><h2 id="4">Outputs</h2><p>
+  <table>
       <tr>
-          <td rowspan="1" style="text-align:center"><b>Output</b></td>
-          <td style="text-align:center"><TT>outputs</TT></td>
-          <td>test outputs
-              <BR>  - <TT>passed</TT> (1×1 logical) → <TT>true</TT> if test passed, <TT>false</TT> otherwise
-              <BR>  - <TT>result</TT> (char) → string storing result of test
-              <BR>  - <TT>message</TT> (char) → string storing additional diagnostic message
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>output</TT></td>
+          <td>test outputs<BR><BR>
+              <table>
+                  <tr>
+                      <td style="text-align:center"><b>Field</b></td>
+                      <td style="text-align:center"><b>Description</b></td>
+                      <td style="text-align:center"><b>Format</b></td>
+                  </tr>
+                  <tr>
+                      <td style="text-align:center"><TT>passed</TT></td>
+                      <td><TT>true</TT> if test passed, <TT>false</TT> otherwise</td>
+                      <td style="text-align:center">1×1<BR>logical</td>
+                  </tr>
+                  <tr>
+                      <td style="text-align:center"><TT>result</TT></td>
+                      <td>string storing result of test</td>
+                      <td style="text-align:center">char array</td>
+                  </tr>
+                  <tr>
+                      <td style="text-align:center"><TT>message</TT></td>
+                      <td>string storing additional diagnostic message</td>
+                      <td style="text-align:center">char array</td>
+                  </tr>
+              </table>
               </td>
           <td style="text-align:center">1×1<BR>struct</td>
       </tr>
   </table>
-</p><h2 id="4">Example #1: Passed test.</h2><p>Let's define two identical arrays.</p><pre class="codeinput">X1 = [1  1;
+</p><h2 id="5">Example #1: Passed test.</h2><p>Let's define two identical arrays.</p><pre class="codeinput">X1 = [1  1;
       1  1];
 X2 = [1  1;
       1  1];
 </pre><p>Testing for equality,</p><pre class="codeinput">TEST_EQUAL(X1,X2);
 </pre><pre class="codeoutput">Passed.
-</pre><h2 id="6">Example #2: Failed test.</h2><p>Let's define two nearly identical arrays.</p><pre class="codeinput">X1 = [1  1;
+</pre><h2 id="7">Example #2: Failed test.</h2><p>Let's define two nearly identical arrays.</p><pre class="codeinput">X1 = [1  1;
       1  1];
 X2 = [1  1;
       1  1.00001];
@@ -130,7 +154,7 @@ X2 = [1  1;
 </pre><pre class="codeoutput">FAILED.
     &gt;&gt;&gt;&gt; Arrays are not equal to 16 decimal places.
     &gt;&gt;&gt;&gt; Arrays ARE equal to 4 decimal places.
-</pre><h2 id="8">Example #3: Testing to a specified precision.</h2><p>Let's consider the same two nearly identical arrays from the previous example.</p><pre class="codeinput">X1 = [1  1;
+</pre><h2 id="9">Example #3: Testing to a specified precision.</h2><p>Let's consider the same two nearly identical arrays from the previous example.</p><pre class="codeinput">X1 = [1  1;
       1  1];
 X2 = [1  1;
       1  1.00001];
@@ -140,13 +164,13 @@ X2 = [1  1;
     &gt;&gt;&gt;&gt; Arrays ARE equal to 4 decimal places.
 </pre><p>However, testing for equality up to 3 decimal places should result in a passed test.</p><pre class="codeinput">TEST_EQUAL(X1,X2,3);
 </pre><pre class="codeoutput">Passed.
-</pre><h2 id="11">Example #4: Testing with arrays of different sizes.</h2><p>Let's define two arrays with elements that all have the same value but have different sizes.</p><pre class="codeinput">X1 = [1  1];
+</pre><h2 id="12">Example #4: Testing with arrays of different sizes.</h2><p>Let's define two arrays with elements that all have the same value but have different sizes.</p><pre class="codeinput">X1 = [1  1];
 X2 = [1  1;
       1  1];
 </pre><p>If we test for equality, we should get a failed test because arrays that have different dimensions cannot be equal.</p><pre class="codeinput">TEST_EQUAL(X1,X2);
 </pre><pre class="codeoutput">FAILED.
     &gt;&gt;&gt;&gt; The two arrays are not the same size.
-</pre><h2 id="13">See also</h2><p><a href="TEST_NOT_EQUAL_doc.html"><tt>TEST_NOT_EQUAL</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+</pre><h2 id="14">See also</h2><p><a href="TEST_NOT_EQUAL_doc.html"><tt>TEST_NOT_EQUAL</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |TEST_EQUAL|
 % Test if two double arrays are equal up to a desired number of decimal
@@ -171,17 +195,15 @@ X2 = [1  1;
 % when defining unit test classes.
 %
 % |outputs = TEST_EQUAL(...)| also returns the test outputs.
-%% Input/Output Parameters
+%% Inputs
 % <html>
-%   <table border=1>
+%   <table>
 %       <tr>
-%           <td></td>
 %           <td style="text-align:center"><b>Variable</b></td>
 %           <td style="text-align:center"><b>Description</b></td>
 %           <td style="text-align:center"><b>Format</b></td>
 %       </tr>
 %       <tr>
-%           <td rowspan="5" style="text-align:center"><b>Input</b></td>
 %           <td style="text-align:center"><TT>X1</TT></td>
 %           <td>double array #1</td>
 %           <td style="text-align:center">double array</td>
@@ -206,13 +228,41 @@ X2 = [1  1;
 %           <td>(OPTIONAL) <TT>true</TT> if test result should be printed to Command Window, <TT>false</TT> otherwise (defaults to <TT>true</TT>)</td>
 %           <td style="text-align:center">1×1<BR>logical</td>
 %       </tr>
+%   </table>
+% </html>
+%% Outputs
+% <html>
+%   <table>
 %       <tr>
-%           <td rowspan="1" style="text-align:center"><b>Output</b></td>
-%           <td style="text-align:center"><TT>outputs</TT></td>
-%           <td>test outputs
-%               <BR>  - <TT>passed</TT> (1×1 logical) → <TT>true</TT> if test passed, <TT>false</TT> otherwise
-%               <BR>  - <TT>result</TT> (char) → string storing result of test
-%               <BR>  - <TT>message</TT> (char) → string storing additional diagnostic message
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>output</TT></td>
+%           <td>test outputs<BR><BR>
+%               <table>
+%                   <tr>
+%                       <td style="text-align:center"><b>Field</b></td>
+%                       <td style="text-align:center"><b>Description</b></td>
+%                       <td style="text-align:center"><b>Format</b></td>
+%                   </tr>
+%                   <tr>
+%                       <td style="text-align:center"><TT>passed</TT></td>
+%                       <td><TT>true</TT> if test passed, <TT>false</TT> otherwise</td>
+%                       <td style="text-align:center">1×1<BR>logical</td>
+%                   </tr>
+%                   <tr>
+%                       <td style="text-align:center"><TT>result</TT></td>
+%                       <td>string storing result of test</td>
+%                       <td style="text-align:center">char array</td>
+%                   </tr>
+%                   <tr>
+%                       <td style="text-align:center"><TT>message</TT></td>
+%                       <td>string storing additional diagnostic message</td>
+%                       <td style="text-align:center">char array</td>
+%                   </tr>
+%               </table>
 %               </td>
 %           <td style="text-align:center">1×1<BR>struct</td>
 %       </tr>

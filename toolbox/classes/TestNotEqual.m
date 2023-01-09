@@ -6,7 +6,7 @@
 % See also TestEqual, UnitTest.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-01-07
+% Last Update: 2023-01-08
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -31,7 +31,7 @@ classdef TestNotEqual < UnitTest
             % ------
             %   X1      - (double array) double array #1
             %   X2      - (double array) double array #2
-            %   name    - (char) test name
+            %   name    - (char array) test name
             %   n       - (OPTIONAL) (1×1 double) decimal places of 
             %             precision (defaults to 16)
             %

@@ -6,12 +6,12 @@
 %   TEST_EQUAL(X1,X2)
 %   TEST_EQUAL(X1,X2,n)
 %   TEST_EQUAL(__,name,print)
-%   outputs = TEST_EQUAL(__)
+%   output = TEST_EQUAL(__)
 %
 % See also TEST_NOT_EQUAL.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-01-07
+% Last Update: 2023-01-08
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -24,20 +24,21 @@
 %   X2      - (double array) double array #2
 %   n       - (OPTIONAL) (1×1 double) decimal places of precision (defaults
 %             to 16)
-%   name    - (OPTIONAL) (char) test name (defaults to empty string)
+%   name    - (OPTIONAL) (char array) test name (defaults to empty string)
 %   print   - (OPTIONAL) (1×1 logical) true if test result should be
 %             printed to Command Window, false otherwise (defaults to true)
 %
 % -------
 % OUTPUT:
 % -------
-%   outputs - (1×1 struct) test outputs
+%   output  - (1×1 struct) test outputs
 %       • passed  - (1×1 logical) true if test passed, false otherwise
-%       • result  - (char) string storing result of test
-%       • message - (char) string storing additional diagnostic message
+%       • result  - (char array) string storing result of test
+%       • message - (char array) string storing additional diagnostic 
+%                   message
 %
 %==========================================================================
-function outputs = TEST_EQUAL(X1,X2,n,name,print)
+function output = TEST_EQUAL(X1,X2,n,name,print)
     
     % sets decimal places of precision (defaults to 16, corresponding to 
     % 10⁻¹⁶)
@@ -57,11 +58,11 @@ function outputs = TEST_EQUAL(X1,X2,n,name,print)
     
     % if the two arrays do not have the same size, they cannot be equal
     if ~compare_sizes(X1,X2)
-        outputs.passed = false;
-        outputs.result = 'FAILED.';
-        outputs.message = 'The two arrays are not the same size.';
+        output.passed = false;
+        output.result = 'FAILED.';
+        output.message = 'The two arrays are not the same size.';
         if print
-            fprintf([name,outputs.result,'\n    >>>> ',outputs.message,...
+            fprintf([name,output.result,'\n    >>>> ',output.message,...
                 '\n']);
         end
         return;
@@ -115,8 +116,8 @@ function outputs = TEST_EQUAL(X1,X2,n,name,print)
     end
     
     % packages test outputs into struct
-    outputs.passed = passed;
-    outputs.result = result;
-    outputs.message = message;
+    output.passed = passed;
+    output.result = result;
+    output.message = message;
     
 end

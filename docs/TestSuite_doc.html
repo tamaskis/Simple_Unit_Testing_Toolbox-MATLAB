@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>TestSuite</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-01-03"><meta name="DC.source" content="TestSuite_doc.m"><style type="text/css">
+      --><title>TestSuite</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-01-08"><meta name="DC.source" content="TestSuite_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -68,7 +68,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
   </style></head><body><div class="content"><h1><tt>TestSuite</tt></h1><!--introduction--><p>Class defining a test suite.</p><p><a href="index.html">Back to Simple Unit Testing Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Properties</a></li><li><a href="#2">Constructor</a></li><li><a href="#3"><tt>add_test</tt></a></li><li><a href="#4"><tt>run</tt></a></li><li><a href="#5">Example #1: Basic test suite with all tests passing.</a></li><li><a href="#9">Example #2: Test suite with a name and with both passed and failed tests.</a></li><li><a href="#14">Example #3: Test suite that terminates on first failed test.</a></li><li><a href="#19">Example #4: An actual test suite.</a></li><li><a href="#20">See also</a></li></ul></div><h2 id="1">Properties</h2><p>
-  <table border=1>
+  <table>
       <tr>
           <td style="text-align:center"><b>Variable</b></td>
           <td style="text-align:center"><b>Description</b></td>
@@ -98,7 +98,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 </p><h2 id="2">Constructor</h2><pre class="language-matlab">test_suite = TestSuite
 test_suite = TestSuite(name,terminate)
 </pre><p>
-  <table border=1>
+  <table>
       <tr>
           <td style="text-align:center"><b>Variable</b></td>
           <td style="text-align:center"><b>Description</b></td>
@@ -122,7 +122,7 @@ TestSuite.add_test(TestError(f,args,name))
 TestSuite.add_test(TestNoError(f,args,name))
 TestSuite.add_test(TestSpeed(f_fast,f_slow,args,name))
 </pre><p><b>Description:</b> Adds a test to the test suite.</p><p>
-  <table border=1>
+  <table>
       <tr>
           <td style="text-align:center"><b>Variable</b></td>
           <td style="text-align:center"><b>Description</b></td>
@@ -244,7 +244,7 @@ TEST SUITE TERMINATED EARLY DUE TO FAILED UNIT TEST.
 % <index.html Back to Simple Unit Testing Toolbox Contents>.
 %% Properties
 % <html>
-%   <table border=1>
+%   <table>
 %       <tr>
 %           <td style="text-align:center"><b>Variable</b></td>
 %           <td style="text-align:center"><b>Description</b></td>
@@ -277,7 +277,7 @@ TEST SUITE TERMINATED EARLY DUE TO FAILED UNIT TEST.
 %   test_suite = TestSuite(name,terminate)
 %
 % <html>
-%   <table border=1>
+%   <table>
 %       <tr>
 %           <td style="text-align:center"><b>Variable</b></td>
 %           <td style="text-align:center"><b>Description</b></td>
@@ -306,7 +306,7 @@ TEST SUITE TERMINATED EARLY DUE TO FAILED UNIT TEST.
 % *Description:* Adds a test to the test suite.
 %
 % <html>
-%   <table border=1>
+%   <table>
 %       <tr>
 %           <td style="text-align:center"><b>Variable</b></td>
 %           <td style="text-align:center"><b>Description</b></td>

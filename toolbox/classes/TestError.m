@@ -5,7 +5,7 @@
 % See also TestNoError, UnitTest.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-01-07
+% Last Update: 2023-01-08
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -32,7 +32,7 @@ classdef TestError < UnitTest
             %             function you want to test
             %   args    - (cell array) input arguments to f (if f has no
             %             input arguments, then input args as {})
-            %   name    - (char) test name
+            %   name    - (char array) test name
             %
             % -------
             % OUTPUT:

@@ -5,7 +5,7 @@
 % See also TestEqual, TestNotEqual, TestError, TestNoError, TestSpeed.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-01-07
+% Last Update: 2023-01-08
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -24,7 +24,7 @@ classdef UnitTest < handle & matlab.mixin.Heterogeneous
     properties
         UNIT_TEST   % (1×1 function_handle) function handle assigned to unit test function
         test_args   % (cell array) input arguments to unit test function
-        name        % (char) test name
+        name        % (char array) test name
         passed      % (1×1 logical) true if test passed, false otherwise
     end
     
@@ -45,7 +45,7 @@ classdef UnitTest < handle & matlab.mixin.Heterogeneous
             % ------
             %   UNIT_TEST   - (1×1 function_handle) unit test function
             %   test_args   - (cell array) unit test function inputs
-            %   name        - (char) test name
+            %   name        - (char array) test name
             %
             % -------
             % OUTPUT:
@@ -89,12 +89,12 @@ classdef UnitTest < handle & matlab.mixin.Heterogeneous
             %--------------------------------------------------------------
             
             % runs test
-            outputs = obj.UNIT_TEST(obj.test_args{:},obj.name);
+            output = obj.UNIT_TEST(obj.test_args{:},obj.name);
             
             % extracts outputs
-            obj.passed = outputs.passed;
-            result = outputs.result;
-            message = outputs.message;
+            obj.passed = output.passed;
+            result = output.result;
+            message = output.message;
             
             % increments number of passed tests results if test passed
             if obj.passed, n_passed = n_passed + 1; end

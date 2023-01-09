@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>TIME_EVALUATION</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-01-03"><meta name="DC.source" content="TIME_EVALUATION_doc.m"><style type="text/css">
+      --><title>TIME_EVALUATION</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-01-08"><meta name="DC.source" content="TIME_EVALUATION_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,22 +67,20 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>TIME_EVALUATION</tt></h1><!--introduction--><p>Time the evaluation of a function.</p><p><a href="index.html">Back to Simple Unit Testing Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Example #1: Timing using default number of function evaluations.</a></li><li><a href="#6">Example #2: Timing using a custom number of function evaluations.</a></li><li><a href="#8">Example #3: Returning the time but not printing.</a></li><li><a href="#10">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">TIME_EVALUATION(f)
+  </style></head><body><div class="content"><h1><tt>TIME_EVALUATION</tt></h1><!--introduction--><p>Time the evaluation of a function.</p><p><a href="index.html">Back to Simple Unit Testing Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Inputs</a></li><li><a href="#4">Outputs</a></li><li><a href="#5">Example #1: Timing using default number of function evaluations.</a></li><li><a href="#7">Example #2: Timing using a custom number of function evaluations.</a></li><li><a href="#9">Example #3: Returning the time but not printing.</a></li><li><a href="#11">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">TIME_EVALUATION(f)
 TIME_EVALUATION(f,args)
 TIME_EVALUATION(f,args,n_eval)
 TIME_EVALUATION(__,print)
 time = TIME_EVALUATION(__)
-</pre><h2 id="2">Description</h2><p><tt>TIME_EVALUATION(f)</tt> determines the average evaluation time of the function <tt>f</tt>. By default, <tt>f</tt> is evaluated 1000 times in order to compute the average evaluation time.</p><p><tt>TIME_EVALUATION(f,args)</tt> determines the average evaluation time of the function <tt>f</tt> when given the input arguments specified by <tt>args</tt>. By default, <tt>f</tt> is evaluated 1000 times in order to compute the average evaluation time.</p><p><tt>TIME_EVALUATION(f,args,n_eval)</tt> does the same as the syntax above, but also specifies the number of times the function should be evaluated when computing the average evaluation time.</p><p><tt>TIME_EVALUATION(...,print)</tt> does the same as the syntaxes above, but also allows the user to specify whether or not the average evaluation time should be printed to the Command Window.</p><p><tt>time = TIME_EVALUATION(...)</tt> also returns the average evaluation time.</p><h2 id="3">Input/Output Parameters</h2><p>
-  <table border=1>
+</pre><h2 id="2">Description</h2><p><tt>TIME_EVALUATION(f)</tt> determines the average evaluation time of the function <tt>f</tt>. By default, <tt>f</tt> is evaluated 1000 times in order to compute the average evaluation time.</p><p><tt>TIME_EVALUATION(f,args)</tt> determines the average evaluation time of the function <tt>f</tt> when given the input arguments specified by <tt>args</tt>. By default, <tt>f</tt> is evaluated 1000 times in order to compute the average evaluation time.</p><p><tt>TIME_EVALUATION(f,args,n_eval)</tt> does the same as the syntax above, but also specifies the number of times the function should be evaluated when computing the average evaluation time.</p><p><tt>TIME_EVALUATION(...,print)</tt> does the same as the syntaxes above, but also allows the user to specify whether or not the average evaluation time should be printed to the Command Window.</p><p><tt>time = TIME_EVALUATION(...)</tt> also returns the average evaluation time.</p><h2 id="3">Inputs</h2><p>
+  <table>
       <tr>
-          <td></td>
           <td style="text-align:center"><b>Variable</b></td>
           <td style="text-align:center"><b>Description</b></td>
           <td style="text-align:center"><b>Format</b></td>
           <td style="text-align:center"><b>Units</b></td>
       </tr>
       <tr>
-          <td rowspan="4" style="text-align:center"><b>Input</b></td>
           <td style="text-align:center"><TT>f</TT></td>
           <td>function handle assigned to function you want to time</td>
           <td style="text-align:center">1×1<BR>function_handle</td>
@@ -106,28 +104,36 @@ time = TIME_EVALUATION(__)
           <td style="text-align:center">1×1<BR>logical</td>
           <td style="text-align:center">-</td>
       </tr>
+  </table>
+</p><h2 id="4">Outputs</h2><p>
+  <table>
       <tr>
-          <td rowspan="1" style="text-align:center"><b>Output</b></td>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+          <td style="text-align:center"><b>Units</b></td>
+      </tr>
+      <tr>
           <td style="text-align:center"><TT>time</TT></td>
           <td>average function evaluation time</td>
           <td style="text-align:center">1×1<BR>double</td>
           <td style="text-align:center">s</td>
       </tr>
   </table>
-</p><h2 id="4">Example #1: Timing using default number of function evaluations.</h2><p>Let's define a function we want to time the evaluation of.</p><pre class="codeinput">f = @(x) x*sin(asin(x))*cos(acos(x))*tan(atan(x));
+</p><h2 id="5">Example #1: Timing using default number of function evaluations.</h2><p>Let's define a function we want to time the evaluation of.</p><pre class="codeinput">f = @(x) x*sin(asin(x))*cos(acos(x))*tan(atan(x));
 </pre><p>Getting the average evaluation time using the default number of function evaluations and an evaluation point of <img src="TIME_EVALUATION_doc_eq11423205081220768679.png" alt="$x=1$" style="width:26px;height:8px;">,</p><pre class="codeinput">TIME_EVALUATION(f,{1});
-</pre><pre class="codeoutput">Average function evaluation time: 5.7671e-07 s
-</pre><h2 id="6">Example #2: Timing using a custom number of function evaluations.</h2><p>Let's consider the same function as in the previous example.</p><pre class="codeinput">f = @(x) x*sin(asin(x))*cos(acos(x))*tan(atan(x));
+</pre><pre class="codeoutput">Average function evaluation time: 1.1437e-06 s
+</pre><h2 id="7">Example #2: Timing using a custom number of function evaluations.</h2><p>Let's consider the same function as in the previous example.</p><pre class="codeinput">f = @(x) x*sin(asin(x))*cos(acos(x))*tan(atan(x));
 </pre><p>This time, let's get an average evaluation time using only 100 evaluations.</p><pre class="codeinput">TIME_EVALUATION(f,{1},100);
-</pre><pre class="codeoutput">Average function evaluation time: 3.7576e-07 s
-</pre><h2 id="8">Example #3: Returning the time but not printing.</h2><p>Let's consider the same function as in the previous examples.</p><pre class="codeinput">f = @(x) x*sin(asin(x))*cos(acos(x))*tan(atan(x));
+</pre><pre class="codeoutput">Average function evaluation time: 7.404e-06 s
+</pre><h2 id="9">Example #3: Returning the time but not printing.</h2><p>Let's consider the same function as in the previous examples.</p><pre class="codeinput">f = @(x) x*sin(asin(x))*cos(acos(x))*tan(atan(x));
 </pre><p>Instead of printing the timing result to the Command Window, we can also return it directly.</p><pre class="codeinput">time = TIME_EVALUATION(f,{1},[],false)
 </pre><pre class="codeoutput">
 time =
 
-   2.9404e-07
+   6.3167e-07
 
-</pre><h2 id="10">See also</h2><p><a href="TEST_SPEED_doc.html"><tt>TEST_SPEED</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+</pre><h2 id="11">See also</h2><p><a href="TEST_SPEED_doc.html"><tt>TEST_SPEED</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |TIME_EVALUATION|
 % Time the evaluation of a function.
@@ -158,18 +164,16 @@ time =
 % time should be printed to the Command Window.
 %
 % |time = TIME_EVALUATION(...)| also returns the average evaluation time.
-%% Input/Output Parameters
+%% Inputs
 % <html>
-%   <table border=1>
+%   <table>
 %       <tr>
-%           <td></td>
 %           <td style="text-align:center"><b>Variable</b></td>
 %           <td style="text-align:center"><b>Description</b></td>
 %           <td style="text-align:center"><b>Format</b></td>
 %           <td style="text-align:center"><b>Units</b></td>
 %       </tr>
 %       <tr>
-%           <td rowspan="4" style="text-align:center"><b>Input</b></td>
 %           <td style="text-align:center"><TT>f</TT></td>
 %           <td>function handle assigned to function you want to time</td>
 %           <td style="text-align:center">1×1<BR>function_handle</td>
@@ -193,8 +197,18 @@ time =
 %           <td style="text-align:center">1×1<BR>logical</td>
 %           <td style="text-align:center">-</td>
 %       </tr>
+%   </table>
+% </html>
+%% Outputs
+% <html>
+%   <table>
 %       <tr>
-%           <td rowspan="1" style="text-align:center"><b>Output</b></td>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%           <td style="text-align:center"><b>Units</b></td>
+%       </tr>
+%       <tr>
 %           <td style="text-align:center"><TT>time</TT></td>
 %           <td>average function evaluation time</td>
 %           <td style="text-align:center">1×1<BR>double</td>

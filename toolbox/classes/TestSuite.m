@@ -3,7 +3,7 @@
 % TestSuite  Class defining a test suite.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-01-07
+% Last Update: 2023-01-08
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -17,7 +17,7 @@ classdef TestSuite < handle
     
     properties
         tests       % (1×N heterogeneous UnitTest) collection of unit tests
-        name        % (char) test suite name
+        name        % (char array) test suite name
         N           % (1×1 double) number of tests comprising test suite
         terminate   % (1×1 logical) if true, test suite terminates after first failed test
     end
@@ -37,8 +37,8 @@ classdef TestSuite < handle
             % ------
             % INPUT:
             % ------
-            %   name        - (OPTIONAL) (char) test suite name (defaults
-            %                 to empty string)
+            %   name        - (OPTIONAL) (char array) test suite name 
+            %                 (defaults to empty string)
             %   terminate   - (OPTIONAL) (1×1 logical) true if test suite 
             %                 should be terminated after first failed unit 
             %                 test, false if all tests should be run 
@@ -84,7 +84,7 @@ classdef TestSuite < handle
             % INPUT:
             % ------
             %   test    - (1×1 UnitTest) test to add to test suite
-            %   type    - (char) 'equal' or 'not equal'
+            %   type    - (char array) 'equal' or 'not equal'
             %
             %--------------------------------------------------------------
             
