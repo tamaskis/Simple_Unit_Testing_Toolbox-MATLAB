@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>TEST_SPEED</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-01-08"><meta name="DC.source" content="TEST_SPEED_doc.m"><style type="text/css">
+      --><title>TEST_SPEED</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-01-09"><meta name="DC.source" content="TEST_SPEED_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -154,8 +154,8 @@ f2 = @(x) x*sin(asin(x))*cos(acos(x))*tan(atan(x));
 f2 = @(x) x*sin(asin(x))*cos(acos(x))*tan(atan(x));
 </pre><p>From Example #1, we know that <tt>f1</tt> evaluates quicker than <tt>f2</tt>. Therefore, if we test if <tt>f2</tt> is faster than <tt>f1</tt>, we should get a failed test result.</p><pre class="codeinput">TEST_SPEED(f2,f1,{1});
 </pre><pre class="codeoutput">FAILED.
-    &gt;&gt;&gt;&gt; Average evaluation time for function specified as faster function: 6.0077e-07 s
-    &gt;&gt;&gt;&gt; Average evaluation time for function specified as slower function: 1.6554e-07 s
+    &gt;&gt;&gt;&gt; Average evaluation time for function specified as faster function: 5.384e-07 s
+    &gt;&gt;&gt;&gt; Average evaluation time for function specified as slower function: 2.3697e-07 s
 </pre><h2 id="9">Example #3: Changing the number of evaluations.</h2><p>Due to how MATLAB compiles code, the same code ran twice in a row can differ greatly in evaluation time. Therefore, we evaluate the functions a large number of times to get an average evaluation time. By default, we evaluate the functions 1000 times, but we may want to choose a smaller number of evaluations if the function itself takes a long time to evaluate (could lead to a test that takes minutes or hours to run if we repeat the function evaluation 1000 times). Let's repeat Example #1, but using 100 function evaluations this time around.</p><pre class="codeinput">f1 = @(x) x;
 f2 = @(x) x*sin(asin(x))*cos(acos(x))*tan(atan(x));
 TEST_SPEED(f1,f2,{1},100);

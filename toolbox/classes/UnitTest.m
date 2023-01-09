@@ -121,8 +121,15 @@ classdef UnitTest < handle & matlab.mixin.Heterogeneous
             end
             print_str = [print_str,'\n'];
             
+            % determines style for printing results
+            if obj.passed
+                style = 'Comments';
+            else
+                style = 'Errors';
+            end
+            
             % prints test results
-            fprintf(print_str);
+            cprintf(style,print_str);
             
         end
         
