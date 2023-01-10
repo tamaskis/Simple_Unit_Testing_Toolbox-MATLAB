@@ -100,11 +100,24 @@ function output = TEST_SPEED(f_fast,f_slow,args,n_eval,name,print)
     
     % prints result
     if print
+        
+        % printout string
         if isempty(message)
-            fprintf([name_str,result,'\n']);
+            print_str = [name_str,result,'\n'];
         else
-            fprintf([name_str,result,'\n    >>>> ',message,'\n']);
+            print_str = [name_str,result,'\n    >>>> ',message,'\n'];
         end
+        
+        % determines style for printing results
+        if passed
+            style = 'Comments';
+        else
+            style = 'Errors';
+        end
+        
+        % prints test results
+        cprintf(style,print_str);
+        
     end
     
     % packages test outputs into struct
