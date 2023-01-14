@@ -122,16 +122,16 @@ time = TIME_EVALUATION(__)
   </table>
 </p><h2 id="5">Example #1: Timing using default number of function evaluations.</h2><p>Let's define a function we want to time the evaluation of.</p><pre class="codeinput">f = @(x) x*sin(asin(x))*cos(acos(x))*tan(atan(x));
 </pre><p>Getting the average evaluation time using the default number of function evaluations and an evaluation point of <img src="TIME_EVALUATION_doc_eq11423205081220768679.png" alt="$x=1$" style="width:26px;height:8px;">,</p><pre class="codeinput">TIME_EVALUATION(f,{1});
-</pre><pre class="codeoutput">Average function evaluation time: 9.4914e-07 s
+</pre><pre class="codeoutput">Average function evaluation time: 2.719e-07 s
 </pre><h2 id="7">Example #2: Timing using a custom number of function evaluations.</h2><p>Let's consider the same function as in the previous example.</p><pre class="codeinput">f = @(x) x*sin(asin(x))*cos(acos(x))*tan(atan(x));
 </pre><p>This time, let's get an average evaluation time using only 100 evaluations.</p><pre class="codeinput">TIME_EVALUATION(f,{1},100);
-</pre><pre class="codeoutput">Average function evaluation time: 6.8405e-06 s
+</pre><pre class="codeoutput">Average function evaluation time: 3.7033e-07 s
 </pre><h2 id="9">Example #3: Returning the time but not printing.</h2><p>Let's consider the same function as in the previous examples.</p><pre class="codeinput">f = @(x) x*sin(asin(x))*cos(acos(x))*tan(atan(x));
 </pre><p>Instead of printing the timing result to the Command Window, we can also return it directly.</p><pre class="codeinput">time = TIME_EVALUATION(f,{1},[],false)
 </pre><pre class="codeoutput">
 time =
 
-   9.4066e-07
+   2.8139e-07
 
 </pre><h2 id="11">See also</h2><p><a href="TEST_SPEED_doc.html"><tt>TEST_SPEED</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####

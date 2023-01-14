@@ -42,7 +42,7 @@ function output = produce_test_outputs(name,passed,message,print,color)
     
     % prints result
     if print
-        print_test_result(name,result,message,color);
+        print_test_result(name,passed,result,message,color);
     end
     
     % packages test outputs into struct

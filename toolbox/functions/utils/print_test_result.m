@@ -2,7 +2,7 @@
 %
 % print_test_result  Prints a test result to the command window.
 %
-%   print_test_result(name,result,message,color)
+%   print_test_result(name,passed,result,message,color)
 %
 % Copyright © 2022 Tamas Kis
 % Last Update: 2023-01-14
@@ -15,13 +15,14 @@
 % INPUT:
 % ------
 %   name    - (char array) test name
+%   passed  - (1×1 logical) true if test passed, false otherwise
 %   result  - (char array) test result
 %   message - (char array) additional diagnostic message
 %   color   - (1×1 logical) true if test result should be printed in color,
 %             false otherwise
 %
 %==========================================================================
-function print_test_result(name,result,message,color)
+function print_test_result(name,passed,result,message,color)
     
     % updates name string
     if isempty(name)

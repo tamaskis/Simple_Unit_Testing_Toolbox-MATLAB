@@ -62,7 +62,7 @@ function output = TEST_NOT_EQUAL(X1,X2,n,name,print,color)
     end
     
     % defaults "color" to true
-    if (nargin < 5) || isempty(color)
+    if (nargin < 6) || isempty(color)
         color = true;
     end
     
