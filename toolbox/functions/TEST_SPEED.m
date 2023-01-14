@@ -5,7 +5,7 @@
 %   TEST_SPEED(f_fast,f_slow)
 %   TEST_SPEED(f_fast,f_slow,args)
 %   TEST_SPEED(f_fast,f_slow,args,n_eval)
-%   TEST_SPEED(__,name,print)
+%   TEST_SPEED(__,name,print,color)
 %   output = TEST_SPEED(__)
 %
 % See also TIME_EVALUATION.
@@ -29,15 +29,16 @@
 %   name    - (OPTIONAL) (char array) test name (defaults to empty string)
 %   print   - (OPTIONAL) (1×1 logical) true if test result should be 
 %             printed to Command Window, false otherwise (defaults to true)
+%   color   - (OPTIONAL) (1×1 logical) true if test result should be
+%             printed in color, false otherwise (defaults to true)
 %
 % -------
 % OUTPUT:
 % -------
 %   output  - (1×1 struct) test outputs
 %       • passed  - (1×1 logical) true if test passed, false otherwise
-%       • result  - (char array) string storing result of test
-%       • message - (char array) string storing additional diagnostic 
-%                   message
+%       • result  - (char array) test result
+%       • message - (char array) additional diagnostic message
 %
 % -----
 % NOTE:
@@ -45,7 +46,11 @@
 %   --> f_fast and f_fast slow must have the same input/output behavior.
 %
 %==========================================================================
-function output = TEST_SPEED(f_fast,f_slow,args,n_eval,name,print)
+function output = TEST_SPEED(f_fast,f_slow,args,n_eval,name,print,color)
+    
+    % -------------
+    % Parse inputs.
+    % -------------
     
     % defaults input arguments to empty cell array
     if (nargin < 3) || isempty(args)
@@ -62,10 +67,19 @@ function output = TEST_SPEED(f_fast,f_slow,args,n_eval,name,print)
         name = '';
     end
     
-    % defaults "print" to true if not input
+    % defaults "print" to true
     if (nargin < 6) || isempty(print)
         print = true;
     end
+    
+    % defaults "color" to true
+    if (nargin < 7) || isempty(color)
+        color = true;
+    end
+    
+    % ---------
+    % Run test.
+    % ---------
     
     % times functions
     time_fast = TIME_EVALUATION(f_fast,args,n_eval,false);
@@ -73,6 +87,10 @@ function output = TEST_SPEED(f_fast,f_slow,args,n_eval,name,print)
     
     % test passed if "faster" function was indeed faster
     passed = (time_fast < time_slow);
+    
+    % --------------
+    % Parse outputs.
+    % --------------
     
     % result string
     if passed
@@ -91,33 +109,9 @@ function output = TEST_SPEED(f_fast,f_slow,args,n_eval,name,print)
             'function: ',num2str(time_slow),' s'];
     end
     
-    % name string
-    if isempty(name)
-        name_str = '';
-    else
-        name_str = [name,': '];
-    end
-    
     % prints result
     if print
-        
-        % printout string
-        if isempty(message)
-            print_str = [name_str,result,'\n'];
-        else
-            print_str = [name_str,result,'\n    >>>> ',message,'\n'];
-        end
-        
-        % determines style for printing results
-        if passed
-            style = 'Comments';
-        else
-            style = 'Errors';
-        end
-        
-        % prints test results
-        cprintf(style,print_str);
-        
+        print_test_result(name,result,message,color);
     end
     
     % packages test outputs into struct

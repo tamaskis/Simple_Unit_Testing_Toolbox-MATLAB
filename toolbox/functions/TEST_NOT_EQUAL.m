@@ -5,7 +5,7 @@
 %
 %   TEST_NOT_EQUAL(X1,X2)
 %   TEST_NOT_EQUAL(X1,X2,n)
-%   TEST_NOT_EQUAL(__,name,print)
+%   TEST_NOT_EQUAL(__,name,print,color)
 %   output = TEST_NOT_EQUAL(__)
 %
 % See also TEST_EQUAL.
@@ -27,18 +27,23 @@
 %   name    - (OPTIONAL) (char array) test name (defaults to empty string)
 %   print   - (OPTIONAL) (1×1 logical) true if test result should be
 %             printed to Command Window, false otherwise (defaults to true)
+%   color   - (OPTIONAL) (1×1 logical) true if test result should be
+%             printed in color, false otherwise (defaults to true)
 %
 % -------
 % OUTPUT:
 % -------
 %   output  - (1×1 struct) test outputs
 %       • passed  - (1×1 logical) true if test passed, false otherwise
-%       • result  - (char array) string storing result of test
-%       • message - (char array) string storing additional diagnostic 
-%                   message
+%       • result  - (char array) test result
+%       • message - (char array) additional diagnostic message
 %
 %==========================================================================
-function output = TEST_NOT_EQUAL(X1,X2,n,name,print)
+function output = TEST_NOT_EQUAL(X1,X2,n,name,print,color)
+    
+    % -------------
+    % Parse inputs.
+    % -------------
     
     % sets decimal places of precision (defaults to 16, corresponding to 
     % 10⁻¹⁶)
@@ -51,10 +56,19 @@ function output = TEST_NOT_EQUAL(X1,X2,n,name,print)
         name = '';
     end
     
-    % defaults "print" to true if not input
+    % defaults "print" to true
     if (nargin < 5) || isempty(print)
         print = true;
     end
+    
+    % defaults "color" to true
+    if (nargin < 5) || isempty(color)
+        color = true;
+    end
+    
+    % ---------
+    % Run test.
+    % ---------
     
     % if the two arrays do not have the same size, they cannot be equal
     if ~compare_sizes(X1,X2)
@@ -71,6 +85,10 @@ function output = TEST_NOT_EQUAL(X1,X2,n,name,print)
     % determines if test passed (at least one elementwise inequality
     % exists with respect to the specified precision)
     passed = (n_equal < n);
+    
+    % --------------
+    % Parse outputs.
+    % --------------
     
     % determines data type of input
     if length(X1(:)) == 1
@@ -109,33 +127,9 @@ function output = TEST_NOT_EQUAL(X1,X2,n,name,print)
         end
     end
     
-    % name string
-    if isempty(name)
-        name_str = '';
-    else
-        name_str = [name,': '];
-    end
-    
     % prints result
     if print
-        
-        % printout string
-        if isempty(message)
-            print_str = [name_str,result,'\n'];
-        else
-            print_str = [name_str,result,'\n    >>>> ',message,'\n'];
-        end
-        
-        % determines style for printing results
-        if passed
-            style = 'Comments';
-        else
-            style = 'Errors';
-        end
-        
-        % prints test results
-        cprintf(style,print_str);
-        
+        print_test_result(name,result,message,color);
     end
     
     % packages test outputs into struct

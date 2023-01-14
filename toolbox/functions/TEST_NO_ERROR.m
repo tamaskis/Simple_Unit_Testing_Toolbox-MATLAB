@@ -4,7 +4,7 @@
 %
 %   TEST_NO_ERROR(f)
 %   TEST_NO_ERROR(f,args)
-%   TEST_NO_ERROR(__,name,print)
+%   TEST_NO_ERROR(__,name,print,color)
 %   output = TEST_NO_ERROR(__)
 %
 % See also TEST_ERROR.
@@ -26,15 +26,16 @@
 %   name    - (OPTIONAL) (char array) test name (defaults to empty string)
 %   print   - (OPTIONAL) (1×1 logical) true if test result should be 
 %             printed to Command Window, false otherwise (defaults to true)
+%   color   - (OPTIONAL) (1×1 logical) true if test result should be
+%             printed in color, false otherwise (defaults to true)
 %
 % -------
 % OUTPUT:
 % -------
 %   output  - (1×1 struct) test outputs
 %       • passed  - (1×1 logical) true if test passed, false otherwise
-%       • result  - (char array) string storing result of test
-%       • message - (char array) string storing additional diagnostic 
-%                   message
+%       • result  - (char array) test result
+%       • message - (char array) additional diagnostic message
 %
 % -----
 % NOTE:
@@ -47,7 +48,11 @@
 %       we do not care about any return values.
 %
 %==========================================================================
-function output = TEST_NO_ERROR(f,args,name,print)
+function output = TEST_NO_ERROR(f,args,name,print,color)
+    
+    % -------------
+    % Parse inputs.
+    % -------------
     
     % defaults input arguments to empty cell array
     if (nargin < 2) || isempty(args)
@@ -59,10 +64,19 @@ function output = TEST_NO_ERROR(f,args,name,print)
         name = '';
     end
     
-    % defaults "print" to true if not input
+    % defaults "print" to true
     if (nargin < 4) || isempty(print)
         print = true;
     end
+    
+    % defaults "color" to true
+    if (nargin < 5) || isempty(color)
+        color = true;
+    end
+    
+    % ---------
+    % Run test.
+    % ---------
     
     % determines if error is thrown
     try
@@ -76,6 +90,10 @@ function output = TEST_NO_ERROR(f,args,name,print)
     
     % test passed if error was not thrown
     passed = ~error_thrown;
+    
+    % --------------
+    % Parse outputs.
+    % --------------
     
     % result string
     if passed
@@ -91,33 +109,9 @@ function output = TEST_NO_ERROR(f,args,name,print)
         message = ['Function threw the following error: ',error_str];
     end
     
-    % name string
-    if isempty(name)
-        name_str = '';
-    else
-        name_str = [name,': '];
-    end
-    
     % prints result
     if print
-        
-        % printout string
-        if isempty(message)
-            print_str = [name_str,result,'\n'];
-        else
-            print_str = [name_str,result,'\n    >>>> ',message,'\n'];
-        end
-        
-        % determines style for printing results
-        if passed
-            style = 'Comments';
-        else
-            style = 'Errors';
-        end
-        
-        % prints test results
-        cprintf(style,print_str);
-        
+        print_test_result(name,result,message,color);
     end
     
     % packages test outputs into struct

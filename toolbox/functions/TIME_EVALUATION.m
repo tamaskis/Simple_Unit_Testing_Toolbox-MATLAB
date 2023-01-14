@@ -38,6 +38,10 @@
 %==========================================================================
 function time = TIME_EVALUATION(f,args,n_eval,print)
     
+    % -------------
+    % Parse inputs.
+    % -------------
+    
     % defaults input arguments to empty cell array
     if (nargin < 2) || isempty(args)
         args = {};
@@ -48,19 +52,25 @@ function time = TIME_EVALUATION(f,args,n_eval,print)
         n_eval = 1000;
     end
     
-    % defaults "print" to true if not input
+    % defaults "print" to true
     if (nargin < 4) || isempty(print)
         print = true;
     end
     
-    % times function
+    % ----------------
+    % Time evaluation.
+    % ----------------
+    
     tic;
     for i = 1:n_eval
         f(args{:});
     end
     time = toc/n_eval;
     
-    % prints result
+    % -------------
+    % Print result.
+    % -------------
+    
     if print
         fprintf(['Average function evaluation time: ',num2str(time),...
             ' s\n']);
