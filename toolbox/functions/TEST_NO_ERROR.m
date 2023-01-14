@@ -91,16 +91,9 @@ function output = TEST_NO_ERROR(f,args,name,print,color)
     % test passed if error was not thrown
     passed = ~error_thrown;
     
-    % --------------
-    % Parse outputs.
-    % --------------
-    
-    % result string
-    if passed
-        result = 'Passed.';
-    else
-        result = 'FAILED.';
-    end
+    % -------------------
+    % Diagnostic message.
+    % -------------------
     
     % diagnostic message
     if passed
@@ -109,14 +102,10 @@ function output = TEST_NO_ERROR(f,args,name,print,color)
         message = ['Function threw the following error: ',error_str];
     end
     
-    % prints result
-    if print
-        print_test_result(name,result,message,color);
-    end
+    % -------------------------------
+    % Parse outputs and print result.
+    % -------------------------------
     
-    % packages test outputs into struct
-    output.passed = passed;
-    output.result = result;
-    output.message = message;
+    output = produce_test_outputs(name,passed,message,print,color);
     
 end

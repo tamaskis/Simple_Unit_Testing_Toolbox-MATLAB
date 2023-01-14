@@ -2,15 +2,12 @@
 %
 % print_test_result  Prints a test result to the command window.
 %
-%   print_test_result(name,result,message)
+%   print_test_result(name,result,message,color)
 %
 % Copyright © 2022 Tamas Kis
 % Last Update: 2023-01-14
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
-%
-% DEPENDENCIES:
-%   • (OPTIONAL) cprintf (https://www.mathworks.com/matlabcentral/fileexchange/24093-cprintf-display-formatted-colored-text-in-command-window)
 %
 %--------------------------------------------------------------------------
 %
@@ -20,15 +17,11 @@
 %   name    - (char array) test name
 %   result  - (char array) test result
 %   message - (char array) additional diagnostic message
-%   color   - (OPTIONAL) (1×1 logical) true if test result should be
-%             printed in color, false otherwise (defaults to true)
+%   color   - (1×1 logical) true if test result should be printed in color,
+%             false otherwise
 %
 %==========================================================================
 function print_test_result(name,result,message,color)
-    
-    % -------------
-    % Parse inputs.
-    % -------------
     
     % updates name string
     if isempty(name)

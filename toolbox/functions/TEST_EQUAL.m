@@ -88,22 +88,15 @@ function output = TEST_EQUAL(X1,X2,n,name,print,color)
     % determines if test passsed (arrays are equal to n decimal places)
     passed = (n_equal >= n);
     
-    % --------------
-    % Parse outputs.
-    % --------------
+    % -------------------
+    % Diagnostic message.
+    % -------------------
     
     % determines data type of input
     if length(X1(:)) == 1
         data_type = 'Values';
     else
         data_type = 'Arrays';
-    end
-    
-    % result string
-    if passed
-        result = 'Passed.';
-    else
-        result = 'FAILED.';
     end
     
     % diagnostic message
@@ -117,14 +110,10 @@ function output = TEST_EQUAL(X1,X2,n,name,print,color)
         message = [data_type,' are not equal to any decimal places.'];
     end
     
-    % prints result
-    if print
-        print_test_result(name,result,message,color);
-    end
+    % -------------------------------
+    % Parse outputs and print result.
+    % -------------------------------
     
-    % packages test outputs into struct
-    output.passed = passed;
-    output.result = result;
-    output.message = message;
+    output = produce_test_outputs(name,passed,message,print,color);
     
 end

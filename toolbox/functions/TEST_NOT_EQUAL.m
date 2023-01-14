@@ -86,9 +86,9 @@ function output = TEST_NOT_EQUAL(X1,X2,n,name,print,color)
     % exists with respect to the specified precision)
     passed = (n_equal < n);
     
-    % --------------
-    % Parse outputs.
-    % --------------
+    % -------------------
+    % Diagnostic message.
+    % -------------------
     
     % determines data type of input
     if length(X1(:)) == 1
@@ -97,13 +97,6 @@ function output = TEST_NOT_EQUAL(X1,X2,n,name,print,color)
     else
         data_type_1 = 'Arrays';
         data_type_2 = 'arrays';
-    end
-    
-    % result string
-    if passed
-        result = 'Passed.';
-    else
-        result = 'FAILED.';
     end
     
     % diagnostic message
@@ -127,14 +120,10 @@ function output = TEST_NOT_EQUAL(X1,X2,n,name,print,color)
         end
     end
     
-    % prints result
-    if print
-        print_test_result(name,result,message,color);
-    end
+    % -------------------------------
+    % Parse outputs and print result.
+    % -------------------------------
     
-    % packages test outputs into struct
-    output.passed = passed;
-    output.result = result;
-    output.message = message;
+    output = produce_test_outputs(name,passed,message,print,color);
     
 end
