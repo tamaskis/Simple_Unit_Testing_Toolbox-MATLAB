@@ -59,3 +59,8 @@ doc_SUTT name
 ### Testing speed.
 `TEST_SPEED(f_fast,f_slow,args,n_eval)`\
 `TIME_EVALUATION(f,args,n_eval)`
+
+
+## Printing to Command Window
+
+Note that in the examples in the documentation, all of the test output is in black. However, when you run the tests locally in MATLAB, passed tests will print in green, while failed tests will print in red; this is accomplished using the [cprintf](https://www.mathworks.com/matlabcentral/fileexchange/24093-cprintf-display-formatted-colored-text-in-command-window) function.

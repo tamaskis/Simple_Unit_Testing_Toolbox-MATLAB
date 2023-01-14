@@ -6,7 +6,7 @@
 % See also TestEqual, UnitTest.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-01-08
+% Last Update: 2023-01-14
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
