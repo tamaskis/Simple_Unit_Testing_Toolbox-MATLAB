@@ -12,7 +12,7 @@
 %
 %==========================================================================
 
-classdef (HandleCompatible = true) TestSpeed < UnitTest
+classdef TestSpeed < UnitTest
     
     % ---------------
     % Public methods.

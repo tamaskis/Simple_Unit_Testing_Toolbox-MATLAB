@@ -119,17 +119,15 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center">char</td>
       </tr>
   </table>
-</p><h2 id="3"><tt>run</tt></h2><pre class="language-matlab">n_passed = TestSuite.run(n_passed,n_run)
-</pre><p><b>Description:</b> Runs the unit test and prints the results to the Command Window.</p><p>
+</p><h2 id="3"><tt>run</tt></h2><pre class="language-matlab">n_passed = UnitTest.run(n_passed,n_run,color)
+</pre><p><b>Description:</b> Runs the unit test and prints the results to the Command Window.</p><p><b>Inputs:</b></p><p>
   <table>
       <tr>
-          <td></td>
           <td style="text-align:center"><b>Variable</b></td>
           <td style="text-align:center"><b>Description</b></td>
           <td style="text-align:center"><b>Format</b></td>
       </tr>
       <tr>
-          <td rowspan="2" style="text-align:center"><b>Input</b></td>
           <td style="text-align:center"><TT>n_passed</TT></td>
           <td>number of tests that have passed so far</td>
           <td style="text-align:center">1×1<BR>double</td>
@@ -140,7 +138,19 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center">1×1<BR>double</td>
       </tr>
       <tr>
-          <td rowspan="1" style="text-align:center"><b>Output</b></td>
+          <td style="text-align:center"><TT>color</TT></td>
+          <td><TT>true</TT> if test result should be printed in color, <TT>false</TT> otherwise</td>
+          <td style="text-align:center">1×1<BR>logical</td>
+      </tr>
+  </table>
+</p><p><b>Outputs:</b></p><p>
+  <table>
+      <tr>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+      </tr>
+      <tr>
           <td style="text-align:center"><TT>n_passed</TT></td>
           <td>updated number of tests that have passed so far</td>
           <td style="text-align:center">1×1<BR>double</td>
@@ -210,21 +220,21 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 %   </table>
 % </html>
 %% |run|
-%   n_passed = TestSuite.run(n_passed,n_run)
+%   n_passed = UnitTest.run(n_passed,n_run,color)
 %
 % *Description:* Runs the unit test and prints the results to the Command
 % Window.
 %
+% *Inputs:*
+%
 % <html>
 %   <table>
 %       <tr>
-%           <td></td>
 %           <td style="text-align:center"><b>Variable</b></td>
 %           <td style="text-align:center"><b>Description</b></td>
 %           <td style="text-align:center"><b>Format</b></td>
 %       </tr>
 %       <tr>
-%           <td rowspan="2" style="text-align:center"><b>Input</b></td>
 %           <td style="text-align:center"><TT>n_passed</TT></td>
 %           <td>number of tests that have passed so far</td>
 %           <td style="text-align:center">1×1<BR>double</td>
@@ -235,7 +245,23 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 %           <td style="text-align:center">1×1<BR>double</td>
 %       </tr>
 %       <tr>
-%           <td rowspan="1" style="text-align:center"><b>Output</b></td>
+%           <td style="text-align:center"><TT>color</TT></td>
+%           <td><TT>true</TT> if test result should be printed in color, <TT>false</TT> otherwise</td>
+%           <td style="text-align:center">1×1<BR>logical</td>
+%       </tr>
+%   </table>
+% </html>
+%
+% *Outputs:*
+%
+% <html>
+%   <table>
+%       <tr>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%       </tr>
+%       <tr>
 %           <td style="text-align:center"><TT>n_passed</TT></td>
 %           <td>updated number of tests that have passed so far</td>
 %           <td style="text-align:center">1×1<BR>double</td>
