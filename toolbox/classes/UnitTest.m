@@ -65,8 +65,8 @@ classdef UnitTest < handle & matlab.mixin.Heterogeneous
             
         end
         
-        function n_passed = run(obj,n_passed,n_run)
-            % UnitTest.run
+        function n_passed = run(obj,n_passed,n_run,color)
+            % n_passed = UnitTest.run(n_passed,n_run,color)
             %
             % Runs the unit test and prints the results to the Command
             % Window.
@@ -79,6 +79,8 @@ classdef UnitTest < handle & matlab.mixin.Heterogeneous
             %                 so far
             %   n_run       - (1×1 double) number of tests that have been
             %                 run so far
+            %   color       - (1×1 logical) true if test result should be
+            %                 printed in color, false otherwise
             %
             % -------
             % OUTPUT:
@@ -121,15 +123,23 @@ classdef UnitTest < handle & matlab.mixin.Heterogeneous
             end
             print_str = [print_str,'\n'];
             
-            % determines style for printing results
-            if obj.passed
-                style = 'Comments';
+            % prints test results in color (using cprintf)
+            if color
+                
+                % determines style for printing results
+                if obj.passed
+                    style = 'Comments';
+                else
+                    style = 'Errors';
+                end
+                
+                % prints test results
+                cprintf(style,print_str);
+                
+            % prints test results in black (using fprintf)
             else
-                style = 'Errors';
+                fprintf(print_str);
             end
-            
-            % prints test results
-            cprintf(style,print_str);
             
         end
         

@@ -38,7 +38,7 @@ function print_test_result(name,passed,result,message,color)
         print_str = [name,result,'\n    >>>> ',message,'\n'];
     end
     
-    % prints test results using cprintf
+    % prints test results in color (using cprintf)
     if color
         
         % determines style for printing results
@@ -51,7 +51,7 @@ function print_test_result(name,passed,result,message,color)
         % prints test results
         cprintf(style,print_str);
         
-    % prints test results using fprintf
+    % prints test results in black (using fprintf)
     else
         fprintf(print_str);
     end

@@ -20,6 +20,7 @@ classdef TestSuite < handle
         name        % (char array) test suite name
         N           % (1×1 double) number of tests comprising test suite
         terminate   % (1×1 logical) if true, test suite terminates after first failed test
+        color       % (1×1 logical) if true, test results are printed in color
     end
     
     % ---------------
@@ -28,8 +29,8 @@ classdef TestSuite < handle
     
     methods (Access = public)
         
-        function obj = TestSuite(name,terminate)
-            % obj = TestSuite(name,terminate)
+        function obj = TestSuite(name,terminate,color)
+            % obj = TestSuite(name,terminate,color)
             %
             % Constructor.
             %--------------------------------------------------------------
@@ -44,6 +45,9 @@ classdef TestSuite < handle
             %                 test, false if all tests should be run 
             %                 regardless of any failed tests (defaults to 
             %                 false)
+            %   color       - (OPTIONAL) (1×1 logical) true if test results
+            %                 should be printed in color, false otherwise
+            %                 (defaults to true)
             %
             % -------
             % OUTPUT:
@@ -67,6 +71,13 @@ classdef TestSuite < handle
                 obj.terminate = false;
             else
                 obj.terminate = terminate;
+            end
+            
+            % sets if results printed in color (defaults to true)
+            if (nargin < 3) || isempty(color)
+                obj.color = true;
+            else
+                obj.color = color;
             end
             
             % initializes number of tests
@@ -115,7 +126,7 @@ classdef TestSuite < handle
             for i = 1:obj.N
                 
                 % runs ith test
-                n_passed = obj.tests(i).run(n_passed,i);
+                n_passed = obj.tests(i).run(n_passed,i,obj.color);
                 
                 % terminates test suite
                 if obj.terminate && ~obj.tests(i).passed
