@@ -10,7 +10,7 @@
 % See also TEST_ERROR.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-01-14
+% Last Update: 2023-04-09
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -40,12 +40,12 @@
 % -----
 % NOTE:
 % -----
-%   --> A function handle can only have one return value. However, we can
-%       still assign function handles to functions that have multiple
-%       return values (in that case, the function handle will just return
-%       the first return value). Since this test is geared towards ensuring
-%       that a function does not an error when subject to specific inputs, 
-%       we do not care about any return values.
+%   • A function handle can only have one return value. However, we can
+%     still assign function handles to functions that have multiple return
+%     values (in that case, the function handle will just return the first
+%     return value). Since this test is geared towards ensuring that a
+%     function does not an error when subject to specific inputs, we do not
+%     care about any return values.
 %
 %==========================================================================
 function output = TEST_NO_ERROR(f,args,name,print,color)

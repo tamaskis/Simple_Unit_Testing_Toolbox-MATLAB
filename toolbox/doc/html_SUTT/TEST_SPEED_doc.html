@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>TEST_SPEED</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-01-14"><meta name="DC.source" content="TEST_SPEED_doc.m"><style type="text/css">
+      --><title>TEST_SPEED</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-04-09"><meta name="DC.source" content="TEST_SPEED_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,12 +67,12 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>TEST_SPEED</tt></h1><!--introduction--><p>Test if one function is faster to evaluate than another.</p><p><a href="index.html">Back to Simple Unit Testing Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Inputs</a></li><li><a href="#4">Outputs</a></li><li><a href="#5">Example #1: Passed test.</a></li><li><a href="#7">Example #2: Failed test.</a></li><li><a href="#9">Example #3: Changing the number of evaluations.</a></li><li><a href="#10">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">TEST_SPEED(f_fast,f_slow)
+  </style></head><body><div class="content"><h1><tt>TEST_SPEED</tt></h1><!--introduction--><p>Test if one function is faster to evaluate than another.</p><p><a href="index.html">Back to <b>Simple Unit Testing Toolbox Documentation</b></a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Inputs</a></li><li><a href="#4">Outputs</a></li><li><a href="#5">Example #1: Passed test.</a></li><li><a href="#7">Example #2: Failed test.</a></li><li><a href="#9">Example #3: Changing the number of evaluations.</a></li><li><a href="#10">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">TEST_SPEED(f_fast,f_slow)
 TEST_SPEED(f_fast,f_slow,args)
 TEST_SPEED(f_fast,f_slow,args,n_eval)
-TEST_SPEED(__,name,print)
+TEST_SPEED(__,name,print,color)
 outputs = TEST_SPEED(__)
-</pre><h2 id="2">Description</h2><p><tt>TEST_SPEED(f_fast,f_slow)</tt> tests if the function <tt>f_fast</tt> is faster to evaluate than the function <tt>f_slow</tt>, where both functions do not have any input arguments. By default, these functions are both evaluated 1000 times in order to compute an average evaluation time.</p><p><tt>TEST_SPEED(f_fast,f_slow,args)</tt> tests if the function <tt>f_fast</tt> is faster to evaluate than the function <tt>f_slow</tt> when both are given the input arguments specified by <tt>args</tt>. By default, these functions are both evaluated 1000 times in order to compute an average evaluation time.</p><p><tt>TEST_SPEED(f_fast,f_slow,args,n_eval)</tt> does the same as the syntax above, but also specifies the number of times the functions should be evaluated when computing the average evaluation time.</p><p><tt>TEST_SPEED(...,name,print)</tt> does the same as the syntaxes above, but also allows the user to specify a test name, and whether or not to print the test results to the Command Window. This syntax is primarily used when defining unit test classes.</p><p><tt>outputs = TEST_SPEED(...)</tt> also returns the test outputs.</p><h2 id="3">Inputs</h2><p>
+</pre><h2 id="2">Description</h2><p><tt>TEST_SPEED(f_fast,f_slow)</tt> tests if the function <tt>f_fast</tt> is faster to evaluate than the function <tt>f_slow</tt>, where both functions do not have any input arguments. By default, these functions are both evaluated 1000 times in order to compute an average evaluation time.</p><p><tt>TEST_SPEED(f_fast,f_slow,args)</tt> tests if the function <tt>f_fast</tt> is faster to evaluate than the function <tt>f_slow</tt> when both are given the input arguments specified by <tt>args</tt>. By default, these functions are both evaluated 1000 times in order to compute an average evaluation time.</p><p><tt>TEST_SPEED(f_fast,f_slow,args,n_eval)</tt> does the same as the syntax above, but also specifies the number of times the functions should be evaluated when computing the average evaluation time.</p><p><tt>TEST_SPEED(...,name,print,color)</tt> does the same as the syntaxes above, but also allows the user to specify a test name, whether or not to print the test results to the Command Window, and whether or not to print those test results in color. This syntax is primarily used when defining unit test classes.</p><p><tt>outputs = TEST_SPEED(...)</tt> also returns the test outputs. Again, this syntax is primarily used when defining unit test classes.</p><h2 id="3">Inputs</h2><p>
   <table>
       <tr>
           <td style="text-align:center"><b>Variable</b></td>
@@ -91,22 +91,27 @@ outputs = TEST_SPEED(__)
       </tr>
       <tr>
           <td style="text-align:center"><TT>args</TT></td>
-          <td>(OPTIONAL) input arguments to functions (defaults to empty cell array)</td>
+          <td><b>(OPTIONAL)</b> input arguments to functions (defaults to empty cell array)</td>
           <td style="text-align:center">cell array</td>
       </tr>
       <tr>
           <td style="text-align:center"><TT>n_eval</TT></td>
-          <td>(OPTIONAL) number of times to evaluate functions when determining average evaluation time (defaults to 1000)</td>
+          <td><b>(OPTIONAL)</b> number of times to evaluate functions when determining average evaluation time (defaults to 1000)</td>
           <td style="text-align:center">1×1<BR>double</td>
       </tr>
       <tr>
           <td style="text-align:center"><TT>name</TT></td>
-          <td>(OPTIONAL) test name (defaults to empty string)</td>
-          <td style="text-align:center">char</td>
+          <td><b>(OPTIONAL)</b> test name (defaults to empty string)</td>
+          <td style="text-align:center">char array</td>
       </tr>
       <tr>
           <td style="text-align:center"><TT>print</TT></td>
-          <td>(OPTIONAL) <TT>true</TT> if test result should be printed to Command Window, <TT>false</TT> otherwise (defaults to <TT>true</TT>)</td>
+          <td><b>(OPTIONAL)</b> <TT>true</TT> if test result should be printed to Command Window, <TT>false</TT> otherwise (defaults to <TT>true</TT>)</td>
+          <td style="text-align:center">1×1<BR>logical</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>color</TT></td>
+          <td><b>(OPTIONAL)</b> <TT>true</TT> if test result should be printed in color, <TT>false</TT> otherwise (defaults to <TT>true</TT>)</td>
           <td style="text-align:center">1×1<BR>logical</td>
       </tr>
   </table>
@@ -154,8 +159,8 @@ f2 = @(x) x*sin(asin(x))*cos(acos(x))*tan(atan(x));
 f2 = @(x) x*sin(asin(x))*cos(acos(x))*tan(atan(x));
 </pre><p>From Example #1, we know that <tt>f1</tt> evaluates quicker than <tt>f2</tt>. Therefore, if we test if <tt>f2</tt> is faster than <tt>f1</tt>, we should get a failed test result.</p><pre class="codeinput">TEST_SPEED(f2,f1,{1});
 </pre><pre class="codeoutput">FAILED.
-    &gt;&gt;&gt;&gt; Average evaluation time for function specified as faster function: 3.6456e-07 s
-    &gt;&gt;&gt;&gt; Average evaluation time for function specified as slower function: 2.3458e-07 s
+    &gt;&gt;&gt;&gt; Average evaluation time for function specified as faster function: 3.1728e-07 s
+    &gt;&gt;&gt;&gt; Average evaluation time for function specified as slower function: 2.0884e-07 s
 </pre><h2 id="9">Example #3: Changing the number of evaluations.</h2><p>Due to how MATLAB compiles code, the same code ran twice in a row can differ greatly in evaluation time. Therefore, we evaluate the functions a large number of times to get an average evaluation time. By default, we evaluate the functions 1000 times, but we may want to choose a smaller number of evaluations if the function itself takes a long time to evaluate (could lead to a test that takes minutes or hours to run if we repeat the function evaluation 1000 times). Let's repeat Example #1, but using 100 function evaluations this time around.</p><pre class="codeinput">f1 = @(x) x;
 f2 = @(x) x*sin(asin(x))*cos(acos(x))*tan(atan(x));
 TEST_SPEED(f1,f2,{1},100);
@@ -165,12 +170,12 @@ TEST_SPEED(f1,f2,{1},100);
 %% |TEST_SPEED|
 % Test if one function is faster to evaluate than another.
 % 
-% <index.html Back to Simple Unit Testing Toolbox Contents>.
+% <index.html Back to *Simple Unit Testing Toolbox Documentation*>.
 %% Syntax
 %   TEST_SPEED(f_fast,f_slow)
 %   TEST_SPEED(f_fast,f_slow,args)
 %   TEST_SPEED(f_fast,f_slow,args,n_eval)
-%   TEST_SPEED(__,name,print)
+%   TEST_SPEED(__,name,print,color)
 %   outputs = TEST_SPEED(__)
 %% Description
 % |TEST_SPEED(f_fast,f_slow)| tests if the function |f_fast| is faster to
@@ -187,12 +192,14 @@ TEST_SPEED(f1,f2,{1},100);
 % above, but also specifies the number of times the functions should be 
 % evaluated when computing the average evaluation time.
 %
-% |TEST_SPEED(...,name,print)| does the same as the syntaxes above, but 
-% also allows the user to specify a test name, and whether or not to print 
-% the test results to the Command Window. This syntax is primarily used
-% when defining unit test classes.
+% |TEST_SPEED(...,name,print,color)| does the same as the syntaxes above, 
+% but also allows the user to specify a test name, whether or not to print 
+% the test results to the Command Window, and whether or not to print those
+% test results in color. This syntax is primarily used when defining unit 
+% test classes.
 %
-% |outputs = TEST_SPEED(...)| also returns the test outputs.
+% |outputs = TEST_SPEED(...)| also returns the test outputs. Again, this
+% syntax is primarily used when defining unit test classes.
 %% Inputs
 % <html>
 %   <table>
@@ -213,22 +220,27 @@ TEST_SPEED(f1,f2,{1},100);
 %       </tr>
 %       <tr>
 %           <td style="text-align:center"><TT>args</TT></td>
-%           <td>(OPTIONAL) input arguments to functions (defaults to empty cell array)</td>
+%           <td><b>(OPTIONAL)</b> input arguments to functions (defaults to empty cell array)</td>
 %           <td style="text-align:center">cell array</td>
 %       </tr>
 %       <tr>
 %           <td style="text-align:center"><TT>n_eval</TT></td>
-%           <td>(OPTIONAL) number of times to evaluate functions when determining average evaluation time (defaults to 1000)</td>
+%           <td><b>(OPTIONAL)</b> number of times to evaluate functions when determining average evaluation time (defaults to 1000)</td>
 %           <td style="text-align:center">1×1<BR>double</td>
 %       </tr>
 %       <tr>
 %           <td style="text-align:center"><TT>name</TT></td>
-%           <td>(OPTIONAL) test name (defaults to empty string)</td>
-%           <td style="text-align:center">char</td>
+%           <td><b>(OPTIONAL)</b> test name (defaults to empty string)</td>
+%           <td style="text-align:center">char array</td>
 %       </tr>
 %       <tr>
 %           <td style="text-align:center"><TT>print</TT></td>
-%           <td>(OPTIONAL) <TT>true</TT> if test result should be printed to Command Window, <TT>false</TT> otherwise (defaults to <TT>true</TT>)</td>
+%           <td><b>(OPTIONAL)</b> <TT>true</TT> if test result should be printed to Command Window, <TT>false</TT> otherwise (defaults to <TT>true</TT>)</td>
+%           <td style="text-align:center">1×1<BR>logical</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>color</TT></td>
+%           <td><b>(OPTIONAL)</b> <TT>true</TT> if test result should be printed in color, <TT>false</TT> otherwise (defaults to <TT>true</TT>)</td>
 %           <td style="text-align:center">1×1<BR>logical</td>
 %       </tr>
 %   </table>

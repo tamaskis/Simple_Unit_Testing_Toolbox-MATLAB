@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>TEST_NOT_EQUAL</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-01-14"><meta name="DC.source" content="TEST_NOT_EQUAL_doc.m"><style type="text/css">
+      --><title>TEST_NOT_EQUAL</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-04-09"><meta name="DC.source" content="TEST_NOT_EQUAL_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,11 +67,11 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>TEST_NOT_EQUAL</tt></h1><!--introduction--><p>Test if two double arrays are NOT equal up to a desired number of decimal places.</p><p><a href="index.html">Back to Simple Unit Testing Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Inputs</a></li><li><a href="#4">Outputs</a></li><li><a href="#5">Example #1: Passed test.</a></li><li><a href="#7">Example #2: Failed test.</a></li><li><a href="#9">Example #3: Testing to a specified precision.</a></li><li><a href="#11">Example #4: Testing with arrays of different sizes.</a></li><li><a href="#13">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">TEST_NOT_EQUAL(X1,X2)
+  </style></head><body><div class="content"><h1><tt>TEST_NOT_EQUAL</tt></h1><!--introduction--><p>Test if two double arrays are NOT equal up to a desired number of decimal places.</p><p><a href="index.html">Back to <b>Simple Unit Testing Toolbox Documentation</b></a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Inputs</a></li><li><a href="#4">Outputs</a></li><li><a href="#5">Example #1: Passed test.</a></li><li><a href="#7">Example #2: Failed test.</a></li><li><a href="#9">Example #3: Testing to a specified precision.</a></li><li><a href="#11">Example #4: Testing with arrays of different sizes.</a></li><li><a href="#13">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">TEST_NOT_EQUAL(X1,X2)
 TEST_NOT_EQUAL(X1,X2,n)
-TEST_NOT_EQUAL(__,name,print)
+TEST_NOT_EQUAL(__,name,print,color)
 outputs = TEST_NOT_EQUAL(__)
-</pre><h2 id="2">Description</h2><p><tt>TEST_NOT_EQUAL(X1,X2)</tt> tests if <tt>X1</tt> and <tt>X2</tt> are not equal to 16 decimal places. The results of the test are printed to the Command Window.</p><p><tt>TEST_NOT_EQUAL(X1,X2,n)</tt> tests if <tt>X1</tt> and <tt>X2</tt> are not equal to <tt>n</tt> decimal places. The results of the test are printed to the Command Window.</p><p><tt>TEST_NOT_EQUAL(...,name,print)</tt> does the same as the syntaxes above, but also allows the user to specify a test name, and whether or not to print the test results to the Command Window. This syntax is primarily used when defining unit test classes.</p><p><tt>outputs = TEST_NOT_EQUAL(...)</tt> also returns the test outputs.</p><h2 id="3">Inputs</h2><p>
+</pre><h2 id="2">Description</h2><p><tt>TEST_NOT_EQUAL(X1,X2)</tt> tests if <tt>X1</tt> and <tt>X2</tt> are not equal to 16 decimal places. The results of the test are printed to the Command Window.</p><p><tt>TEST_NOT_EQUAL(X1,X2,n)</tt> tests if <tt>X1</tt> and <tt>X2</tt> are not equal to <tt>n</tt> decimal places. The results of the test are printed to the Command Window.</p><p><tt>TEST_NOT_EQUAL(...,name,print,color)</tt> does the same as the syntaxes above, but also allows the user to specify a test name, whether or not to print the test results to the Command Window, and whether or not to print those test results in color. This syntax is primarily used when defining unit test classes.</p><p><tt>outputs = TEST_NOT_EQUAL(...)</tt> also returns the test outputs. Again, this syntax is primarily used when defining unit test classes.</p><h2 id="3">Inputs</h2><p>
   <table>
       <tr>
           <td style="text-align:center"><b>Variable</b></td>
@@ -90,17 +90,22 @@ outputs = TEST_NOT_EQUAL(__)
       </tr>
       <tr>
           <td style="text-align:center"><TT>n</TT></td>
-          <td>(OPTIONAL) decimal places of precision (defaults to 16)</td>
+          <td><b>(OPTIONAL)</b> decimal places of precision (defaults to 16)</td>
           <td style="text-align:center">1×1<BR>double</td>
       </tr>
       <tr>
           <td style="text-align:center"><TT>name</TT></td>
-          <td>(OPTIONAL) test name (defaults to empty string)</td>
-          <td style="text-align:center">char</td>
+          <td><b>(OPTIONAL)</b> test name (defaults to empty string)</td>
+          <td style="text-align:center">char array</td>
       </tr>
       <tr>
           <td style="text-align:center"><TT>print</TT></td>
-          <td>(OPTIONAL) <TT>true</TT> if test result should be printed to Command Window, <TT>false</TT> otherwise (defaults to <TT>true</TT>)</td>
+          <td><b>(OPTIONAL)</b> <TT>true</TT> if test result should be printed to Command Window, <TT>false</TT> otherwise (defaults to <TT>true</TT>)</td>
+          <td style="text-align:center">1×1<BR>logical</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>color</TT></td>
+          <td><b>(OPTIONAL)</b> <TT>true</TT> if test result should be printed in color, <TT>false</TT> otherwise (defaults to <TT>true</TT>)</td>
           <td style="text-align:center">1×1<BR>logical</td>
       </tr>
   </table>
@@ -172,11 +177,11 @@ X2 = [1  1;
 % Test if two double arrays are NOT equal up to a desired number of decimal
 % places.
 % 
-% <index.html Back to Simple Unit Testing Toolbox Contents>.
+% <index.html Back to *Simple Unit Testing Toolbox Documentation*>.
 %% Syntax
 %   TEST_NOT_EQUAL(X1,X2)
 %   TEST_NOT_EQUAL(X1,X2,n)
-%   TEST_NOT_EQUAL(__,name,print)
+%   TEST_NOT_EQUAL(__,name,print,color)
 %   outputs = TEST_NOT_EQUAL(__)
 %% Description
 % |TEST_NOT_EQUAL(X1,X2)| tests if |X1| and |X2| are not equal to 16 
@@ -187,12 +192,14 @@ X2 = [1  1;
 % decimal places. The results of the test are printed to the Command 
 % Window.
 %
-% |TEST_NOT_EQUAL(...,name,print)| does the same as the syntaxes above, but 
-% also allows the user to specify a test name, and whether or not to print 
-% the test results to the Command Window. This syntax is primarily used
-% when defining unit test classes.
+% |TEST_NOT_EQUAL(...,name,print,color)| does the same as the syntaxes 
+% above, but also allows the user to specify a test name, whether or not to
+% print the test results to the Command Window, and whether or not to print
+% those test results in color. This syntax is primarily used when defining
+% unit test classes.
 %
-% |outputs = TEST_NOT_EQUAL(...)| also returns the test outputs.
+% |outputs = TEST_NOT_EQUAL(...)| also returns the test outputs. Again,
+% this syntax is primarily used when defining unit test classes.
 %% Inputs
 % <html>
 %   <table>
@@ -213,17 +220,22 @@ X2 = [1  1;
 %       </tr>
 %       <tr>
 %           <td style="text-align:center"><TT>n</TT></td>
-%           <td>(OPTIONAL) decimal places of precision (defaults to 16)</td>
+%           <td><b>(OPTIONAL)</b> decimal places of precision (defaults to 16)</td>
 %           <td style="text-align:center">1×1<BR>double</td>
 %       </tr>
 %       <tr>
 %           <td style="text-align:center"><TT>name</TT></td>
-%           <td>(OPTIONAL) test name (defaults to empty string)</td>
-%           <td style="text-align:center">char</td>
+%           <td><b>(OPTIONAL)</b> test name (defaults to empty string)</td>
+%           <td style="text-align:center">char array</td>
 %       </tr>
 %       <tr>
 %           <td style="text-align:center"><TT>print</TT></td>
-%           <td>(OPTIONAL) <TT>true</TT> if test result should be printed to Command Window, <TT>false</TT> otherwise (defaults to <TT>true</TT>)</td>
+%           <td><b>(OPTIONAL)</b> <TT>true</TT> if test result should be printed to Command Window, <TT>false</TT> otherwise (defaults to <TT>true</TT>)</td>
+%           <td style="text-align:center">1×1<BR>logical</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>color</TT></td>
+%           <td><b>(OPTIONAL)</b> <TT>true</TT> if test result should be printed in color, <TT>false</TT> otherwise (defaults to <TT>true</TT>)</td>
 %           <td style="text-align:center">1×1<BR>logical</td>
 %       </tr>
 %   </table>

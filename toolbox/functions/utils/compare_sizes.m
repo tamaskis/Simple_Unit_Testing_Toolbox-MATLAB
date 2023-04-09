@@ -5,7 +5,7 @@
 %   result = compare_sizes(X1,X2)
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-01-14
+% Last Update: 2023-04-09
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %

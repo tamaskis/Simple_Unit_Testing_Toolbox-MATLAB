@@ -1,0 +1,292 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>TEST_FUNCTION_COUNT</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-04-09"><meta name="DC.source" content="TEST_FUNCTION_COUNT_doc.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>TEST_FUNCTION_COUNT</tt></h1><!--introduction--><p>Test if an algorithm operating on a function correctly counts the number of function evaluations.</p><p><a href="index.html">Back to <b>Simple Unit Testing Toolbox Documentation</b></a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Inputs</a></li><li><a href="#4">Outputs</a></li><li><a href="#5">Example</a></li><li><a href="#8">Function for Example</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">TEST_FUNCTION_COUNT(f,g)
+TEST_FUNCTION_COUNT(f,g,name,print,color)
+output = TEST_FUNCTION_COUNT(__)
+</pre><h2 id="2">Description</h2><p><tt>TEST_FUNCTION_COUNT(f,g)</tt> tests if the function <tt>f_fast</tt> is faster to evaluate than the function <tt>f_slow</tt>, where both functions do not have any input arguments. By default, these functions are both evaluated 1000 times in order to compute an average evaluation time.</p><p><tt>TEST_FUNCTION_COUNT(f,g,name,print,color)</tt> does the same as the syntax above, but also allows the user to specify a test name, whether or not to print the test results to the Command Window, and whether or not to print those test results in color. This syntax is primarily used when defining unit test classes.</p><p><tt>outputs = TEST_FUNCTION_COUNT(...)</tt> also returns the test outputs. Again, this syntax is primarily used when defining unit test classes.</p><h2 id="3">Inputs</h2><p>
+  <table>
+      <tr>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>f_fast</TT></td>
+          <td>function handle for faster function</td>
+          <td style="text-align:center">1×1<BR>function_handle</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>f_slow</TT></td>
+          <td>function handle for slower function</td>
+          <td style="text-align:center">1×1<BR>function_handle</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>args</TT></td>
+          <td><b>(OPTIONAL)</b> input arguments to functions (defaults to empty cell array)</td>
+          <td style="text-align:center">cell array</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>n_eval</TT></td>
+          <td><b>(OPTIONAL)</b> number of times to evaluate functions when determining average evaluation time (defaults to 1000)</td>
+          <td style="text-align:center">1×1<BR>double</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>name</TT></td>
+          <td><b>(OPTIONAL)</b> test name (defaults to empty string)</td>
+          <td style="text-align:center">char array</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>print</TT></td>
+          <td><b>(OPTIONAL)</b> <TT>true</TT> if test result should be printed to Command Window, <TT>false</TT> otherwise (defaults to <TT>true</TT>)</td>
+          <td style="text-align:center">1×1<BR>logical</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>color</TT></td>
+          <td><b>(OPTIONAL)</b> <TT>true</TT> if test result should be printed in color, <TT>false</TT> otherwise (defaults to <TT>true</TT>)</td>
+          <td style="text-align:center">1×1<BR>logical</td>
+      </tr>
+  </table>
+</p><p><b>NOTE:</b> <tt>f_fast</tt> and <tt>f_slow</tt> must have the same input/output behavior.</p><h2 id="4">Outputs</h2><p>
+  <table>
+      <tr>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>output</TT></td>
+          <td>test outputs<BR><BR>
+              <table>
+                  <tr>
+                      <td style="text-align:center"><b>Field</b></td>
+                      <td style="text-align:center"><b>Description</b></td>
+                      <td style="text-align:center"><b>Format</b></td>
+                  </tr>
+                  <tr>
+                      <td style="text-align:center"><TT>passed</TT></td>
+                      <td><TT>true</TT> if test passed, <TT>false</TT> otherwise</td>
+                      <td style="text-align:center">1×1<BR>logical</td>
+                  </tr>
+                  <tr>
+                      <td style="text-align:center"><TT>result</TT></td>
+                      <td>string storing result of test</td>
+                      <td style="text-align:center">char array</td>
+                  </tr>
+                  <tr>
+                      <td style="text-align:center"><TT>message</TT></td>
+                      <td>string storing additional diagnostic message</td>
+                      <td style="text-align:center">char array</td>
+                  </tr>
+              </table>
+              </td>
+          <td style="text-align:center">1×1<BR>struct</td>
+      </tr>
+  </table>
+</p><h2 id="5">Example</h2><p>Let's define the function <img src="TEST_FUNCTION_COUNT_doc_eq12141978683720303882.png" alt="$f(x)=x^{2}-1$" style="width:65px;height:12px;">.</p><pre class="codeinput">f = @(x) x^2-1;
+</pre><p>Now, let's define a function <img src="TEST_FUNCTION_COUNT_doc_eq08825345406897799954.png" alt="$g(f)$" style="width:20px;height:11px;"> that takes <img src="TEST_FUNCTION_COUNT_doc_eq02527148203711597490.png" alt="$f$" style="width:6px;height:10px;"> as an input and returns the number of times <img src="TEST_FUNCTION_COUNT_doc_eq02527148203711597490.png" alt="$f$" style="width:6px;height:10px;"> is evaluated when MATLAB's <tt>fzero</tt> function is used to find the root of <img src="TEST_FUNCTION_COUNT_doc_eq01058714691934937683.png" alt="$f(x)$" style="width:20px;height:11px;"> using an initial interval of <img src="TEST_FUNCTION_COUNT_doc_eq05076855042414023926.png" alt="$[a,b]=[0,10]$" style="width:61px;height:11px;">. Note that we use <tt>function_for_example</tt> at the bottom of this page to help define <img src="TEST_FUNCTION_COUNT_doc_eq08825345406897799954.png" alt="$g(f)$" style="width:20px;height:11px;">.</p><pre class="codeinput">g = @(f) function_for_example(f,0,10);
+</pre><p>The <tt>fzero</tt> function returns the number of function evaluations it performs. To ensure it returns the <i>correct</i> number of function evaluations (i.e. it does not make a mistake in counting), we can use the <tt>TEST_FUNCTION_COUNT</tt> function.</p><pre class="codeinput">TEST_FUNCTION_COUNT(f,g);
+</pre><h2 id="8">Function for Example</h2><pre class="codeinput"><span class="keyword">function</span> n_feval = function_for_example(f,a,b)
+    [~,~,~,output] = fzero(f,[a,b]);
+    n_feval = output.funcCount;
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">Passed.
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |TEST_FUNCTION_COUNT|
+% Test if an algorithm operating on a function correctly counts the number 
+% of function evaluations.
+% 
+% <index.html Back to *Simple Unit Testing Toolbox Documentation*>.
+%% Syntax
+%   TEST_FUNCTION_COUNT(f,g)
+%   TEST_FUNCTION_COUNT(f,g,name,print,color)
+%   output = TEST_FUNCTION_COUNT(__)
+%% Description
+% |TEST_FUNCTION_COUNT(f,g)| tests if the function |f_fast| is 
+% faster to evaluate than the function |f_slow|, where both functions do 
+% not have any input arguments. By default, these functions are both evaluated 1000
+% times in order to compute an average evaluation time.
+%
+% |TEST_FUNCTION_COUNT(f,g,name,print,color)| does the same as the syntax 
+% above, but also allows the user to specify a test name, whether or not to
+% print the test results to the Command Window, and whether or not to print
+% those test results in color. This syntax is primarily used when defining
+% unit test classes.
+%
+% |outputs = TEST_FUNCTION_COUNT(...)| also returns the test outputs. Again, this
+% syntax is primarily used when defining unit test classes.
+%% Inputs
+% <html>
+%   <table>
+%       <tr>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>f_fast</TT></td>
+%           <td>function handle for faster function</td>
+%           <td style="text-align:center">1×1<BR>function_handle</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>f_slow</TT></td>
+%           <td>function handle for slower function</td>
+%           <td style="text-align:center">1×1<BR>function_handle</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>args</TT></td>
+%           <td><b>(OPTIONAL)</b> input arguments to functions (defaults to empty cell array)</td>
+%           <td style="text-align:center">cell array</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>n_eval</TT></td>
+%           <td><b>(OPTIONAL)</b> number of times to evaluate functions when determining average evaluation time (defaults to 1000)</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>name</TT></td>
+%           <td><b>(OPTIONAL)</b> test name (defaults to empty string)</td>
+%           <td style="text-align:center">char array</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>print</TT></td>
+%           <td><b>(OPTIONAL)</b> <TT>true</TT> if test result should be printed to Command Window, <TT>false</TT> otherwise (defaults to <TT>true</TT>)</td>
+%           <td style="text-align:center">1×1<BR>logical</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>color</TT></td>
+%           <td><b>(OPTIONAL)</b> <TT>true</TT> if test result should be printed in color, <TT>false</TT> otherwise (defaults to <TT>true</TT>)</td>
+%           <td style="text-align:center">1×1<BR>logical</td>
+%       </tr>
+%   </table>
+% </html>
+%
+% *NOTE:* |f_fast| and |f_slow| must have the same input/output behavior.
+%% Outputs
+% <html>
+%   <table>
+%       <tr>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>output</TT></td>
+%           <td>test outputs<BR><BR>
+%               <table>
+%                   <tr>
+%                       <td style="text-align:center"><b>Field</b></td>
+%                       <td style="text-align:center"><b>Description</b></td>
+%                       <td style="text-align:center"><b>Format</b></td>
+%                   </tr>
+%                   <tr>
+%                       <td style="text-align:center"><TT>passed</TT></td>
+%                       <td><TT>true</TT> if test passed, <TT>false</TT> otherwise</td>
+%                       <td style="text-align:center">1×1<BR>logical</td>
+%                   </tr>
+%                   <tr>
+%                       <td style="text-align:center"><TT>result</TT></td>
+%                       <td>string storing result of test</td>
+%                       <td style="text-align:center">char array</td>
+%                   </tr>
+%                   <tr>
+%                       <td style="text-align:center"><TT>message</TT></td>
+%                       <td>string storing additional diagnostic message</td>
+%                       <td style="text-align:center">char array</td>
+%                   </tr>
+%               </table>
+%               </td>
+%           <td style="text-align:center">1×1<BR>struct</td>
+%       </tr>
+%   </table>
+% </html>
+%% Example
+% Let's define the function $f(x)=x^{2}-1$.
+f = @(x) x^2-1;
+%%
+% Now, let's define a function $g(f)$ that takes $f$ as an input and
+% returns the number of times $f$ is evaluated when MATLAB's |fzero|
+% function is used to find the root of $f(x)$ using an initial interval of 
+% $[a,b]=[0,10]$. Note that we use |function_for_example| at the bottom of
+% this page to help define $g(f)$.
+g = @(f) function_for_example(f,0,10);
+%%
+% The |fzero| function returns the number of function evaluations it
+% performs. To ensure it returns the _correct_ number of function
+% evaluations (i.e. it does not make a mistake in counting), we can use the
+% |TEST_FUNCTION_COUNT| function.
+TEST_FUNCTION_COUNT(f,g);
+%% Function for Example
+function n_feval = function_for_example(f,a,b)
+    [~,~,~,output] = fzero(f,[a,b]);
+    n_feval = output.funcCount;
+end
+##### SOURCE END #####
+--></body></html>

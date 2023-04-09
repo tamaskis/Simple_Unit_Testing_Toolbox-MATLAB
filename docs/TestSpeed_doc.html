@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>TestSpeed</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-01-14"><meta name="DC.source" content="TestSpeed_doc.m"><style type="text/css">
+      --><title>TestSpeed</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-04-09"><meta name="DC.source" content="TestSpeed_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,7 +67,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>TestSpeed</tt></h1><!--introduction--><p>Unit test for confirming that one function is faster than another.</p><p><a href="index.html">Back to Simple Unit Testing Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Constructor</a></li><li><a href="#2">Superclass</a></li><li><a href="#3">See also</a></li></ul></div><h2 id="1">Constructor</h2><pre class="language-matlab">unit_test = TestSpeed(f_fast,f_slow,args,name)
+  </style></head><body><div class="content"><h1><tt>TestSpeed</tt></h1><!--introduction--><p>Unit test for confirming that one function is faster than another.</p><p><a href="index.html">Back to <b>Simple Unit Testing Toolbox Documentation</b></a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Constructor</a></li><li><a href="#2">Superclass</a></li><li><a href="#3">See also</a></li></ul></div><h2 id="1">Constructor</h2><pre class="language-matlab">unit_test = TestSpeed(f_fast,f_slow,args,name)
 unit_test = TestSpeed(f_fast,f_slow,{},name)
 </pre><p>
   <table>
@@ -96,7 +96,7 @@ unit_test = TestSpeed(f_fast,f_slow,{},name)
       <tr>
           <td style="text-align:center"><TT>name</TT></td>
           <td>test name</td>
-          <td style="text-align:center">char</td>
+          <td style="text-align:center">char array</td>
       </tr>
   </table>
 </p><p><b>NOTE:</b> <tt>f_fast</tt> and <tt>f_slow</tt> must have the same input/output behavior.</p><h2 id="2">Superclass</h2><p><a href="UnitTest_doc.html"><b><tt>UnitTest</tt></b></a></p><div><ul><li><tt>TestSpeed</tt> is a subclass of the <tt>UnitTest</tt> class (i.e. <tt>UnitTest</tt> is the superclass of <tt>TestSpeed</tt>). See the <tt>UnitTest</tt> class's documentation for documentation of methods that the <tt>TestSpeed</tt> class also possesses.</li></ul></div><h2 id="3">See also</h2><p><a href="UnitTest_doc.html"><tt>UnitTest</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
@@ -104,7 +104,7 @@ unit_test = TestSpeed(f_fast,f_slow,{},name)
 %% |TestSpeed|
 % Unit test for confirming that one function is faster than another.
 % 
-% <index.html Back to Simple Unit Testing Toolbox Contents>.
+% <index.html Back to *Simple Unit Testing Toolbox Documentation*>.
 %% Constructor
 %   unit_test = TestSpeed(f_fast,f_slow,args,name)
 %   unit_test = TestSpeed(f_fast,f_slow,{},name)
@@ -136,7 +136,7 @@ unit_test = TestSpeed(f_fast,f_slow,{},name)
 %       <tr>
 %           <td style="text-align:center"><TT>name</TT></td>
 %           <td>test name</td>
-%           <td style="text-align:center">char</td>
+%           <td style="text-align:center">char array</td>
 %       </tr>
 %   </table>
 % </html>

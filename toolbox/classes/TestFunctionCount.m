@@ -6,7 +6,7 @@
 % See also UnitTest.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-01-14
+% Last Update: 2023-04-09
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -20,8 +20,8 @@ classdef TestFunctionCount < UnitTest
     
     methods (Access = public)
         
-        function obj = TestFunctionCount(f,name)
-            % obj = TestFunctionCount(f,args,name)
+        function obj = TestFunctionCount(f,g,name)
+            % obj = TestFunctionCount(f,g,name)
             %
             % Constructor.
             %--------------------------------------------------------------
@@ -45,7 +45,7 @@ classdef TestFunctionCount < UnitTest
             %--------------------------------------------------------------
             
             % function handle for TEST_FUNCTION_COUNT function
-            UNIT_TEST = @(f,g,name) TEST_FUNCTION_COUNT(f,g,name);
+            UNIT_TEST = @(f,g,name) TEST_FUNCTION_COUNT(f,g,name,false);
             
             % initializes TestFunctionCount object (subclass of UnitTest)
             obj@UnitTest(UNIT_TEST,{f,g},name);

@@ -30,7 +30,7 @@ doc_SUTT name
 
 ### Creating a test suite.
 
-`test_suite = TestSuite(name,terminate)`
+`test_suite = TestSuite(name,terminate,color)`
 
 ### Adding tests to a test suite.
 
@@ -39,6 +39,7 @@ doc_SUTT name
 `test_suite.add_test(TestError(f,args,name))`\
 `test_suite.add_test(TestNoError(f,args,name))`\
 `test_suite.add_test(TestSpeed(f1,f2,args,name))`
+`test_suite.add_test(TestFunctionCount(f,g,name))`
 
 ### Running a test suite.
 
@@ -60,6 +61,8 @@ doc_SUTT name
 `TEST_SPEED(f_fast,f_slow,args,n_eval)`\
 `TIME_EVALUATION(f,args,n_eval)`
 
+### Testing counting the number of function evaluations.
+`TEST_FUNCTION_COUNT(f,g)`
 
 ## Printing to Command Window
 

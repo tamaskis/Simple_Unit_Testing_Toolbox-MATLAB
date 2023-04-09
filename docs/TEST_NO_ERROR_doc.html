@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>TEST_NO_ERROR</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-01-14"><meta name="DC.source" content="TEST_NO_ERROR_doc.m"><style type="text/css">
+      --><title>TEST_NO_ERROR</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-04-09"><meta name="DC.source" content="TEST_NO_ERROR_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,11 +67,11 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>TEST_NO_ERROR</tt></h1><!--introduction--><p>Test to ensure an error is NOT thrown.</p><p><a href="index.html">Back to Simple Unit Testing Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Inputs</a></li><li><a href="#4">Outputs</a></li><li><a href="#5">Example #1: Passed test.</a></li><li><a href="#8">Example #2: Failed test.</a></li><li><a href="#9">Example #3: User-defined function raising custom error.</a></li><li><a href="#10">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">TEST_NO_ERROR(f)
+  </style></head><body><div class="content"><h1><tt>TEST_NO_ERROR</tt></h1><!--introduction--><p>Test to ensure an error is NOT thrown.</p><p><a href="index.html">Back to <b>Simple Unit Testing Toolbox Documentation</b></a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Inputs</a></li><li><a href="#4">Outputs</a></li><li><a href="#5">Example #1: Passed test.</a></li><li><a href="#8">Example #2: Failed test.</a></li><li><a href="#9">Example #3: User-defined function raising custom error.</a></li><li><a href="#10">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">TEST_NO_ERROR(f)
 TEST_NO_ERROR(f,args)
-TEST_NO_ERROR(__,name,print)
+TEST_NO_ERROR(__,name,print,color)
 outputs = TEST_NO_ERROR(__)
-</pre><h2 id="2">Description</h2><p><tt>TEST_NO_ERROR(f)</tt> tests if the function <tt>f</tt> (that has no inputs) does not throw an error.</p><p><tt>TEST_NO_ERROR(f,args)</tt> tests if the function <tt>f</tt> does not throw an error when subject to the input arguments <tt>args</tt>.</p><p><tt>TEST_NO_ERROR(...,name,print)</tt> does the same as the syntaxes above, but also allows the user to specify a test name, and whether or not to print the test results to the Command Window. This syntax is primarily used when defining unit test classes.</p><p><tt>outputs = TEST_NO_ERROR(...)</tt> also returns the test outputs.</p><h2 id="3">Inputs</h2><p>
+</pre><h2 id="2">Description</h2><p><tt>TEST_NO_ERROR(f)</tt> tests if the function <tt>f</tt> (that has no inputs) does not throw an error.</p><p><tt>TEST_NO_ERROR(f,args)</tt> tests if the function <tt>f</tt> does not throw an error when subject to the input arguments <tt>args</tt>.</p><p><tt>TEST_NO_ERROR(...,name,print,color)</tt> does the same as the syntaxes above, but also allows the user to specify a test name, whether or not to print the test results to the Command Window, and whether or not to print those test results in color. This syntax is primarily used when defining unit test classes.</p><p><tt>outputs = TEST_NO_ERROR(...)</tt> also returns the test outputs. Again, this syntax is primarily used when defining unit test classes.</p><h2 id="3">Inputs</h2><p>
   <table>
       <tr>
           <td style="text-align:center"><b>Variable</b></td>
@@ -86,17 +86,22 @@ outputs = TEST_NO_ERROR(__)
       </tr>
       <tr>
           <td style="text-align:center"><TT>args</TT></td>
-          <td>(OPTIONAL) input arguments to <TT>f</TT> (defaults to empty cell array)</td>
+          <td><b>(OPTIONAL)</b> input arguments to <TT>f</TT> (defaults to empty cell array)</td>
           <td style="text-align:center">cell array</td>
       </tr>
       <tr>
           <td style="text-align:center"><TT>name</TT></td>
-          <td>(OPTIONAL) test name (defaults to empty string)</td>
-          <td style="text-align:center">char</td>
+          <td><b>(OPTIONAL)</b> test name (defaults to empty string)</td>
+          <td style="text-align:center">char array</td>
       </tr>
       <tr>
           <td style="text-align:center"><TT>print</TT></td>
-          <td>(OPTIONAL) <TT>true</TT> if test result should be printed to Command Window, <TT>false</TT> otherwise (defaults to <TT>true</TT>)</td>
+          <td><b>(OPTIONAL)</b> <TT>true</TT> if test result should be printed to Command Window, <TT>false</TT> otherwise (defaults to <TT>true</TT>)</td>
+          <td style="text-align:center">1×1<BR>logical</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>color</TT></td>
+          <td><b>(OPTIONAL)</b> <TT>true</TT> if test result should be printed in color, <TT>false</TT> otherwise (defaults to <TT>true</TT>)</td>
           <td style="text-align:center">1×1<BR>logical</td>
       </tr>
   </table>
@@ -159,11 +164,11 @@ outputs = TEST_NO_ERROR(__)
 %% |TEST_NO_ERROR|
 % Test to ensure an error is NOT thrown.
 % 
-% <index.html Back to Simple Unit Testing Toolbox Contents>.
+% <index.html Back to *Simple Unit Testing Toolbox Documentation*>.
 %% Syntax
 %   TEST_NO_ERROR(f)
 %   TEST_NO_ERROR(f,args)
-%   TEST_NO_ERROR(__,name,print)
+%   TEST_NO_ERROR(__,name,print,color)
 %   outputs = TEST_NO_ERROR(__)
 %% Description
 % |TEST_NO_ERROR(f)| tests if the function |f| (that has no inputs) does 
@@ -172,12 +177,14 @@ outputs = TEST_NO_ERROR(__)
 % |TEST_NO_ERROR(f,args)| tests if the function |f| does not throw an error
 % when subject to the input arguments |args|.
 %
-% |TEST_NO_ERROR(...,name,print)| does the same as the syntaxes above, but 
-% also allows the user to specify a test name, and whether or not to print 
-% the test results to the Command Window. This syntax is primarily used
-% when defining unit test classes.
+% |TEST_NO_ERROR(...,name,print,color)| does the same as the syntaxes 
+% above, but also allows the user to specify a test name, whether or not to
+% print the test results to the Command Window, and whether or not to print
+% those test results in color. This syntax is primarily used when defining
+% unit test classes.
 %
-% |outputs = TEST_NO_ERROR(...)| also returns the test outputs.
+% |outputs = TEST_NO_ERROR(...)| also returns the test outputs. Again, this
+% syntax is primarily used when defining unit test classes.
 %% Inputs
 % <html>
 %   <table>
@@ -194,17 +201,22 @@ outputs = TEST_NO_ERROR(__)
 %       </tr>
 %       <tr>
 %           <td style="text-align:center"><TT>args</TT></td>
-%           <td>(OPTIONAL) input arguments to <TT>f</TT> (defaults to empty cell array)</td>
+%           <td><b>(OPTIONAL)</b> input arguments to <TT>f</TT> (defaults to empty cell array)</td>
 %           <td style="text-align:center">cell array</td>
 %       </tr>
 %       <tr>
 %           <td style="text-align:center"><TT>name</TT></td>
-%           <td>(OPTIONAL) test name (defaults to empty string)</td>
-%           <td style="text-align:center">char</td>
+%           <td><b>(OPTIONAL)</b> test name (defaults to empty string)</td>
+%           <td style="text-align:center">char array</td>
 %       </tr>
 %       <tr>
 %           <td style="text-align:center"><TT>print</TT></td>
-%           <td>(OPTIONAL) <TT>true</TT> if test result should be printed to Command Window, <TT>false</TT> otherwise (defaults to <TT>true</TT>)</td>
+%           <td><b>(OPTIONAL)</b> <TT>true</TT> if test result should be printed to Command Window, <TT>false</TT> otherwise (defaults to <TT>true</TT>)</td>
+%           <td style="text-align:center">1×1<BR>logical</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>color</TT></td>
+%           <td><b>(OPTIONAL)</b> <TT>true</TT> if test result should be printed in color, <TT>false</TT> otherwise (defaults to <TT>true</TT>)</td>
 %           <td style="text-align:center">1×1<BR>logical</td>
 %       </tr>
 %   </table>

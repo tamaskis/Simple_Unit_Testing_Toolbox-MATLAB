@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>TestSuite</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-01-14"><meta name="DC.source" content="TestSuite_doc.m"><style type="text/css">
+      --><title>TestSuite</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-04-09"><meta name="DC.source" content="TestSuite_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,7 +67,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>TestSuite</tt></h1><!--introduction--><p>Class defining a test suite.</p><p><a href="index.html">Back to Simple Unit Testing Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Properties</a></li><li><a href="#2">Constructor</a></li><li><a href="#3"><tt>add_test</tt></a></li><li><a href="#4"><tt>run</tt></a></li><li><a href="#5">Example #1: Basic test suite with all tests passing.</a></li><li><a href="#9">Example #2: Test suite with a name and with both passed and failed tests.</a></li><li><a href="#14">Example #3: Test suite that terminates on first failed test.</a></li><li><a href="#19">Example #4: An actual test suite.</a></li><li><a href="#20">See also</a></li></ul></div><h2 id="1">Properties</h2><p>
+  </style></head><body><div class="content"><h1><tt>TestSuite</tt></h1><!--introduction--><p>Class defining a test suite.</p><p><a href="index.html">Back to <b>Simple Unit Testing Toolbox Documentation</b></a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Properties</a></li><li><a href="#2">Constructor</a></li><li><a href="#3"><tt>add_test</tt></a></li><li><a href="#4"><tt>run</tt></a></li><li><a href="#5">Example #1: Basic test suite with all tests passing.</a></li><li><a href="#9">Example #2: Test suite with a name and with both passed and failed tests.</a></li><li><a href="#14">Example #3: Test suite that terminates on first failed test.</a></li><li><a href="#19">Example #4: An actual test suite.</a></li><li><a href="#20">Example #5: Test suite testing the counting of function evaluations.</a></li><li><a href="#23">Function for Example #5</a></li><li><a href="#24">See also</a></li></ul></div><h2 id="1">Properties</h2><p>
   <table>
       <tr>
           <td style="text-align:center"><b>Variable</b></td>
@@ -82,7 +82,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
       <tr>
           <td style="text-align:center"><TT>name</TT></td>
           <td>test suite name</td>
-          <td style="text-align:center">char</td>
+          <td style="text-align:center">char array</td>
       </tr>
       <tr>
           <td style="text-align:center"><TT>N</TT></td>
@@ -91,12 +91,17 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
       </tr>
       <tr>
           <td style="text-align:center"><TT>terminate</TT></td>
-          <td>if true, test suite terminates after first failed test</td>
+          <td>if <TT>true</TT>, test suite terminates after first failed test</td>
+          <td style="text-align:center">1×1<BR>logical</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>color</TT></td>
+          <td>if <TT>true</TT>, test results are printed in color</td>
           <td style="text-align:center">1×1<BR>logical</td>
       </tr>
   </table>
 </p><h2 id="2">Constructor</h2><pre class="language-matlab">test_suite = TestSuite
-test_suite = TestSuite(name,terminate)
+test_suite = TestSuite(name,terminate,color)
 </pre><p>
   <table>
       <tr>
@@ -106,12 +111,17 @@ test_suite = TestSuite(name,terminate)
       </tr>
       <tr>
           <td style="text-align:center"><TT>name</TT></td>
-          <td>(OPTIONAL) test suite name (defaults to empty string)</td>
-          <td style="text-align:center">char</td>
+          <td><b>(OPTIONAL)</b> test suite name (defaults to empty string)</td>
+          <td style="text-align:center">char array</td>
       </tr>
       <tr>
           <td style="text-align:center"><TT>terminate</TT></td>
-          <td>(OPTIONAL) if true, test suite terminates after first failed test (defaults to false)</td>
+          <td><b>(OPTIONAL)</b> if <TT>true</TT>, test suite terminates after first failed test (defaults to <TT>false</TT>)</td>
+          <td style="text-align:center">1×1<BR>logical</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>color</TT></td>
+          <td><b>(OPTIONAL)</b> if <TT>true</TT>, test results are printed in color (defaults to <TT>true</TT>)</td>
           <td style="text-align:center">1×1<BR>logical</td>
       </tr>
   </table>
@@ -121,6 +131,7 @@ TestSuite.add_test(TestNotEqual(X1,X2,name,n))
 TestSuite.add_test(TestError(f,args,name))
 TestSuite.add_test(TestNoError(f,args,name))
 TestSuite.add_test(TestSpeed(f_fast,f_slow,args,name))
+TestSuite.add_test(TestFunctionCount(f,g,name))
 </pre><p><b>Description:</b> Adds a test to the test suite.</p><p>
   <table>
       <tr>
@@ -130,17 +141,18 @@ TestSuite.add_test(TestSpeed(f_fast,f_slow,args,name))
       </tr>
       <tr>
           <td style="text-align:center"><TT>unit_test</TT></td>
-          <td>unit test - can be one of the following, which are all subclasses of the <TT>UnitTest</TT> class:
-              <BR>  - <TT>TestEqual</TT>
-              <BR>  - <TT>TestNotEqual</TT>
-              <BR>  - <TT>TestError</TT>
-              <BR>  - <TT>TestNoError</TT>
-              <BR>  - <TT>TestSpeed</TT>
-              </td>
+          <td>unit test - can be one of the following, which are all subclasses of the <TT>UnitTest</TT> class:<ul>
+              <li><TT>TestEqual</TT></li>
+              <li><TT>TestNotEqual</TT></li>
+              <li><TT>TestError</TT></li>
+              <li><TT>TestNoError</TT></li>
+              <li><TT>TestSpeed</TT></li>
+              <li><TT>TestFunctionCount</TT></li>
+          </ul></td>
           <td style="text-align:center">1×1<BR>UnitTest</td>
       </tr>
   </table>
-</p><p>See the following for documentation of the individual unit tests:</p><div><ul><li><a href="TestEqual_doc.html"><b><tt>TestEqual</tt></b></a></li><li><a href="TestNotEqual_doc.html"><b><tt>TestNotEqual</tt></b></a></li><li><a href="TestError_doc.html"><b><tt>TestError</tt></b></a></li><li><a href="TestNoError_doc.html"><b><tt>TestNoError</tt></b></a></li><li><a href="TestSpeed_doc.html"><b><tt>TestSpeed</tt></b></a></li></ul></div><h2 id="4"><tt>run</tt></h2><pre class="language-matlab">TestSuite.run
+</p><p>See the following for documentation of the individual unit tests:</p><div><ul><li><a href="TestEqual_doc.html"><b><tt>TestEqual</tt></b></a></li><li><a href="TestNotEqual_doc.html"><b><tt>TestNotEqual</tt></b></a></li><li><a href="TestError_doc.html"><b><tt>TestError</tt></b></a></li><li><a href="TestNoError_doc.html"><b><tt>TestNoError</tt></b></a></li><li><a href="TestSpeed_doc.html"><b><tt>TestSpeed</tt></b></a></li><li><a href="TestFunctionCount_doc.html"><b><tt>TestFunctionCount</tt></b></a></li></ul></div><h2 id="4"><tt>run</tt></h2><pre class="language-matlab">TestSuite.run
 </pre><p><b>Description:</b> Runs all tests in the test suite.</p><h2 id="5">Example #1: Basic test suite with all tests passing.</h2><p>Consider two nearly identical arrays.</p><pre class="codeinput">X1 = [1  1;
       1  1];
 X2 = X1+0.00001;
@@ -149,8 +161,8 @@ X2 = X1+0.00001;
 test_suite.add_test(TestNotEqual(X1,X2,<span class="string">'not equal to 5 decimal places'</span>,5));
 </pre><p>To run the test suite, we can simply do</p><pre class="codeinput">test_suite.run;
 </pre><pre class="codeoutput">
-equal to 4 decimal places: Passed. (1/1)
-not equal to 5 decimal places: Passed. (2/2)
+equal to 4 decimal places: Passed.
+not equal to 5 decimal places: Passed.
     &gt;&gt;&gt;&gt; WARNING: This test tested for inequality, but the arrays ARE equal to 4 decimal places.
 
 ========================================================================================================================
@@ -181,19 +193,19 @@ test_suite.add_test(TestError(@(x,y)mod(x,y),{10,1,3},<span class="string">'erro
 test_suite.add_test(TestSpeed(h1,h2,{1},<span class="string">'f(x) = x is faster to evaluate than f(x) = sin(x)'</span>));
 </pre><p>Running the test suite,</p><pre class="codeinput">test_suite.run;
 </pre><pre class="codeoutput">
-equal to 5 decimal places: FAILED. (0/1)
+equal to 5 decimal places: FAILED.
     &gt;&gt;&gt;&gt; Arrays are not equal to 5 decimal places.
     &gt;&gt;&gt;&gt; Arrays ARE equal to 4 decimal places.
-not equal to 4 decimal places: FAILED. (0/2)
+not equal to 4 decimal places: FAILED.
     &gt;&gt;&gt;&gt; Arrays are equal to 4 decimal places.
-error in evaluating f(x) = x&sup2; at x = 1: FAILED. (0/3)
+error in evaluating f(x) = x&sup2; at x = 1: FAILED.
     &gt;&gt;&gt;&gt; Function did not throw an error.
-no error in evaluating non-vectorized f(x) = x&sup2; when f is passed a vector: FAILED. (0/4)
+no error in evaluating non-vectorized f(x) = x&sup2; when f is passed a vector: FAILED.
     &gt;&gt;&gt;&gt; Function threw the following error: Incorrect dimensions for raising a matrix to a power. Check that the matrix is square and the power is a scalar. To operate on each element of the matrix individually, use POWER (.^) for elementwise power.
-error in evaluating non-vectorized f(x) = x&sup2; when f is passed a vector: Passed. (1/5)
-no error in evaluating mod(x,y) at (x,y) = (10,1): Passed. (2/6)
-error in passing three inputs to mod(x,y): Passed. (3/7)
-f(x) = x is faster to evaluate than f(x) = sin(x): Passed. (4/8)
+error in evaluating non-vectorized f(x) = x&sup2; when f is passed a vector: Passed.
+no error in evaluating mod(x,y) at (x,y) = (10,1): Passed.
+error in passing three inputs to mod(x,y): Passed.
+f(x) = x is faster to evaluate than f(x) = sin(x): Passed.
 
 ========================================================================================================================
 SUMMARY: Test suite for example #2
@@ -228,20 +240,42 @@ test_suite.add_test(unit_test_4);
 test_suite.add_test(unit_test_5);
 </pre><p>Running the test suite,</p><pre class="codeinput">test_suite.run;
 </pre><pre class="codeoutput">
-equal to 3 decimal places: Passed. (1/1)
-equal to 4 decimal places: Passed. (2/2)
-equal to 5 decimal places: FAILED. (2/3)
+equal to 3 decimal places: Passed.
+equal to 4 decimal places: Passed.
+equal to 5 decimal places: FAILED.
     &gt;&gt;&gt;&gt; Arrays are not equal to 5 decimal places.
     &gt;&gt;&gt;&gt; Arrays ARE equal to 4 decimal places.
 
 TEST SUITE TERMINATED EARLY DUE TO FAILED UNIT TEST.
 
-</pre><h2 id="19">Example #4: An actual test suite.</h2><p>The <a href="https://tamaskis.github.io/Numerical_Differentiation_Toolbox-MATLAB/">Numerical Differentiation Toolbox</a> uses this unit testing framework to run all of its unit tests. <a href="https://github.com/tamaskis/Numerical_Differentiation_Toolbox-MATLAB/tree/main/tests/">Click here</a> to access the unit testing code for that toolbox.</p><h2 id="20">See also</h2><p><a href="TestEqual_doc.html"><tt>TestEqual</tt></a> | <a href="TestNotEqual_doc.html"><tt>TestNotEqual</tt></a> | <a href="TestError_doc.html"><tt>TestError</tt></a> | <a href="TestNoError_doc.html"><tt>TestNoError</tt></a> | <a href="TestSpeed_doc.html"><tt>TestSpeed</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+</pre><h2 id="19">Example #4: An actual test suite.</h2><p>The <a href="https://tamaskis.github.io/Numerical_Differentiation_Toolbox-MATLAB/">Numerical Differentiation Toolbox</a> uses this unit testing framework to run all of its unit tests. <a href="https://github.com/tamaskis/Numerical_Differentiation_Toolbox-MATLAB/tree/main/tests/">Click here</a> to access the unit testing code for that toolbox.</p><h2 id="20">Example #5: Test suite testing the counting of function evaluations.</h2><p>Often, iterative algorithms (such as root-finding and optimization algorithms) require evaluating a function, <img src="TestSuite_doc_eq01058714691934937683.png" alt="$f(x)$" style="width:20px;height:11px;">, many times. Theses algorithms also typically count the number of function evaluations. Setting up tests to determine if these function counts are actually correct can be a bit tedious/confusing.</p><p>As an example, let's consider the case where we are finding the root of <img src="TestSuite_doc_eq12141978683720303882.png" alt="$f(x)=x^{2}-1$" style="width:65px;height:12px;"> using MATLAB's <tt>fzero</tt> function with an initial interval of <img src="TestSuite_doc_eq05076855042414023926.png" alt="$[a,b]=[0,10]$" style="width:61px;height:11px;">. MATLAB's <tt>fzero</tt> function returns the number of function evaluations performed, but we want to check if it actually counts the function evaluations correctly.</p><p>First, let's define the function <img src="TestSuite_doc_eq12141978683720303882.png" alt="$f(x)=x^{2}-1$" style="width:65px;height:12px;">.</p><pre class="codeinput">f = @(x) x^2-1;
+</pre><p>Next, let's define a function <img src="TestSuite_doc_eq08825345406897799954.png" alt="$g(f)$" style="width:20px;height:11px;"> that takes <img src="TestSuite_doc_eq02527148203711597490.png" alt="$f$" style="width:6px;height:10px;"> as an input and returns the number of times <img src="TestSuite_doc_eq02527148203711597490.png" alt="$f$" style="width:6px;height:10px;"> is evaluated when MATLAB's <tt>fzero</tt> function is used to find the root of <img src="TestSuite_doc_eq01058714691934937683.png" alt="$f(x)$" style="width:20px;height:11px;"> using an initial interval of <img src="TestSuite_doc_eq05076855042414023926.png" alt="$[a,b]=[0,10]$" style="width:61px;height:11px;">. Note that we use <tt>function_for_example_5</tt> defined at the bottom of this page to help define <img src="TestSuite_doc_eq08825345406897799954.png" alt="$g(f)$" style="width:20px;height:11px;">. Essentially, <tt>function_for_example_5</tt> accepts a function and an initial interval and returns the number of function evaluations performed by MATLAB's <tt>fzero</tt> function. Here, we are just applying a function handle to <tt>function_for_example_5</tt> to get it in the form <img src="TestSuite_doc_eq08825345406897799954.png" alt="$g(f)$" style="width:20px;height:11px;">.</p><pre class="codeinput">g = @(f) function_for_example_5(f,0,10);
+</pre><p>Creating and running the test suite,</p><pre class="codeinput">test_suite = TestSuite(<span class="string">'Testing the number of function evaluations.'</span>);
+test_suite.add_test(TestFunctionCount(f,g,<span class="string">'testing function count provided by fzero'</span>));
+test_suite.run;
+</pre><pre class="codeoutput">
+</pre><h2 id="23">Function for Example #5</h2><pre class="codeinput"><span class="keyword">function</span> n_feval = function_for_example_5(f,a,b)
+    [~,~,~,output] = fzero(f,[a,b]);
+    n_feval = output.funcCount;
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">testing function count provided by fzero: Passed.
+
+========================================================================================================================
+SUMMARY: Testing the number of function evaluations.
+------------------------------------------------------------------------------------------------------------------------
+
+  Pass Rate: 100%
+   &#8226; total tests: 1
+   &#8226; passed tests: 1
+   &#8226; failed tests: 0
+
+========================================================================================================================
+</pre><h2 id="24">See also</h2><p><a href="TestEqual_doc.html"><tt>TestEqual</tt></a> | <a href="TestNotEqual_doc.html"><tt>TestNotEqual</tt></a> | <a href="TestError_doc.html"><tt>TestError</tt></a> | <a href="TestNoError_doc.html"><tt>TestNoError</tt></a> | <a href="TestSpeed_doc.html"><tt>TestSpeed</tt></a> <a href="TestFunctionCount_doc.html"><tt>TestFunctionCount</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |TestSuite|
 % Class defining a test suite.
 % 
-% <index.html Back to Simple Unit Testing Toolbox Contents>.
+% <index.html Back to *Simple Unit Testing Toolbox Documentation*>.
 %% Properties
 % <html>
 %   <table>
@@ -258,7 +292,7 @@ TEST SUITE TERMINATED EARLY DUE TO FAILED UNIT TEST.
 %       <tr>
 %           <td style="text-align:center"><TT>name</TT></td>
 %           <td>test suite name</td>
-%           <td style="text-align:center">char</td>
+%           <td style="text-align:center">char array</td>
 %       </tr>
 %       <tr>
 %           <td style="text-align:center"><TT>N</TT></td>
@@ -267,14 +301,19 @@ TEST SUITE TERMINATED EARLY DUE TO FAILED UNIT TEST.
 %       </tr>
 %       <tr>
 %           <td style="text-align:center"><TT>terminate</TT></td>
-%           <td>if true, test suite terminates after first failed test</td>
+%           <td>if <TT>true</TT>, test suite terminates after first failed test</td>
+%           <td style="text-align:center">1×1<BR>logical</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>color</TT></td>
+%           <td>if <TT>true</TT>, test results are printed in color</td>
 %           <td style="text-align:center">1×1<BR>logical</td>
 %       </tr>
 %   </table>
 % </html>
 %% Constructor
 %   test_suite = TestSuite
-%   test_suite = TestSuite(name,terminate)
+%   test_suite = TestSuite(name,terminate,color)
 %
 % <html>
 %   <table>
@@ -285,12 +324,17 @@ TEST SUITE TERMINATED EARLY DUE TO FAILED UNIT TEST.
 %       </tr>
 %       <tr>
 %           <td style="text-align:center"><TT>name</TT></td>
-%           <td>(OPTIONAL) test suite name (defaults to empty string)</td>
-%           <td style="text-align:center">char</td>
+%           <td><b>(OPTIONAL)</b> test suite name (defaults to empty string)</td>
+%           <td style="text-align:center">char array</td>
 %       </tr>
 %       <tr>
 %           <td style="text-align:center"><TT>terminate</TT></td>
-%           <td>(OPTIONAL) if true, test suite terminates after first failed test (defaults to false)</td>
+%           <td><b>(OPTIONAL)</b> if <TT>true</TT>, test suite terminates after first failed test (defaults to <TT>false</TT>)</td>
+%           <td style="text-align:center">1×1<BR>logical</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>color</TT></td>
+%           <td><b>(OPTIONAL)</b> if <TT>true</TT>, test results are printed in color (defaults to <TT>true</TT>)</td>
 %           <td style="text-align:center">1×1<BR>logical</td>
 %       </tr>
 %   </table>
@@ -302,6 +346,7 @@ TEST SUITE TERMINATED EARLY DUE TO FAILED UNIT TEST.
 %   TestSuite.add_test(TestError(f,args,name))
 %   TestSuite.add_test(TestNoError(f,args,name))
 %   TestSuite.add_test(TestSpeed(f_fast,f_slow,args,name))
+%   TestSuite.add_test(TestFunctionCount(f,g,name))
 %
 % *Description:* Adds a test to the test suite.
 %
@@ -314,13 +359,14 @@ TEST SUITE TERMINATED EARLY DUE TO FAILED UNIT TEST.
 %       </tr>
 %       <tr>
 %           <td style="text-align:center"><TT>unit_test</TT></td>
-%           <td>unit test - can be one of the following, which are all subclasses of the <TT>UnitTest</TT> class:
-%               <BR>  - <TT>TestEqual</TT>
-%               <BR>  - <TT>TestNotEqual</TT>
-%               <BR>  - <TT>TestError</TT>
-%               <BR>  - <TT>TestNoError</TT>
-%               <BR>  - <TT>TestSpeed</TT>
-%               </td>
+%           <td>unit test - can be one of the following, which are all subclasses of the <TT>UnitTest</TT> class:<ul>
+%               <li><TT>TestEqual</TT></li>
+%               <li><TT>TestNotEqual</TT></li>
+%               <li><TT>TestError</TT></li>
+%               <li><TT>TestNoError</TT></li>
+%               <li><TT>TestSpeed</TT></li>
+%               <li><TT>TestFunctionCount</TT></li>
+%           </ul></td>
 %           <td style="text-align:center">1×1<BR>UnitTest</td>
 %       </tr>
 %   </table>
@@ -333,6 +379,7 @@ TEST SUITE TERMINATED EARLY DUE TO FAILED UNIT TEST.
 % * <TestError_doc.html *|TestError|*>
 % * <TestNoError_doc.html *|TestNoError|*>
 % * <TestSpeed_doc.html *|TestSpeed|*>
+% * <TestFunctionCount_doc.html *|TestFunctionCount|*>
 %% |run|
 %   TestSuite.run
 %
@@ -417,11 +464,48 @@ test_suite.run;
 % run all of its unit tests.
 % <https://github.com/tamaskis/Numerical_Differentiation_Toolbox-MATLAB/tree/main/tests/
 % Click here> to access the unit testing code for that toolbox.
+%% Example #5: Test suite testing the counting of function evaluations.
+% Often, iterative algorithms (such as root-finding and optimization
+% algorithms) require evaluating a function, $f(x)$, many times. Theses
+% algorithms also typically count the number of function evaluations.
+% Setting up tests to determine if these function counts are actually
+% correct can be a bit tedious/confusing.
+%
+% As an example, let's consider the case where we are finding the root of
+% $f(x)=x^{2}-1$ using MATLAB's |fzero| function with an initial interval
+% of $[a,b]=[0,10]$. MATLAB's |fzero| function returns the number of
+% function evaluations performed, but we want to check if it actually
+% counts the function evaluations correctly.
+%
+% First, let's define the function $f(x)=x^{2}-1$.
+f = @(x) x^2-1;
+%%
+% Next, let's define a function $g(f)$ that takes $f$ as an input and
+% returns the number of times $f$ is evaluated when MATLAB's |fzero|
+% function is used to find the root of $f(x)$ using an initial interval of 
+% $[a,b]=[0,10]$. Note that we use |function_for_example_5| defined at the
+% bottom of this page to help define $g(f)$. Essentially, 
+% |function_for_example_5| accepts a function and an initial interval and
+% returns the number of function evaluations performed by MATLAB's |fzero|
+% function. Here, we are just applying a function handle to
+% |function_for_example_5| to get it in the form $g(f)$.
+g = @(f) function_for_example_5(f,0,10);
+%%
+% Creating and running the test suite,
+test_suite = TestSuite('Testing the number of function evaluations.');
+test_suite.add_test(TestFunctionCount(f,g,'testing function count provided by fzero'));
+test_suite.run;
+%% Function for Example #5
+function n_feval = function_for_example_5(f,a,b)
+    [~,~,~,output] = fzero(f,[a,b]);
+    n_feval = output.funcCount;
+end
 %% See also
 % <TestEqual_doc.html |TestEqual|> | 
 % <TestNotEqual_doc.html |TestNotEqual|> | 
 % <TestError_doc.html |TestError|> | 
 % <TestNoError_doc.html |TestNoError|> | 
 % <TestSpeed_doc.html |TestSpeed|>
+% <TestFunctionCount_doc.html |TestFunctionCount|>
 ##### SOURCE END #####
 --></body></html>

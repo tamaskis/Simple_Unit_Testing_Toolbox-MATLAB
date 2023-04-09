@@ -11,7 +11,7 @@
 % See also TIME_EVALUATION.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-01-14
+% Last Update: 2023-04-09
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -43,7 +43,7 @@
 % -----
 % NOTE:
 % -----
-%   --> f_fast and f_fast slow must have the same input/output behavior.
+%   • f_fast and f_slow must have the same input/output behavior.
 %
 %==========================================================================
 function output = TEST_SPEED(f_fast,f_slow,args,n_eval,name,print,color)

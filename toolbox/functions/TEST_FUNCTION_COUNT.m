@@ -1,14 +1,14 @@
 %==========================================================================
 %
-% TEST_FUNCTION_COUNT  Tests if an algorithm operating on a function 
-% correctly counted the number of function evaluations.
+% TEST_FUNCTION_COUNT  Test if an algorithm operating on a function
+% correctly counts the number of function evaluations.
 %
-%   TEST_FUNCTION_COUNT(g,f)
-%   TEST_FUNCTION_COUNT(__,print,color)
+%   TEST_FUNCTION_COUNT(f,g)
+%   TEST_FUNCTION_COUNT(f,g,name,print,color)
 %   output = TEST_FUNCTION_COUNT(__)
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-01-14
+% Last Update: 2023-04-09
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -78,9 +78,10 @@ function output = TEST_FUNCTION_COUNT(f,g,name,print,color)
     if passed
         message = '';
     else
-        message = ['Function count is incorrect:\n• True number of ',...
-            'function evaluations: ',num2str(f_count_actual()),'\n• ',...
-            'Reported number of function evaluations: ',num2str(f_count)];
+        message = ['Function count is incorrect:\n          • True ',...
+            'number of function evaluations: ',...
+            num2str(f_count_actual()),'\n          • ','Reported ',...
+            'number of function evaluations: ',num2str(f_count)];
     end
     
     % -------------------------------
