@@ -38,7 +38,7 @@ doc_SUTT name
 `test_suite.add_test(TestNotEqual(X1,X2,name,n))`\
 `test_suite.add_test(TestError(f,args,name))`\
 `test_suite.add_test(TestNoError(f,args,name))`\
-`test_suite.add_test(TestSpeed(f1,f2,args,name))`
+`test_suite.add_test(TestSpeed(f1,f2,args,name))`\
 `test_suite.add_test(TestFunctionCount(f,g,name))`
 
 ### Running a test suite.
