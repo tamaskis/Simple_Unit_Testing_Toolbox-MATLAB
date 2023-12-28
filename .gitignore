@@ -1,3 +1,4 @@
 .DS_Store
 INSTALL/Simple Unit Testing Toolbox.prj
+INSTALL/add_paths.m
 INSTALL/remove_paths.m

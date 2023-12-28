@@ -29,6 +29,8 @@
 % -----
 % NOTE:
 % -----
+%   • We say that two numbers, X1 and X2, are equal to N decimal places if
+%     | X1 - X2 | ≤ 10⁻ᴺ.
 %   • We assume that NaN values are equal, i.e. NaN = NaN.
 %
 %==========================================================================
@@ -49,35 +51,9 @@ function n_equal = decimal_places_of_equality(X1,X2,n_max)
     %   • note that we ignore NaN values; we assumes NaN = NaN
     for i = 1:N
         if ~(isnan(X1(i)) && isnan(X2(i)))
-            
-            % tracks the three different measures of decimal places of 
-            % precision
-            n_array_round = n_max;
-            n_array_floor = n_max;
-            n_array_ceil = n_max;
-            
-            % checks precision via round operation
-            while (n_array_round > 0) && (round(X1(i),n_array_round) ~=...
-                    round(X2(i),n_array_round))
-                n_array_round = n_array_round-1;
+            while (abs(X1(i)-X2(i)) > 10^(-n_array(i))) && (n_array(i) > 0)
+                n_array(i) = n_array(i)-1;
             end
-            
-            % checks precision via floor operation
-            while (n_array_floor > 0) && (floorn(X1(i),n_array_floor) ~=...
-                    floorn(X2(i),n_array_floor))
-                n_array_floor = n_array_floor-1;
-            end
-            
-            % checks precision via ceil operation
-            while (n_array_ceil > 0) && (ceiln(X1(i),n_array_ceil) ~=...
-                    ceiln(X2(i),n_array_ceil))
-                n_array_ceil = n_array_ceil-1;
-            end
-            
-            % the three different operations can yield three different
-            % precisions; we take the maximum of these
-            n_array(i) = max([n_array_round,n_array_floor,n_array_ceil]);
-            
         end
     end
     
