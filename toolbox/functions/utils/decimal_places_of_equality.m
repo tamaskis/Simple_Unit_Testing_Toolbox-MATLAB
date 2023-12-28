@@ -1,12 +1,13 @@
 %==========================================================================
 %
 % decimal_places_of_equality  Determines the number of decimal places (up
-% to 100) to which equality exists between two arrays.
+% to a specified maximum number of decimal places) to which equality exists
+% between two arrays.
 %
-%   n_equal = decimal_places_of_equality(X1,X2)
+%   n_equal = decimal_places_of_equality(X1,X2,n_max)
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-04-09
+% Last Update: 2023-12-27
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -17,6 +18,8 @@
 % ------
 %   X1      - (double array) double array #1
 %   X2      - (double array) double array #2
+%   n_max   - (1×1 double) maximum number of decimal places to check for
+%             equality
 %
 % -------
 % OUTPUT:
@@ -29,11 +32,7 @@
 %   • We assume that NaN values are equal, i.e. NaN = NaN.
 %
 %==========================================================================
-function n_equal = decimal_places_of_equality(X1,X2)
-    
-    % initial number of decimal places of equality to check for (starts off
-    % assuming 100 decimal places of precision)
-    n0 = 100;
+function n_equal = decimal_places_of_equality(X1,X2,n_max)
     
     % reshapes both arrays to column vectors
     X1 = X1(:);
@@ -43,7 +42,7 @@ function n_equal = decimal_places_of_equality(X1,X2)
     N = length(X1);
     
     % array that stores decimals of precision for each element
-    n_array = n0*ones(N,1);
+    n_array = n_max*ones(N,1);
     
     % loops through each array element, testing for equality at desired
     % precision or checking up to which precision equality exists
@@ -53,9 +52,9 @@ function n_equal = decimal_places_of_equality(X1,X2)
             
             % tracks the three different measures of decimal places of 
             % precision
-            n_array_round = 100;
-            n_array_floor = 100;
-            n_array_ceil = 100;
+            n_array_round = n_max;
+            n_array_floor = n_max;
+            n_array_ceil = n_max;
             
             % checks precision via round operation
             while (n_array_round > 0) && (round(X1(i),n_array_round) ~=...
