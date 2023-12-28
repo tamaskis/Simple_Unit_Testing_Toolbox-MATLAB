@@ -11,7 +11,7 @@
 % See also TEST_NOT_EQUAL.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-04-09
+% Last Update: 2023-12-27
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -83,9 +83,9 @@ function output = TEST_EQUAL(X1,X2,n,name,print,color)
     end
     
     % determines minimum number of decimal places of equality
-    n_equal = decimal_places_of_equality(X1,X2);
+    n_equal = decimal_places_of_equality(X1,X2,n);
     
-    % determines if test passsed (arrays are equal to n decimal places)
+    % determines if test passed (arrays are equal to n decimal places)
     passed = (n_equal >= n);
     
     % -------------------
