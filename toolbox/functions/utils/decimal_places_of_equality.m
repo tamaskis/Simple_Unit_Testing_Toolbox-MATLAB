@@ -7,7 +7,7 @@
 %   n_equal = decimal_places_of_equality(X1,X2,n_max)
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-12-27
+% Last Update: 2024-01-02
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -50,10 +50,14 @@ function n_equal = decimal_places_of_equality(X1,X2,n_max)
     % precision or checking up to which precision equality exists
     %   • note that we ignore NaN values; we assumes NaN = NaN
     for i = 1:N
-        if ~(isnan(X1(i)) && isnan(X2(i)))
+        if isnan(X1(i)) && isnan(X2(i))
+            continue
+        elseif ~isnan(X1(i)) && ~isnan(X2(i))
             while (abs(X1(i)-X2(i)) > 10^(-n_array(i))) && (n_array(i) > 0)
                 n_array(i) = n_array(i)-1;
             end
+        else
+            n_array(i) = 0;
         end
     end
     
